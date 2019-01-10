@@ -35,6 +35,9 @@
 		3F6E6C6721E7378000DA87F6 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E6C6521E7378000DA87F6 /* WeatherViewController.swift */; };
 		3F6E6C6821E7378000DA87F6 /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6E6C6621E7378000DA87F6 /* WeatherViewController.xib */; };
 		3F6E6C6C21E737F400DA87F6 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E6C6B21E737F400DA87F6 /* WeatherView.swift */; };
+		3F6E6C7021E74EEC00DA87F6 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E6C6E21E74EEC00DA87F6 /* CountriesViewController.swift */; };
+		3F6E6C7121E74EEC00DA87F6 /* CountriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6E6C6F21E74EEC00DA87F6 /* CountriesViewController.xib */; };
+		3F6E6C7321E74F2000DA87F6 /* CountriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E6C7221E74F2000DA87F6 /* CountriesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +92,9 @@
 		3F6E6C6521E7378000DA87F6 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		3F6E6C6621E7378000DA87F6 /* WeatherViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherViewController.xib; sourceTree = "<group>"; };
 		3F6E6C6B21E737F400DA87F6 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		3F6E6C6E21E74EEC00DA87F6 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
+		3F6E6C6F21E74EEC00DA87F6 /* CountriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountriesViewController.xib; sourceTree = "<group>"; };
+		3F6E6C7221E74F2000DA87F6 /* CountriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +275,7 @@
 		3F6E6C6921E7379300DA87F6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				3F6E6C6D21E74EC600DA87F6 /* CountriesViewController */,
 				3F6E6C6A21E7379800DA87F6 /* WeatherViewController */,
 			);
 			path = UI;
@@ -282,6 +289,16 @@
 				3F6E6C6B21E737F400DA87F6 /* WeatherView.swift */,
 			);
 			path = WeatherViewController;
+			sourceTree = "<group>";
+		};
+		3F6E6C6D21E74EC600DA87F6 /* CountriesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3F6E6C6E21E74EEC00DA87F6 /* CountriesViewController.swift */,
+				3F6E6C6F21E74EEC00DA87F6 /* CountriesViewController.xib */,
+				3F6E6C7221E74F2000DA87F6 /* CountriesView.swift */,
+			);
+			path = CountriesViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +408,7 @@
 				3F6E6C1021E7364900DA87F6 /* LaunchScreen.storyboard in Resources */,
 				3F6E6C6821E7378000DA87F6 /* WeatherViewController.xib in Resources */,
 				3F6E6C0D21E7364900DA87F6 /* Assets.xcassets in Resources */,
+				3F6E6C7121E74EEC00DA87F6 /* CountriesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,8 +442,10 @@
 				3F6E6C5621E736C000DA87F6 /* Atomic.swift in Sources */,
 				3F6E6C5421E736C000DA87F6 /* ObservableObject.Observer.swift in Sources */,
 				3F6E6C6121E736C000DA87F6 /* Strideable+Extensions.swift in Sources */,
+				3F6E6C7321E74F2000DA87F6 /* CountriesView.swift in Sources */,
 				3F6E6C5721E736C000DA87F6 /* Color.swift in Sources */,
 				3F6E6C5221E736C000DA87F6 /* ObservableObject.swift in Sources */,
+				3F6E6C7021E74EEC00DA87F6 /* CountriesViewController.swift in Sources */,
 				3F6E6C6221E736C000DA87F6 /* RangeReplacebleCollection+Extensions.swift in Sources */,
 				3F6E6C6C21E737F400DA87F6 /* WeatherView.swift in Sources */,
 				3F6E6C5D21E736C000DA87F6 /* DispatchQueue+Extensions.swift in Sources */,

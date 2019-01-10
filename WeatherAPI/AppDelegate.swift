@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         -> Bool
     {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = WeatherViewController()
+        window.rootViewController = CountriesViewController()
         window.makeKeyAndVisible()
         
         self.window = window
