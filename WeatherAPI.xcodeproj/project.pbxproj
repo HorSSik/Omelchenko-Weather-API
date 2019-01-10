@@ -189,13 +189,13 @@
 		3F6E6C3421E736C000DA87F6 /* Types */ = {
 			isa = PBXGroup;
 			children = (
-				3F6E6C3521E736C000DA87F6 /* ObservableObject.Observers.swift */,
-				3F6E6C3621E736C000DA87F6 /* Generator.swift */,
-				3F6E6C3721E736C000DA87F6 /* ObservableObject.swift */,
-				3F6E6C3821E736C000DA87F6 /* AbstractCancellableProperty.swift */,
-				3F6E6C3921E736C000DA87F6 /* ObservableObject.Observer.swift */,
 				3F6E6C3A21E736C000DA87F6 /* F.swift */,
 				3F6E6C3B21E736C000DA87F6 /* Atomic.swift */,
+				3F6E6C3621E736C000DA87F6 /* Generator.swift */,
+				3F6E6C3721E736C000DA87F6 /* ObservableObject.swift */,
+				3F6E6C3521E736C000DA87F6 /* ObservableObject.Observers.swift */,
+				3F6E6C3921E736C000DA87F6 /* ObservableObject.Observer.swift */,
+				3F6E6C3821E736C000DA87F6 /* AbstractCancellableProperty.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -294,8 +294,8 @@
 		3F6E6C6D21E74EC600DA87F6 /* CountriesViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3F6E6C6E21E74EEC00DA87F6 /* CountriesViewController.swift */,
 				3F6E6C6F21E74EEC00DA87F6 /* CountriesViewController.xib */,
+				3F6E6C6E21E74EEC00DA87F6 /* CountriesViewController.swift */,
 				3F6E6C7221E74F2000DA87F6 /* CountriesView.swift */,
 			);
 			path = CountriesViewController;

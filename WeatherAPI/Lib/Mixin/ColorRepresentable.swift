@@ -18,7 +18,7 @@ protocol ColorRepresentable {
 extension ColorRepresentable where Self: RawRepresentable, Self.RawValue == UInt32 {
     
     var opaque: UIColor {
-        return .init(rgba: self.rawValue)
+        return .init(rgb: self.rawValue)
     }
     
     func alpha(_ alpha: CGFloat) -> UIColor {
