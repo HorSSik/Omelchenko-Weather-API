@@ -40,7 +40,8 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = self.rootView?.table?.dequeueReusableCell(withIdentifier: self.identifier) as UITableViewCell!
         let item = self.model.countries[indexPath.row]
-        cell.textLabel?.text = item.name
+        cell.textLabel?.text = ("\(item.name), \(item.capital)")
+//        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         return cell
     }
@@ -54,7 +55,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         var capital: String
     }
     
-    func requestData() {
+    private func requestData() {
         if let url = self.url {
             URLSession.shared.dataTask(with: url) { (data, respose, error) in
                 let countries = data.flatMap { try? JSONDecoder().decode([Country].self, from: $0) }
@@ -65,5 +66,6 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("did select: \(self.model.countries[indexPath.row])")
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
