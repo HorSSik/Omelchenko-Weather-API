@@ -11,5 +11,4 @@ import UIKit
 class CountriesView: UIView {
     
     @IBOutlet var table: UITableView?
-    
 }
