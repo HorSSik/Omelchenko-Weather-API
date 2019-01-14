@@ -19,9 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     )
         -> Bool
     {
+        let navigationController = UINavigationController(rootViewController: CountriesViewController())
         
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = CountriesViewController()
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
         self.window = window

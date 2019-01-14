@@ -12,6 +12,10 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     typealias RootView = CountriesView
     
+    var stateWeather = Emoji.sun.rawValue
+    
+    private let parserCountries = Parser<[Country]>()
+    
     private var model = Countries() {
         didSet {
             DispatchQueue.main.async {
@@ -20,25 +24,18 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-//    private var modelWeather = Weather() {
-//        didSet {
-//            DispatchQueue.main.async {
-//                self.rootView?.table?.reloadData()
-//            }
-//        }
-//    }
-    
-    private let identifier = "cell"
     private let urlCountry = URL(string: "https://restcountries.eu/rest/v2/all")
+    private var temperature = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Country and capital"
         
-        self.rootView?.table?.register(UITableViewCell.self, forCellReuseIdentifier: self.identifier)
+        self.rootView?.table?.register(TableViewCell.self)
         
         self.rootView?.table?.delegate = self
         self.rootView?.table?.dataSource = self
-        self.requestData()
+        self.getCountries()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,59 +48,75 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     )
         -> UITableViewCell
     {
-        let cell: UITableViewCell = self.rootView?.table?.dequeueReusableCell(withIdentifier: self.identifier)
+        let cellName = toString(Cell.self)
+        
+        let cell: UITableViewCell = self.rootView?.table?.dequeueReusableCell(withIdentifier: cellName)
             ?? UITableViewCell()
         let item = self.model.countries[indexPath.row]
-        cell.textLabel?.text = ("\(item.name) , \(item.capital)")
+        cell.textLabel?.text = ("\(item.name), \(item.capital)")
 
         return cell
     }
-    
-    struct Countries: Codable {
-        var countries = [Country]()
-    }
-    
-    struct Country: Codable {
-        var name: String
-        var capital: String
-    }
-    
-    struct Weather: Codable {
-        var main: [String : Double]
-    }
 
-    private func requestData() {
-        if let url = self.urlCountry {
-            URLSession.shared.dataTask(with: url) { (data, respose, error) in
-                let countries = data.flatMap { try? JSONDecoder().decode([Country].self, from: $0) }
-                countries.do { self.model.countries = $0 }
-            }.resume()
+    private func getCountries() {
+        guard let url = self.urlCountry else { return }
+        self.parserCountries.requestData(url: url)
+        
+        let observer = self.parserCountries.observer {
+            switch $0 {
+            case .notWorking:
+                return
+            case .didStartLoading:
+                return
+            case .didLoad:
+                self.model = Countries(countries: self.parserCountries.model!)
+            case .didFailedWithError(_):
+                return
+            }
         }
     }
     
-    private func getWeather(city: String) {
-        let baseUrl = "https://api.openweathermap.org/data/2.5/weather?q="
-        let apiKey = "&APPID=60cf95f166563b524e17c7573b54d7e3"
-        var stateWeather = Emoji.sun.rawValue
-        guard let url = URL(string: baseUrl + city + apiKey) else { return }
-        URLSession.shared.dataTask(with: url) { (data, respose, error) in
-            let weather = data.flatMap { try? JSONDecoder().decode(Weather.self, from: $0) }
-            guard let temp = weather?.main["temp"] else { return }
-            let temperature = self.translateInCelsius(temperature: temp)
-            stateWeather = temperature >= 0 ? Emoji.sun.rawValue : Emoji.winter.rawValue
-            print("Now in this country \(temperature)°C \(stateWeather) degrees")
-        }.resume()
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Your choice: \(self.model.countries[indexPath.row])")
-        tableView.deselectRow(at: indexPath, animated: true)
         
+        tableView.deselectRow(at: indexPath, animated: true)
         let name = self.model.countries[indexPath.row].capital
-        self.getWeather(city: name)
+        let controller = WeatherViewController()
+        let parser = Parser<Weather>()
+        
+        let baseUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + name + "&APPID=60cf95f166563b524e17c7573b54d7e3"
+        
+        guard let url = URL(string: baseUrl) else { return }
+        
+        parser.requestData(url: url)
+        
+        _ = parser.observer { state in
+            switch state {
+            case .notWorking:
+                return
+            case .didStartLoading:
+                return
+            case .didLoad:
+                guard let temp = parser.model?.main["temp"] else { return }
+                self.temperature = self.translateInCelsius(temperature: temp)
+                self.stateWeather = self.temperature >= 0 ? Emoji.sun.rawValue : Emoji.winter.rawValue
+                
+                controller.temperature = self.temperature
+                controller.city = name.uppercased()
+                controller.emoji = self.stateWeather
+            case .didFailedWithError(_):
+                return
+            }
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     func translateInCelsius(temperature: Double) -> Int {
         return Int(temperature - 273.15)
     }
 }
+
+
+
+//print("Your choice: \(self.model.countries[indexPath.row])")
+//print("Now in this country \(self.temperature)°C \(self.stateWeather) degrees")
