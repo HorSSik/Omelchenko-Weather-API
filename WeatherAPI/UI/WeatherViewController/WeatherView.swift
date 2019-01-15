@@ -10,6 +10,8 @@ import UIKit
 
 class WeatherView: UIView {
 
+    @IBOutlet var rangeTemperature: UILabel?
+    @IBOutlet var humidity: UILabel?
     @IBOutlet var emoji: UILabel?
     @IBOutlet var cityLabel: UILabel?
     @IBOutlet var label: UILabel?

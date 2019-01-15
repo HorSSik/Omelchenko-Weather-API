@@ -15,4 +15,5 @@ public enum Emoji: String {
     case autumn = "🍂"
     case rain = "🌧️"
     case cloud = "☁️"
+    case droplet = "💧"
 }

@@ -19,36 +19,92 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udn-lp-lNf">
-                    <rect key="frame" x="51" y="265" width="272" height="136"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udn-lp-lNf">
+                    <rect key="frame" x="149" y="257" width="78" height="153"/>
                     <fontDescription key="fontDescription" type="system" pointSize="128"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icm-cL-jlw">
-                    <rect key="frame" x="0.0" y="112" width="375" height="354"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icm-cL-jlw">
+                    <rect key="frame" x="0.0" y="228" width="375" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKN-aU-Qdu">
-                    <rect key="frame" x="45" y="129" width="285" height="148"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emoji" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKN-aU-Qdu">
+                    <rect key="frame" x="0.0" y="80" width="375" height="148"/>
                     <fontDescription key="fontDescription" type="system" pointSize="124"/>
                     <color key="textColor" red="0.15686274510000001" green="0.68235294120000001" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fh-6P-Lfl">
+                    <rect key="frame" x="0.0" y="553" width="375" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGJ-eO-zZq">
+                    <rect key="frame" x="0.0" y="410" width="375" height="43"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DropletWeatherIcon" translatesAutoresizingMaskIntoConstraints="NO" id="q7B-G2-iff">
+                    <rect key="frame" x="163" y="503" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="cOH-yI-xAV"/>
+                        <constraint firstAttribute="width" constant="50" id="rFN-d6-sFw"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DropletWeatherIcon" translatesAutoresizingMaskIntoConstraints="NO" id="DIa-o6-jx5">
+                    <rect key="frame" x="62.5" y="503" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="5NU-HY-QzZ"/>
+                        <constraint firstAttribute="width" constant="50" id="NE7-Ij-sq1"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DropletWeatherIcon" translatesAutoresizingMaskIntoConstraints="NO" id="NNS-pU-Seq">
+                    <rect key="frame" x="262.5" y="503" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Jcw-OT-WVY"/>
+                        <constraint firstAttribute="width" constant="50" id="lqk-7n-gHo"/>
+                    </constraints>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.043137254901960784" green="0.38039215686274508" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9fh-6P-Lfl" secondAttribute="trailing" id="7at-Qf-8ZK"/>
+                <constraint firstItem="q7B-G2-iff" firstAttribute="top" secondItem="TGJ-eO-zZq" secondAttribute="bottom" constant="50" id="8lk-42-MK3"/>
+                <constraint firstItem="DIa-o6-jx5" firstAttribute="top" secondItem="TGJ-eO-zZq" secondAttribute="bottom" constant="50" id="ATV-XV-Fjg"/>
+                <constraint firstItem="zKN-aU-Qdu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Bpg-u2-iKS"/>
+                <constraint firstItem="udn-lp-lNf" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Dug-Iv-Wv1"/>
+                <constraint firstItem="q7B-G2-iff" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FGx-Ne-2LW"/>
+                <constraint firstItem="icm-cL-jlw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IHZ-pR-1c6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zKN-aU-Qdu" secondAttribute="trailing" id="QF3-aS-HrO"/>
+                <constraint firstItem="NNS-pU-Seq" firstAttribute="top" secondItem="TGJ-eO-zZq" secondAttribute="bottom" constant="50" id="UEQ-Gw-Juz"/>
+                <constraint firstItem="udn-lp-lNf" firstAttribute="top" secondItem="icm-cL-jlw" secondAttribute="bottom" id="Vd8-lL-HIy"/>
+                <constraint firstItem="9fh-6P-Lfl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ar8-2z-AWz"/>
+                <constraint firstItem="icm-cL-jlw" firstAttribute="top" secondItem="zKN-aU-Qdu" secondAttribute="bottom" id="dLY-4K-dfZ"/>
+                <constraint firstItem="q7B-G2-iff" firstAttribute="leading" secondItem="DIa-o6-jx5" secondAttribute="trailing" constant="50" id="dvU-fN-85F"/>
+                <constraint firstItem="icm-cL-jlw" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="m7f-W6-WNN"/>
+                <constraint firstItem="TGJ-eO-zZq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mNc-CI-zKB"/>
+                <constraint firstItem="TGJ-eO-zZq" firstAttribute="top" secondItem="udn-lp-lNf" secondAttribute="bottom" id="mwj-Li-oNC"/>
+                <constraint firstItem="TGJ-eO-zZq" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="qdh-9e-EZb"/>
+                <constraint firstItem="udn-lp-lNf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qqo-Q1-hbT"/>
+                <constraint firstItem="NNS-pU-Seq" firstAttribute="leading" secondItem="q7B-G2-iff" secondAttribute="trailing" constant="50" id="t2z-i6-rru"/>
+                <constraint firstItem="9fh-6P-Lfl" firstAttribute="top" secondItem="q7B-G2-iff" secondAttribute="bottom" id="ypH-Bc-2Je"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <connections>
                 <outlet property="cityLabel" destination="icm-cL-jlw" id="pko-5b-rDe"/>
                 <outlet property="emoji" destination="zKN-aU-Qdu" id="cQz-fM-NXY"/>
+                <outlet property="humidity" destination="9fh-6P-Lfl" id="tjo-Gz-X0C"/>
                 <outlet property="label" destination="udn-lp-lNf" id="Uli-H5-pDu"/>
+                <outlet property="rangeTemperature" destination="TGJ-eO-zZq" id="sKl-sn-66C"/>
             </connections>
             <point key="canvasLocation" x="39.200000000000003" y="46.326836581709152"/>
         </view>
     </objects>
+    <resources>
+        <image name="DropletWeatherIcon" width="170" height="170"/>
+    </resources>
 </document>

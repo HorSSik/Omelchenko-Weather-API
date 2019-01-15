@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F2E14EE21EDF600000D2493 /* CountriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E14EC21EDF600000D2493 /* CountriesViewCell.swift */; };
+		3F2E14EF21EDF600000D2493 /* CountriesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2E14ED21EDF600000D2493 /* CountriesViewCell.xib */; };
 		3F5DEDE921EC92B80069BFF0 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDE821EC92B80069BFF0 /* Countries.swift */; };
 		3F5DEDEB21EC92E80069BFF0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDEA21EC92E80069BFF0 /* Weather.swift */; };
 		3F5DEDF021ECAFB40069BFF0 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDEF21ECAFB40069BFF0 /* Parser.swift */; };
-		3F5DEDF221ECB48C0069BFF0 /* NoIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDF121ECB48C0069BFF0 /* NoIdentifier.swift */; };
+		3F5DEDF221ECB48C0069BFF0 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDF121ECB48C0069BFF0 /* TableViewCell.swift */; };
 		3F5DEDF421ECBE1E0069BFF0 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDF321ECBE1E0069BFF0 /* UITableView+Extensions.swift */; };
 		3F5DEDF621ECBE440069BFF0 /* UINid+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDF521ECBE440069BFF0 /* UINid+Extensions.swift */; };
 		3F68551121E8DA7F0008AD60 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68551021E8DA7F0008AD60 /* Emoji.swift */; };
@@ -65,10 +67,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F2E14EC21EDF600000D2493 /* CountriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewCell.swift; sourceTree = "<group>"; };
+		3F2E14ED21EDF600000D2493 /* CountriesViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountriesViewCell.xib; sourceTree = "<group>"; };
 		3F5DEDE821EC92B80069BFF0 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		3F5DEDEA21EC92E80069BFF0 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		3F5DEDEF21ECAFB40069BFF0 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		3F5DEDF121ECB48C0069BFF0 /* NoIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoIdentifier.swift; sourceTree = "<group>"; };
+		3F5DEDF121ECB48C0069BFF0 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		3F5DEDF321ECBE1E0069BFF0 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		3F5DEDF521ECBE440069BFF0 /* UINid+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINid+Extensions.swift"; sourceTree = "<group>"; };
 		3F68551021E8DA7F0008AD60 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
@@ -136,11 +140,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F2E14EB21EDF5E2000D2493 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3F2E14EC21EDF600000D2493 /* CountriesViewCell.swift */,
+				3F2E14ED21EDF600000D2493 /* CountriesViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		3F5DEDEE21ECAFA00069BFF0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				3F5DEDEF21ECAFB40069BFF0 /* Parser.swift */,
-				3F5DEDF121ECB48C0069BFF0 /* NoIdentifier.swift */,
+				3F5DEDF121ECB48C0069BFF0 /* TableViewCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -303,6 +316,7 @@
 		3F6E6C6921E7379300DA87F6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				3F2E14EB21EDF5E2000D2493 /* Views */,
 				3F5DEDEE21ECAFA00069BFF0 /* Classes */,
 				3F6E6C6D21E74EC600DA87F6 /* CountriesViewController */,
 				3F6E6C6A21E7379800DA87F6 /* WeatherViewController */,
@@ -314,8 +328,8 @@
 			isa = PBXGroup;
 			children = (
 				3F6E6C6521E7378000DA87F6 /* WeatherViewController.swift */,
-				3F6E6C6621E7378000DA87F6 /* WeatherViewController.xib */,
 				3F6E6C6B21E737F400DA87F6 /* WeatherView.swift */,
+				3F6E6C6621E7378000DA87F6 /* WeatherViewController.xib */,
 			);
 			path = WeatherViewController;
 			sourceTree = "<group>";
@@ -435,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F6E6C1021E7364900DA87F6 /* LaunchScreen.storyboard in Resources */,
+				3F2E14EF21EDF600000D2493 /* CountriesViewCell.xib in Resources */,
 				3F6E6C6821E7378000DA87F6 /* WeatherViewController.xib in Resources */,
 				3F6E6C0D21E7364900DA87F6 /* Assets.xcassets in Resources */,
 				3F6E6C7121E74EEC00DA87F6 /* CountriesViewController.xib in Resources */,
@@ -463,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F6E6C5521E736C000DA87F6 /* F.swift in Sources */,
+				3F2E14EE21EDF600000D2493 /* CountriesViewCell.swift in Sources */,
 				3F6E6C5C21E736C000DA87F6 /* UIColor+Extensions.swift in Sources */,
 				3F6E6C5B21E736C000DA87F6 /* UIButton+Extensions.swift in Sources */,
 				3F6E6C6021E736C000DA87F6 /* Optional+Extensions.swift in Sources */,
@@ -470,7 +486,7 @@
 				3F5DEDF621ECBE440069BFF0 /* UINid+Extensions.swift in Sources */,
 				3F6E6C5F21E736C000DA87F6 /* NSLocking+Extensions.swift in Sources */,
 				3F6E6C5621E736C000DA87F6 /* Atomic.swift in Sources */,
-				3F5DEDF221ECB48C0069BFF0 /* NoIdentifier.swift in Sources */,
+				3F5DEDF221ECB48C0069BFF0 /* TableViewCell.swift in Sources */,
 				3F6E6C5421E736C000DA87F6 /* ObservableObject.Observer.swift in Sources */,
 				3F6E6C6121E736C000DA87F6 /* Strideable+Extensions.swift in Sources */,
 				3F5DEDF421ECBE1E0069BFF0 /* UITableView+Extensions.swift in Sources */,
@@ -670,7 +686,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = IDAP.WeatherAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -688,7 +704,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = IDAP.WeatherAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

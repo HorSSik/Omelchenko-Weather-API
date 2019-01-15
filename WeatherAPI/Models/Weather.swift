@@ -10,4 +10,5 @@ import Foundation
 
 struct Weather: Decodable {
     var main: [String : Double]
+    var wind: [String : Double]
 }
