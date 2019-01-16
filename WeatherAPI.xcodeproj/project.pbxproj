@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3F2E14EE21EDF600000D2493 /* CountriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E14EC21EDF600000D2493 /* CountriesViewCell.swift */; };
 		3F2E14EF21EDF600000D2493 /* CountriesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2E14ED21EDF600000D2493 /* CountriesViewCell.xib */; };
+		3F3F11A721EF1F4F0055B2D6 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3F11A621EF1F4F0055B2D6 /* WeatherData.swift */; };
 		3F5DEDE921EC92B80069BFF0 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDE821EC92B80069BFF0 /* Countries.swift */; };
 		3F5DEDEB21EC92E80069BFF0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDEA21EC92E80069BFF0 /* Weather.swift */; };
 		3F5DEDF021ECAFB40069BFF0 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDEF21ECAFB40069BFF0 /* Parser.swift */; };
@@ -69,6 +70,7 @@
 /* Begin PBXFileReference section */
 		3F2E14EC21EDF600000D2493 /* CountriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewCell.swift; sourceTree = "<group>"; };
 		3F2E14ED21EDF600000D2493 /* CountriesViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountriesViewCell.xib; sourceTree = "<group>"; };
+		3F3F11A621EF1F4F0055B2D6 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		3F5DEDE821EC92B80069BFF0 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		3F5DEDEA21EC92E80069BFF0 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		3F5DEDEF21ECAFB40069BFF0 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				3F5DEDEF21ECAFB40069BFF0 /* Parser.swift */,
 				3F5DEDF121ECB48C0069BFF0 /* TableViewCell.swift */,
+				3F3F11A621EF1F4F0055B2D6 /* WeatherData.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				3F6E6C5021E736C000DA87F6 /* ObservableObject.Observers.swift in Sources */,
 				3F5DEDE921EC92B80069BFF0 /* Countries.swift in Sources */,
 				3F6E6C0621E7364800DA87F6 /* AppDelegate.swift in Sources */,
+				3F3F11A721EF1F4F0055B2D6 /* WeatherData.swift in Sources */,
 				3F6E6C5821E736C000DA87F6 /* ColorRepresentable.swift in Sources */,
 				3F68551121E8DA7F0008AD60 /* Emoji.swift in Sources */,
 				3F6E6C6721E7378000DA87F6 /* WeatherViewController.swift in Sources */,

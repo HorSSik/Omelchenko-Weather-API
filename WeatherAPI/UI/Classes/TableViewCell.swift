@@ -13,7 +13,3 @@ class TableViewCell : UITableViewCell {
         return toString(type(of: self))
     }
 }
-
-class Cell : TableViewCell {
-    
-}

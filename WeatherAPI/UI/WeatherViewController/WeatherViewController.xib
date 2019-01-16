@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udn-lp-lNf">
-                    <rect key="frame" x="149" y="257" width="78" height="153"/>
+                    <rect key="frame" x="148.5" y="257" width="78" height="153"/>
                     <fontDescription key="fontDescription" type="system" pointSize="128"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -37,8 +37,14 @@
                     <color key="textColor" red="0.15686274510000001" green="0.68235294120000001" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fh-6P-Lfl">
-                    <rect key="frame" x="0.0" y="553" width="375" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hND-la-jF6">
+                    <rect key="frame" x="57" y="561" width="62" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Pres" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAa-rn-eIp">
+                    <rect key="frame" x="254" y="561" width="65" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,48 +56,60 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DropletWeatherIcon" translatesAutoresizingMaskIntoConstraints="NO" id="q7B-G2-iff">
-                    <rect key="frame" x="163" y="503" width="50" height="50"/>
+                    <rect key="frame" x="162.5" y="503" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="cOH-yI-xAV"/>
                         <constraint firstAttribute="width" constant="50" id="rFN-d6-sFw"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DropletWeatherIcon" translatesAutoresizingMaskIntoConstraints="NO" id="DIa-o6-jx5">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WindWeatherIcon" translatesAutoresizingMaskIntoConstraints="NO" id="DIa-o6-jx5">
                     <rect key="frame" x="62.5" y="503" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="5NU-HY-QzZ"/>
                         <constraint firstAttribute="width" constant="50" id="NE7-Ij-sq1"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DropletWeatherIcon" translatesAutoresizingMaskIntoConstraints="NO" id="NNS-pU-Seq">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PressureWeatherIcon" translatesAutoresizingMaskIntoConstraints="NO" id="NNS-pU-Seq">
                     <rect key="frame" x="262.5" y="503" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Jcw-OT-WVY"/>
                         <constraint firstAttribute="width" constant="50" id="lqk-7n-gHo"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fh-6P-Lfl">
+                    <rect key="frame" x="169" y="561" width="37" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </label>
             </subviews>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9fh-6P-Lfl" secondAttribute="trailing" id="7at-Qf-8ZK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PAa-rn-eIp" secondAttribute="trailing" constant="56" id="0mj-vG-DjA"/>
+                <constraint firstItem="PAa-rn-eIp" firstAttribute="leading" secondItem="9fh-6P-Lfl" secondAttribute="trailing" constant="48" id="1UX-t1-2JK"/>
                 <constraint firstItem="q7B-G2-iff" firstAttribute="top" secondItem="TGJ-eO-zZq" secondAttribute="bottom" constant="50" id="8lk-42-MK3"/>
                 <constraint firstItem="DIa-o6-jx5" firstAttribute="top" secondItem="TGJ-eO-zZq" secondAttribute="bottom" constant="50" id="ATV-XV-Fjg"/>
                 <constraint firstItem="zKN-aU-Qdu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Bpg-u2-iKS"/>
+                <constraint firstItem="9fh-6P-Lfl" firstAttribute="leading" secondItem="hND-la-jF6" secondAttribute="trailing" constant="50" id="CzH-gL-LTi"/>
                 <constraint firstItem="udn-lp-lNf" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Dug-Iv-Wv1"/>
                 <constraint firstItem="q7B-G2-iff" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FGx-Ne-2LW"/>
                 <constraint firstItem="icm-cL-jlw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IHZ-pR-1c6"/>
+                <constraint firstItem="9fh-6P-Lfl" firstAttribute="baseline" secondItem="PAa-rn-eIp" secondAttribute="baseline" id="PkT-Xi-ogl"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zKN-aU-Qdu" secondAttribute="trailing" id="QF3-aS-HrO"/>
                 <constraint firstItem="NNS-pU-Seq" firstAttribute="top" secondItem="TGJ-eO-zZq" secondAttribute="bottom" constant="50" id="UEQ-Gw-Juz"/>
                 <constraint firstItem="udn-lp-lNf" firstAttribute="top" secondItem="icm-cL-jlw" secondAttribute="bottom" id="Vd8-lL-HIy"/>
-                <constraint firstItem="9fh-6P-Lfl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ar8-2z-AWz"/>
+                <constraint firstItem="hND-la-jF6" firstAttribute="top" secondItem="DIa-o6-jx5" secondAttribute="bottom" constant="8" id="WR3-f9-ofl"/>
+                <constraint firstItem="hND-la-jF6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="57" id="WfY-y0-EvI"/>
+                <constraint firstItem="9fh-6P-Lfl" firstAttribute="centerX" secondItem="q7B-G2-iff" secondAttribute="centerX" id="aoq-NJ-vpk"/>
                 <constraint firstItem="icm-cL-jlw" firstAttribute="top" secondItem="zKN-aU-Qdu" secondAttribute="bottom" id="dLY-4K-dfZ"/>
                 <constraint firstItem="q7B-G2-iff" firstAttribute="leading" secondItem="DIa-o6-jx5" secondAttribute="trailing" constant="50" id="dvU-fN-85F"/>
+                <constraint firstItem="9fh-6P-Lfl" firstAttribute="leading" secondItem="hND-la-jF6" secondAttribute="trailing" constant="50" id="j84-lO-sYh"/>
+                <constraint firstItem="PAa-rn-eIp" firstAttribute="top" secondItem="NNS-pU-Seq" secondAttribute="bottom" constant="8" id="l82-Rd-eAy"/>
                 <constraint firstItem="icm-cL-jlw" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="m7f-W6-WNN"/>
                 <constraint firstItem="TGJ-eO-zZq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mNc-CI-zKB"/>
                 <constraint firstItem="TGJ-eO-zZq" firstAttribute="top" secondItem="udn-lp-lNf" secondAttribute="bottom" id="mwj-Li-oNC"/>
                 <constraint firstItem="TGJ-eO-zZq" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="qdh-9e-EZb"/>
                 <constraint firstItem="udn-lp-lNf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qqo-Q1-hbT"/>
                 <constraint firstItem="NNS-pU-Seq" firstAttribute="leading" secondItem="q7B-G2-iff" secondAttribute="trailing" constant="50" id="t2z-i6-rru"/>
-                <constraint firstItem="9fh-6P-Lfl" firstAttribute="top" secondItem="q7B-G2-iff" secondAttribute="bottom" id="ypH-Bc-2Je"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <connections>
@@ -99,12 +117,16 @@
                 <outlet property="emoji" destination="zKN-aU-Qdu" id="cQz-fM-NXY"/>
                 <outlet property="humidity" destination="9fh-6P-Lfl" id="tjo-Gz-X0C"/>
                 <outlet property="label" destination="udn-lp-lNf" id="Uli-H5-pDu"/>
+                <outlet property="pressure" destination="PAa-rn-eIp" id="tQU-EO-2kR"/>
                 <outlet property="rangeTemperature" destination="TGJ-eO-zZq" id="sKl-sn-66C"/>
+                <outlet property="wind" destination="hND-la-jF6" id="Ydo-Uh-nsc"/>
             </connections>
             <point key="canvasLocation" x="39.200000000000003" y="46.326836581709152"/>
         </view>
     </objects>
     <resources>
         <image name="DropletWeatherIcon" width="170" height="170"/>
+        <image name="PressureWeatherIcon" width="533" height="533"/>
+        <image name="WindWeatherIcon" width="170" height="170"/>
     </resources>
 </document>

@@ -17,7 +17,7 @@ class Parser<Value>: ObservableObject<Parser.State> where Value: Decodable {
         case didFailedWithError(_ error: Error?)
     }
     
-    var model: Value?
+    private(set) var model: Value?
     
     private(set) var state: State = .notWorking {
         didSet {
@@ -27,7 +27,7 @@ class Parser<Value>: ObservableObject<Parser.State> where Value: Decodable {
         }
     }
     
-    func requestData(url: URL) {
+    public func requestData(url: URL) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             let information = data.flatMap { try? JSONDecoder().decode(Value.self, from: $0) }
             information.do {

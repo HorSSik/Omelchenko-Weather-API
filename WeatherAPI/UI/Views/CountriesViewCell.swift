@@ -23,7 +23,7 @@ class CountriesViewCell: TableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func fill(country: Country) {
+    public func fill(country: Country) {
         self.country?.text = country.name
         self.capital?.text = country.capital
     }

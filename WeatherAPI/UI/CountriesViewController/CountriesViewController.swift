@@ -35,12 +35,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         return self.model.countries.count
     }
     
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    )
-        -> UITableViewCell
-    {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellName = toString(CountriesViewCell.self)
         
         let cell = cast(self.rootView?.table?.dequeueReusableCell(withIdentifier: cellName))
@@ -48,8 +43,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let item = self.model.countries[indexPath.row]
         cell.fill(country: item)
-//        cell.textLabel?.text = ("\(item.name), \(item.capital)")
-
+        
         return cell
     }
 
@@ -65,49 +59,22 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
             switch $0 {
             case .notWorking: return
             case .didStartLoading: return
-            case .didLoad: self.model = Countries(countries: parserCountries.model!)
+            case .didLoad: parserCountries.model.do { self.model = Countries(countries: $0) }
             case .didFailedWithError: return
             }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         tableView.deselectRow(at: indexPath, animated: true)
         
         let capitalName = self.model.countries[indexPath.row].capital
-        let weatherController = WeatherViewController()
-        let parserWeather = Parser<Weather>()
-        
-        let baseUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + capitalName + "&units=metric&APPID=60cf95f166563b524e17c7573b54d7e3"
-        let convertUrl = baseUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        
-        convertUrl.do {
-            if let url = URL(string: $0) { parserWeather.requestData(url: url) }
-        }
-        
-        _ = parserWeather.observer { state in
-            switch state {
-            case .notWorking: return
-            case .didStartLoading: return
-            case .didLoad:
-                parserWeather.model.do { weather in
-                    let main = weather.main
-                    
-                    main["temp"].do { weatherController.temperature = Int($0) }
-                    main["temp_min"].do { weatherController.minTemperature = Int($0) }
-                    main["temp_max"].do { weatherController.maxTemperature = Int($0) }
-                    main["humidity"].do { weatherController.humidity = Int($0) }
-                    weather.wind["speed"].do { weatherController.wind = $0 }
-                }
-                let stateWeather = weatherController.temperature >= 0 ? Emoji.sun.rawValue : Emoji.winter.rawValue
-
-                weatherController.city = capitalName.uppercased()
-                weatherController.emoji = stateWeather
-            case .didFailedWithError: return
+        let weatherData = WeatherData()
+        weatherData.parsWeather(capital: capitalName) {
+            self.navigationController?.pushViewController($0, animated: true)
+            if let fillTemperature = self.rootView?.table?.cellForRow(at: indexPath) as? CountriesViewCell {
+                fillTemperature.temperature?.text = String(weatherData.temperature) + "°"
             }
-            
-            self.navigationController?.pushViewController(weatherController, animated: true)
         }
     }
 }
