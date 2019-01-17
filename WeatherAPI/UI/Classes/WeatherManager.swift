@@ -15,25 +15,14 @@ fileprivate struct Constant {
 
 class WeatherManager {
     
-    var completion: F.Completion<Weather>?
+    public var completion: F.Completion<Weather>?
     
-    private(set) var info: Weather?
+    private(set) var weatherInfo: Weather?
     
     private let parserWeather = NetworkManager<Weather>()
     
     init() {
-        _ = self.parserWeather.observer { state in
-            switch state {
-            case .didStartLoading: return
-            case .didLoad:
-                self.parserWeather.model.do { weather in
-                    self.info = weather
-                    
-                    self.completion?(weather)
-                }
-            case .didFailedWithError: return
-            }
-        }
+        self.subscribe()
     }
     
     public func parsWeather(capital: String) {
@@ -43,5 +32,20 @@ class WeatherManager {
         convertUrl
             .flatMap(URL.init)
             .do(self.parserWeather.requestData)
+    }
+    
+    private func subscribe() {
+        _ = self.parserWeather.observer { state in
+            switch state {
+            case .didStartLoading: return
+            case .didLoad:
+                self.parserWeather.model.do { weather in
+                    self.weatherInfo = weather
+                    
+                    self.completion?(weather)
+                }
+            case .didFailedWithError: return
+            }
+        }
     }
 }

@@ -24,7 +24,9 @@ struct Weather: Codable {
         let tempMin, tempMax: Double
         
         enum CodingKeys: String, CodingKey {
-            case temp, pressure, humidity
+            case temp
+            case pressure
+            case humidity
             case tempMin = "temp_min"
             case tempMax = "temp_max"
         }
@@ -34,12 +36,15 @@ struct Weather: Codable {
         let type, id: Int
         let message: Double
         let country: String
-        let sunrise, sunset: Int
+        let sunrise: Int
+        let sunset: Int
     }
     
     struct WeatherInfo: Codable {
         let id: Int
-        let main, description, icon: String
+        let main: String
+        let description: String
+        let icon: String
     }
     
     struct Wind: Codable {

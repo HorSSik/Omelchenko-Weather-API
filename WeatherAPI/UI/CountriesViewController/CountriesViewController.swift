@@ -12,6 +12,8 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     typealias RootView = CountriesView
     
+    private var countriesManager = CountriesManager()
+    
     private var model = Countries() {
         didSet {
             DispatchQueue.main.async {
@@ -28,7 +30,11 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.rootView?.table?.delegate = self
         self.rootView?.table?.dataSource = self
-        self.getCountries()
+        
+        self.countriesManager.completion = {
+            self.model = Countries(countries: $0)
+        }
+        self.countriesManager.parsCountries()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,23 +52,6 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         return cell
     }
-
-    private func getCountries() {
-        let parserCountries = NetworkManager<[Country]>()
-        
-        let urlCountry = URL(string: "https://restcountries.eu/rest/v2/all")
-        urlCountry.do {
-            parserCountries.requestData(url: $0)
-            
-            _ = parserCountries.observer {
-                switch $0 {
-                case .didStartLoading: return
-                case .didLoad: parserCountries.model.do { self.model = Countries(countries: $0) }
-                case .didFailedWithError: return
-                }
-            }
-        }
-    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -72,8 +61,10 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         weatherController.city = capitalName
         self.navigationController?.pushViewController(weatherController, animated: true)
         
-//        if let fillTemperature = self.rootView?.table?.cellForRow(at: indexPath) as? CountriesViewCell {
-//            fillTemperature.temperature?.text = String(weatherController.weatherData?.temperature)
-//        }
+        if let fillTemperature = self.rootView?.table?.cellForRow(at: indexPath) as? CountriesViewCell {
+            weatherController.weatherManager.weatherInfo.do {
+                fillTemperature.temperature?.text = String($0.main.temp)
+            }
+        }
     }
 }
