@@ -8,10 +8,9 @@
 
 import Foundation
 
-class Parser<Value>: ObservableObject<Parser.State> where Value: Decodable {
+class NetworkManager<Value>: ObservableObject<NetworkManager.State> where Value: Decodable {
     
     public enum State {
-        case notWorking
         case didStartLoading
         case didLoad
         case didFailedWithError(_ error: Error?)
@@ -19,22 +18,14 @@ class Parser<Value>: ObservableObject<Parser.State> where Value: Decodable {
     
     private(set) var model: Value?
     
-    private(set) var state: State = .notWorking {
-        didSet {
-            DispatchQueue.main.async {
-                self.notify(self.state)
-            }
-        }
-    }
-    
     public func requestData(url: URL) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             let information = data.flatMap { try? JSONDecoder().decode(Value.self, from: $0) }
             information.do {
                 self.model = $0
-                self.state = .didLoad
+                self.notify(.didLoad)
             }
-            error.do { self.state = State.didFailedWithError($0) }
+            error.do { self.notify(.didFailedWithError($0)) }
         }.resume()
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 class TableViewCell : UITableViewCell {
+    
     override var reuseIdentifier: String? {
         return toString(type(of: self))
     }

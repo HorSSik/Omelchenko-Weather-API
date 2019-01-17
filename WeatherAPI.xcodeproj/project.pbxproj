@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		3F2E14EE21EDF600000D2493 /* CountriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E14EC21EDF600000D2493 /* CountriesViewCell.swift */; };
 		3F2E14EF21EDF600000D2493 /* CountriesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2E14ED21EDF600000D2493 /* CountriesViewCell.xib */; };
-		3F3F11A721EF1F4F0055B2D6 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3F11A621EF1F4F0055B2D6 /* WeatherData.swift */; };
+		3F3F11A721EF1F4F0055B2D6 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3F11A621EF1F4F0055B2D6 /* WeatherManager.swift */; };
 		3F5DEDE921EC92B80069BFF0 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDE821EC92B80069BFF0 /* Countries.swift */; };
 		3F5DEDEB21EC92E80069BFF0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDEA21EC92E80069BFF0 /* Weather.swift */; };
-		3F5DEDF021ECAFB40069BFF0 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDEF21ECAFB40069BFF0 /* Parser.swift */; };
+		3F5DEDF021ECAFB40069BFF0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDEF21ECAFB40069BFF0 /* NetworkManager.swift */; };
 		3F5DEDF221ECB48C0069BFF0 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDF121ECB48C0069BFF0 /* TableViewCell.swift */; };
 		3F5DEDF421ECBE1E0069BFF0 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDF321ECBE1E0069BFF0 /* UITableView+Extensions.swift */; };
 		3F5DEDF621ECBE440069BFF0 /* UINid+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDF521ECBE440069BFF0 /* UINid+Extensions.swift */; };
@@ -70,10 +70,10 @@
 /* Begin PBXFileReference section */
 		3F2E14EC21EDF600000D2493 /* CountriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewCell.swift; sourceTree = "<group>"; };
 		3F2E14ED21EDF600000D2493 /* CountriesViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountriesViewCell.xib; sourceTree = "<group>"; };
-		3F3F11A621EF1F4F0055B2D6 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		3F3F11A621EF1F4F0055B2D6 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		3F5DEDE821EC92B80069BFF0 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		3F5DEDEA21EC92E80069BFF0 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		3F5DEDEF21ECAFB40069BFF0 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		3F5DEDEF21ECAFB40069BFF0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3F5DEDF121ECB48C0069BFF0 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		3F5DEDF321ECBE1E0069BFF0 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		3F5DEDF521ECBE440069BFF0 /* UINid+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINid+Extensions.swift"; sourceTree = "<group>"; };
@@ -154,9 +154,9 @@
 		3F5DEDEE21ECAFA00069BFF0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3F5DEDEF21ECAFB40069BFF0 /* Parser.swift */,
+				3F5DEDEF21ECAFB40069BFF0 /* NetworkManager.swift */,
 				3F5DEDF121ECB48C0069BFF0 /* TableViewCell.swift */,
-				3F3F11A621EF1F4F0055B2D6 /* WeatherData.swift */,
+				3F3F11A621EF1F4F0055B2D6 /* WeatherManager.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -500,7 +500,7 @@
 				3F6E6C6221E736C000DA87F6 /* RangeReplacebleCollection+Extensions.swift in Sources */,
 				3F6E6C6C21E737F400DA87F6 /* WeatherView.swift in Sources */,
 				3F6E6C5D21E736C000DA87F6 /* DispatchQueue+Extensions.swift in Sources */,
-				3F5DEDF021ECAFB40069BFF0 /* Parser.swift in Sources */,
+				3F5DEDF021ECAFB40069BFF0 /* NetworkManager.swift in Sources */,
 				3F6E6C5A21E736C000DA87F6 /* CGRect+Extensions.swift in Sources */,
 				3F6E6C5121E736C000DA87F6 /* Generator.swift in Sources */,
 				3F6E6C5E21E736C000DA87F6 /* DispatchTime+Extensions.swift in Sources */,
@@ -510,7 +510,7 @@
 				3F6E6C5021E736C000DA87F6 /* ObservableObject.Observers.swift in Sources */,
 				3F5DEDE921EC92B80069BFF0 /* Countries.swift in Sources */,
 				3F6E6C0621E7364800DA87F6 /* AppDelegate.swift in Sources */,
-				3F3F11A721EF1F4F0055B2D6 /* WeatherData.swift in Sources */,
+				3F3F11A721EF1F4F0055B2D6 /* WeatherManager.swift in Sources */,
 				3F6E6C5821E736C000DA87F6 /* ColorRepresentable.swift in Sources */,
 				3F68551121E8DA7F0008AD60 /* Emoji.swift in Sources */,
 				3F6E6C6721E7378000DA87F6 /* WeatherViewController.swift in Sources */,

@@ -18,14 +18,15 @@ class WeatherView: UIView {
     @IBOutlet var cityLabel: UILabel?
     @IBOutlet var label: UILabel?
     
-    public func fillInTheData(data: WeatherData) {
+    public func fillInTheData(data: Weather) {
         self.backgroundColor = Color.flatBlue.opaque
-        self.label?.text = String(data.temperature) + "°"
-        self.cityLabel?.text = data.city
-        self.emoji?.text = data.emoji
-        self.humidity?.text = String(data.humidity) + " %"
-        self.rangeTemperature?.text = String(data.minTemperature) + "°" + "/ " + String(data.maxTemperature) + "°"
-        self.wind?.text = String(data.wind) + "m/s"
-        self.pressure?.text = String(data.pressure) + "hPa"
+        
+        self.label?.text = data.main.temp.description + "°"
+        self.cityLabel?.text = data.name
+        self.emoji?.text = data.emoji.rawValue
+        self.humidity?.text = data.main.humidity.description + " %"
+        self.rangeTemperature?.text = data.main.tempMin.description + "°" + "/ " + data.main.tempMax.description + "°"
+        self.wind?.text = data.wind.speed.description + "m/s"
+        self.pressure?.text = data.main.pressure.description + "hPa"
     }
 }
