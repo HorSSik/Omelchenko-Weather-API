@@ -24,16 +24,16 @@ class CountriesManager {
     
     public func parsCountries() {
         let urlCountry = URL(string: Constant.mainUrl)
-        urlCountry.do {
-            parserCountries.requestData(url: $0)
-        }
+        
+        urlCountry.do(self.parserCountries.requestData)
     }
     
     private func subscribe() {
         _ = self.parserCountries.observer { state in
             switch state {
             case .didStartLoading: return
-            case .didLoad: self.parserCountries.model.do { countries in
+            case .didLoad:
+                self.parserCountries.model.do { countries in
                     self.completion?(countries)
                 }
             case .didFailedWithError: return

@@ -14,6 +14,8 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private var countriesManager = CountriesManager()
     
+    private var baseModel: Model?
+    
     private var model = Countries() {
         didSet {
             DispatchQueue.main.async {
