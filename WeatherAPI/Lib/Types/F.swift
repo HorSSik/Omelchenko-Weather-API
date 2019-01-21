@@ -12,7 +12,6 @@ public enum F {
     
     typealias VoidCompletion = () -> ()
     typealias Execute = () -> ()
-    
     typealias Completion<T> = (T) -> ()
 }
 

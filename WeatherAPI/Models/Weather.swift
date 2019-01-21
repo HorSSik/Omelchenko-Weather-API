@@ -11,17 +11,20 @@ import Foundation
 struct Weather: Codable {
     
     struct Clouds: Codable {
-        let all: Int
+        let all: Int?
     }
     
     struct Coord: Codable {
-        let lon, lat: Double
+        let lon: Double?
+        let lat: Double?
     }
     
     struct Main: Codable {
-        let temp: Double
-        let pressure, humidity: Int
-        let tempMin, tempMax: Double
+        let temp: Double?
+        let pressure: Int?
+        let humidity: Int?
+        let tempMin: Double?
+        let tempMax: Double?
         
         enum CodingKeys: String, CodingKey {
             case temp
@@ -33,23 +36,24 @@ struct Weather: Codable {
     }
     
     struct Sys: Codable {
-        let type, id: Int
-        let message: Double
-        let country: String
-        let sunrise: Int
-        let sunset: Int
+        let type: Int?
+        let id: Int?
+        let message: Double?
+        let country: String?
+        let sunrise: Int?
+        let sunset: Int?
     }
     
     struct WeatherInfo: Codable {
-        let id: Int
-        let main: String
-        let description: String
-        let icon: String
+        let id: Int?
+        let main: String?
+        let description: String?
+        let icon: String?
     }
     
     struct Wind: Codable {
-        let speed: Double
-        let deg: Int
+        let speed: Double?
+        let deg: Int?
     }
     
     public let coord: Coord
@@ -65,8 +69,11 @@ struct Weather: Codable {
     public let name: String
     public let cod: Int
     
-    public var emoji: Emoji {
-        return self.main.temp >= 0 ? .sun : .winter
+    public var emoji: Emoji? {
+//        return self.main.temp.map {
+//            $0 >= 0 ? .sun : .winter
+//        }
+        return self.main.temp.map { $0 >= 0 ? .sun : .winter }
     }
 }
 

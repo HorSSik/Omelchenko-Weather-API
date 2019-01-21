@@ -19,22 +19,21 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qgo-hh-Qt4">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G2E-GL-Enh">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qgo-hh-Qt4" secondAttribute="bottom" id="EUV-Uw-vze"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qgo-hh-Qt4" secondAttribute="trailing" id="GIC-GP-IQj"/>
-                <constraint firstItem="qgo-hh-Qt4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hGy-Ou-7ah"/>
-                <constraint firstItem="qgo-hh-Qt4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ldS-yW-xTu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="G2E-GL-Enh" secondAttribute="bottom" id="507-sX-XNp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="G2E-GL-Enh" secondAttribute="trailing" id="AVg-Ds-bUo"/>
+                <constraint firstItem="G2E-GL-Enh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YQz-2P-xul"/>
+                <constraint firstItem="G2E-GL-Enh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uCD-10-k4W"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <connections>
-                <outlet property="table" destination="qgo-hh-Qt4" id="HYv-lc-4BK"/>
+                <outlet property="table" destination="G2E-GL-Enh" id="Dqf-5i-M7e"/>
             </connections>
             <point key="canvasLocation" x="40.799999999999997" y="46.326836581709152"/>
         </view>

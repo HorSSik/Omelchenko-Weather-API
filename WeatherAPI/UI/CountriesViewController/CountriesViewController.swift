@@ -14,9 +14,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private var countriesManager = CountriesManager()
     
-    private var baseModel: Model?
-    
-    private var model = Countries() {
+    private var model = [BaseModel]() {
         didSet {
             DispatchQueue.main.async {
                 self.rootView?.table?.reloadData()
@@ -34,38 +32,40 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.rootView?.table?.dataSource = self
         
         self.countriesManager.completion = {
-            self.model = Countries(countries: $0)
+            self.model = $0.filter { !$0.capital.isEmpty }
+                .map(BaseModel.init)
         }
+
         self.countriesManager.parsCountries()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.model.countries.count
+        return self.model.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellName = toString(CountriesViewCell.self)
+        let cellClass = toString(CountriesViewCell.self)
         
-        let cell = cast(self.rootView?.table?.dequeueReusableCell(withIdentifier: cellName))
+        let cell = cast(self.rootView?.table?.dequeueReusableCell(withIdentifier: cellClass))
             ?? CountriesViewCell()
         
-        let item = self.model.countries[indexPath.row]
-        cell.fill(country: item)
+        let item = self.model[indexPath.row]
+        cell.fillOutOfThe(model: item)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        let capitalName = self.model.countries[indexPath.row].capital
+      
         let weatherController = WeatherViewController()
-        weatherController.city = capitalName
+        weatherController.city = self.model[indexPath.row].country.capital
         self.navigationController?.pushViewController(weatherController, animated: true)
         
-        if let fillTemperature = self.rootView?.table?.cellForRow(at: indexPath) as? CountriesViewCell {
-            weatherController.weatherManager.weatherInfo.do {
-                fillTemperature.temperature?.text = String($0.main.temp)
+        weatherController.escaping = {
+            self.model[indexPath.row].weather = $0
+            DispatchQueue.main.async {
+                self.rootView?.table?.reloadData()
             }
         }
     }

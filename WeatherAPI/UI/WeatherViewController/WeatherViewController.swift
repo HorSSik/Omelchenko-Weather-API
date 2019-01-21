@@ -15,6 +15,8 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     public var weatherManager = WeatherManager()
     public var city = "Default"
     
+    public var escaping: F.Completion<Weather>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Weather"
@@ -22,6 +24,7 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
         self.weatherManager.completion = { weather in
             DispatchQueue.main.async {
                 self.rootView?.fillInTheData(data: weather)
+                self.escaping?(weather)
             }
         }
         

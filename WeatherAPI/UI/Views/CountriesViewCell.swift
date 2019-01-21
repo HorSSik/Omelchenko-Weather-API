@@ -1,8 +1,8 @@
 //
-//  CountriesViewCell.swift
+//  CustomViewCell.swift
 //  WeatherAPI
 //
-//  Created by Student on 15.01.2019.
+//  Created by Student on 21.01.2019.
 //  Copyright © 2019 IDAP. All rights reserved.
 //
 
@@ -23,8 +23,17 @@ class CountriesViewCell: TableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    public func fill(country: Country) {
-        self.country?.text = country.name
-        self.capital?.text = country.capital
+    public func fillOutOfThe(model: BaseModel) {
+        self.country?.text = model.country.name
+        self.capital?.text = model.country.capital
+        
+        if let weather = model.weather {
+            weather.main.temp.do { self.temperature?.text = String(Int($0)) }
+            let data = Date(timeIntervalSince1970: TimeInterval(model.weather?.dt ?? 0))
+            self.date?.text = data.shortDescription
+        } else {
+            self.temperature?.text = nil
+            self.date?.text = nil
+        }
     }
 }
