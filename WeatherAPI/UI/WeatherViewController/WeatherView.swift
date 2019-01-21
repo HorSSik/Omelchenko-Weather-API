@@ -33,7 +33,7 @@ class WeatherView: UIView {
         self.emoji?.text = data.emoji?.rawValue
         
         self.rangeTemperature?.text = minTemp + Characters.split + maxTemp
-        self.wind?.text = convertValue(data.wind.speed, Characters.meterForSecond)
+        self.wind?.text = convertValue(data.wind.speed, Characters.metersPerSecond)
         
         self.humidity?.text = (data.main.humidity?.description ?? "") + Characters.percent
         self.pressure?.text = (data.main.pressure?.description ?? "") + Characters.hectopascal

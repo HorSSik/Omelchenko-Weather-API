@@ -10,7 +10,7 @@ import Foundation
 
 public struct Characters {
     static var percent = "%"
-    static var meterForSecond = "m/s"
+    static var metersPerSecond = "m/s"
     static var hectopascal = "hPa"
     static var degrees = "°"
     static var split = "/"
