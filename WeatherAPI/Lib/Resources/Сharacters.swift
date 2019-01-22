@@ -9,9 +9,9 @@
 import Foundation
 
 public struct Characters {
-    static var percent = "%"
-    static var metersPerSecond = "m/s"
-    static var hectopascal = "hPa"
-    static var degrees = "°"
-    static var split = "/"
+    static let percent = "%"
+    static let metersPerSecond = "m/s"
+    static let hectopascal = "hPa"
+    static let degrees = "°"
+    static let split = "/"
 }
