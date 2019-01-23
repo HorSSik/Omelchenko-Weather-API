@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct Countries: Decodable {
-    var countries = [Country]()
-}
-
 struct Country: Decodable {
     var name: String
     var capital: String

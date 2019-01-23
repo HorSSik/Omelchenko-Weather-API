@@ -25,7 +25,9 @@ class NetworkManager<Value>: ObservableObject<NetworkManager.State> where Value:
                 self.model = $0
                 self.notify(.didLoad)
             }
-            error.do { self.notify(.didFailedWithError($0)) }
+            error.do {
+                self.notify(.didFailedWithError($0))
+            }
         }.resume()
     }
 }

@@ -12,22 +12,24 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     
     typealias RootView = WeatherView
     
-    public var weatherManager = WeatherManager()
     public var city = "Default"
-    
     public var escaping: F.Completion<Weather>?
+    
+    public let weatherManager = WeatherManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Weather"
         
-        self.weatherManager.completion = { weather in
+        let weatherManager = self.weatherManager
+        
+        weatherManager.completion = { weather in
             DispatchQueue.main.async {
                 self.rootView?.fillInTheData(data: weather)
                 self.escaping?(weather)
             }
         }
         
-        self.weatherManager.parsWeather(capital: self.city)
+        weatherManager.parsWeather(capital: self.city)
     }
 }

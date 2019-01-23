@@ -70,9 +70,6 @@ struct Weather: Codable {
     public let cod: Int
     
     public var emoji: Emoji? {
-//        return self.main.temp.map {
-//            $0 >= 0 ? .sun : .winter
-//        }
         return self.main.temp.map { $0 >= 0 ? .sun : .winter }
     }
 }

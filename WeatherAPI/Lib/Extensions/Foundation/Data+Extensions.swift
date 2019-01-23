@@ -14,14 +14,3 @@ extension Date {
         return DateFormatter().short.string(from: self)
     }
 }
-
-extension DateFormatter {
-    
-    public var short: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .short
-        
-        return formatter
-    }
-}

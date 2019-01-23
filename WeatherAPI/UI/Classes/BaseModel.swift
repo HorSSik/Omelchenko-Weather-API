@@ -10,8 +10,8 @@ import Foundation
 
 class BaseModel {
     
-    public var country: Country
     public var weather: Weather?
+    public let country: Country
     
     init(country: Country) {
         self.country = country
