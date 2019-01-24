@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Country: Decodable {
+struct CountryJSON: Decodable {
     var name: String
     var capital: String
 }

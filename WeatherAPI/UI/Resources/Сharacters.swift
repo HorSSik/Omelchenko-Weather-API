@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Characters {
+public struct Unit {
     static let percent = "%"
     static let metersPerSecond = "m/s"
     static let hectopascal = "hPa"

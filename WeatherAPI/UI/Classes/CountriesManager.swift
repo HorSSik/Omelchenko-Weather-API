@@ -14,15 +14,15 @@ fileprivate struct Constant {
 
 class CountriesManager {
     
-    public var completion: F.Completion<[Country]>?
+    public var completion: F.Completion<[CountryJSON]>?
     
-    private let parserCountries = NetworkManager<[Country]>()
+    private let parserCountries = NetworkManager<[CountryJSON]>()
     
     init() {
         self.subscribe()
     }
     
-    public func parsCountries() {
+    public func getCountries() {
         let urlCountry = URL(string: Constant.mainUrl)
         
         urlCountry.do(self.parserCountries.requestData)

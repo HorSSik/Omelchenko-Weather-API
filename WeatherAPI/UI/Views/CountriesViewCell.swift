@@ -15,25 +15,20 @@ class CountriesViewCell: TableViewCell {
     @IBOutlet var country: UILabel?
     @IBOutlet var date: UILabel?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
-    public func fillOutOfThe(model: BaseModel) {
-        self.country?.text = model.country.name
-        self.capital?.text = model.country.capital
+    public func fill(with model: BaseModel) {
+        let dateLabel = self.date
+        let country = model.country
+        
+        self.country?.text = country.name
+        self.capital?.text = country.capital
         
         if let weather = model.weather {
             weather.main.temp.do { self.temperature?.text = String(Int($0)) }
-            let data = Date(timeIntervalSince1970: TimeInterval(model.weather?.dt ?? 0))
-            self.date?.text = data.shortDescription
+            let date = Date(timeIntervalSince1970: TimeInterval(model.weather?.dt ?? 0))
+            dateLabel?.text = date.shortDescription
         } else {
             self.temperature?.text = nil
-            self.date?.text = nil
+            dateLabel?.text = nil
         }
     }
 }

@@ -15,17 +15,17 @@ fileprivate struct Constant {
 
 class WeatherManager {
     
-    public var completion: F.Completion<Weather>?
+    public var completion: F.Completion<WeatherJSON>?
     
-    private(set) var weatherInfo: Weather?
+    private(set) var weatherInfo: WeatherJSON?
     
-    private let parserWeather = NetworkManager<Weather>()
+    private let parserWeather = NetworkManager<WeatherJSON>()
     
     init() {
         self.subscribe()
     }
     
-    public func parsWeather(capital: String) {
+    public func getWeather(capital: String) {
         let baseUrl = Constant.mainUrl + capital + Constant.apiKey
         let convertUrl = baseUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         

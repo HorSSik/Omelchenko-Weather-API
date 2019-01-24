@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Weather: Codable {
+struct WeatherJSON: Codable {
     
     struct Clouds: Codable {
         let all: Int?

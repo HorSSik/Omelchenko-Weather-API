@@ -8,28 +8,33 @@
 
 import UIKit
 
+fileprivate struct Constant {
+    static let cityName = "Default"
+    static let titleWeather = "Weather"
+}
+
 class WeatherViewController: UIViewController, RootViewRepresentable {
     
     typealias RootView = WeatherView
     
-    public var city = "Default"
-    public var escaping: F.Completion<Weather>?
+    public var city = Constant.cityName
+    public var escaping: F.Completion<WeatherJSON>?
     
     public let weatherManager = WeatherManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Weather"
+        self.title = Constant.titleWeather
         
         let weatherManager = self.weatherManager
         
         weatherManager.completion = { weather in
-            DispatchQueue.main.async {
+            dispatchOnMain {
                 self.rootView?.fillInTheData(data: weather)
                 self.escaping?(weather)
             }
         }
         
-        weatherManager.parsWeather(capital: self.city)
+        weatherManager.getWeather(capital: self.city)
     }
 }

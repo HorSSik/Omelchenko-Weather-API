@@ -8,6 +8,10 @@
 
 import UIKit
 
+fileprivate struct Constant {
+    static let titleCountries = "Country and capital"
+}
+
 class CountriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RootViewRepresentable {
     
     typealias RootView = CountriesView
@@ -16,7 +20,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private var model = [BaseModel]() {
         didSet {
-            DispatchQueue.main.async {
+            dispatchOnMain {
                 self.rootView?.table?.reloadData()
             }
         }
@@ -24,19 +28,17 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Country and capital"
+        self.title = Constant.titleCountries
         
         self.rootView?.table?.register(CountriesViewCell.self)
         
-        self.rootView?.table?.delegate = self
-        self.rootView?.table?.dataSource = self
-        
         self.countriesManager.completion = {
-            self.model = $0.filter { !$0.capital.isEmpty }
+            self.model = $0
+                .filter { !$0.capital.isEmpty }
                 .map(BaseModel.init)
         }
 
-        self.countriesManager.parsCountries()
+        self.countriesManager.getCountries()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,15 +46,9 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellClass = toString(CountriesViewCell.self)
-        
-        let cell = cast(self.rootView?.table?.dequeueReusableCell(withIdentifier: cellClass))
-            ?? CountriesViewCell()
-        
-        let item = self.model[indexPath.row]
-        cell.fillOutOfThe(model: item)
-        
-        return cell
+        return tableView.dequeueReusableCell(withCellClass: CountriesViewCell.self) {
+            $0.fill(with: self.model[indexPath.row])
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -64,8 +60,8 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         weatherController.escaping = {
             self.model[indexPath.row].weather = $0
-            DispatchQueue.main.async {
-                self.rootView?.table?.reloadData()
+            dispatchOnMain {
+               self.rootView?.table?.reloadData()
             }
         }
     }
