@@ -23,7 +23,7 @@ class CountriesViewCell: TableViewCell {
         self.capital?.text = country.capital
         
         if let weather = model.weather {
-            weather.main.temp.do { self.temperature?.text = String(Int($0)) }
+            weather.temp.do { self.temperature?.text = String(Int($0)) }
             let date = Date(timeIntervalSince1970: TimeInterval(model.weather?.dt ?? 0))
             dateLabel?.text = date.shortDescription
         } else {

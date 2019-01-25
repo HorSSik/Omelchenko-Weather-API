@@ -14,29 +14,28 @@ fileprivate struct Constant {
 
 class CountriesManager {
     
-    public var completion: F.Completion<[CountryJSON]>?
+    public var completion: F.Completion<[Country]>?
+    
+    private var countryModel: [Country]?
     
     private let parserCountries = NetworkManager<[CountryJSON]>()
-    
-    init() {
-        self.subscribe()
-    }
     
     public func getCountries() {
         let urlCountry = URL(string: Constant.mainUrl)
         
-        urlCountry.do(self.parserCountries.requestData)
-    }
-    
-    private func subscribe() {
-        _ = self.parserCountries.observer { state in
-            switch state {
-            case .didStartLoading: return
-            case .didLoad:
-                self.parserCountries.model.do { countries in
-                    self.completion?(countries)
+        urlCountry.do { url in
+            self.parserCountries.requestData(url: url) { data, error in
+                data.do { data in
+                    var countryModel = self.countryModel
+                    
+                    countryModel = data.map {
+                        Country(countryJSON: $0)
+                    }
+                    
+                    countryModel.do { countries in
+                        self.completion?(countries)
+                    }
                 }
-            case .didFailedWithError: return
             }
         }
     }

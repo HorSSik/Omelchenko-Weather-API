@@ -34,8 +34,12 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.countriesManager.completion = {
             self.model = $0
-                .filter { !$0.capital.isEmpty }
-                .map(BaseModel.init)
+                .filter {
+                    !$0.capital.isEmpty
+                }
+                .map { country in
+                    BaseModel(country: country)
+                }
         }
 
         self.countriesManager.getCountries()
@@ -58,11 +62,11 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         weatherController.city = self.model[indexPath.row].country.capital
         self.navigationController?.pushViewController(weatherController, animated: true)
         
-        weatherController.escaping = {
-            self.model[indexPath.row].weather = $0
-            dispatchOnMain {
-               self.rootView?.table?.reloadData()
-            }
-        }
+//        weatherController.escaping = {
+//            self.model[indexPath.row].weather = $0
+//            dispatchOnMain {
+//               self.rootView?.table?.reloadData()
+//            }
+//        }
     }
 }

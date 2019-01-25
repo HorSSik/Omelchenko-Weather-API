@@ -14,10 +14,6 @@ extension UITableView {
         self.register(UINib(cellClass), forCellReuseIdentifier: toString(cellClass))
     }
     
-    func dequeueReusableCell(withCellClass cellClass: AnyClass) -> UITableViewCell? {
-        return self.dequeueReusableCell(withIdentifier: toString(cellClass))
-    }
-    
     func dequeueReusableCell<Cell: UITableViewCell>(
         withCellClass cellClass: Cell.Type,
         configuretor: ((Cell) -> ())? = nil

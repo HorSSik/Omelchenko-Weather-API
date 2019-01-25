@@ -18,27 +18,26 @@ class WeatherView: UIView {
     @IBOutlet var cityLabel: UILabel?
     @IBOutlet var label: UILabel?
     
-    public func fillInTheData(data: WeatherJSON) {
+    public func fillInTheData(data: Weather) {
         self.backgroundColor = Color.flatBlue.opaque
         
-        let main = data.main
         let degrees = Unit.degrees
         
         let convertValue: (Double?, String) -> String = { nubmer, string in
             return nubmer.map { Int($0).description + string } ?? ""
         }
         
-        let minTemp = convertValue(main.tempMin, degrees)
-        let maxTemp = convertValue(main.tempMax, degrees)
+        let minTemp = convertValue(data.tempMin, degrees)
+        let maxTemp = convertValue(data.tempMax, degrees)
         
-        self.label?.text = convertValue(main.temp, degrees)
+        self.label?.text = convertValue(data.temp, degrees)
         self.cityLabel?.text = data.name
         self.emoji?.text = data.emoji?.rawValue
         
         self.rangeTemperature?.text = minTemp + Unit.split + maxTemp
-        self.wind?.text = convertValue(data.wind.speed, Unit.metersPerSecond)
+        self.wind?.text = convertValue(data.windSpeed, Unit.metersPerSecond)
         
-        self.humidity?.text = (main.humidity?.description ?? "") + Unit.percent
-        self.pressure?.text = (main.pressure?.description ?? "") + Unit.hectopascal
+        self.humidity?.text = (data.humidity?.description ?? "") + Unit.percent
+        self.pressure?.text = (data.pressure?.description ?? "") + Unit.hectopascal
     }
 }

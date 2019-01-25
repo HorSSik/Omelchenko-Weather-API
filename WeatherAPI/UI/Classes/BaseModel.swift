@@ -8,12 +8,22 @@
 
 import Foundation
 
-class BaseModel {
+class BaseModel: ObservableObject<Any> {
     
-    public var weather: WeatherJSON?
-    public let country: CountryJSON
+    public var weather: Weather? 
+//        didSet {
+//            self.notify(State.didLoad)
+//        }
     
-    init(country: CountryJSON) {
+    
+    public let country: Country
+    
+//    public enum State {
+//        case didStartLoading
+//        case didLoad
+//    }
+    
+    init(country: Country, weather: Weather? = nil) {
         self.country = country
     }
 }

@@ -18,7 +18,7 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     typealias RootView = WeatherView
     
     public var city = Constant.cityName
-    public var escaping: F.Completion<WeatherJSON>?
+//    public var escaping: F.Completion<WeatherJSON>?
     
     public let weatherManager = WeatherManager()
     
@@ -31,7 +31,7 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
         weatherManager.completion = { weather in
             dispatchOnMain {
                 self.rootView?.fillInTheData(data: weather)
-                self.escaping?(weather)
+//                self.escaping?(weather)
             }
         }
         
