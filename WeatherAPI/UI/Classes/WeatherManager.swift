@@ -19,7 +19,7 @@ class WeatherManager: ObservableObject<Weather> {
     
     private var weatherModel: Weather? {
         didSet {
-            self.notify(self.weatherModel!)
+            self.weatherModel.do(self.notify)
         }
     }
     
@@ -34,11 +34,11 @@ class WeatherManager: ObservableObject<Weather> {
             .do { url in
                 self.parserWeather.requestData(url: url) { data, error in
                     data.do {
-                       self.weatherModel = Weather(weatherJSON: $0)
+                        var weatherModel = self.weatherModel
                         
-                        self.weatherModel.do { weather in
-                            self.completion?(weather)
-                        }
+                        weatherModel = Weather(weatherJSON: $0)
+                        
+                        weatherModel.apply(self.completion)
                     }
                 }
             }

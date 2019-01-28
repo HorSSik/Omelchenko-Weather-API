@@ -21,23 +21,28 @@ class WeatherView: UIView {
     public func fillInTheData(data: Weather) {
         self.backgroundColor = Color.flatBlue.opaque
         
-        let degrees = Unit.degrees
+        let stringWithUnit = self.stringWithUnit
+        let stringWithDegrees = self.stringWithDegrees
         
-        let convertValue: (Double?, String) -> String = { nubmer, string in
-            return nubmer.map { Int($0).description + string } ?? ""
-        }
+        let minTemp = stringWithDegrees(data.tempMin)
+        let maxTemp = stringWithDegrees(data.tempMax)
         
-        let minTemp = convertValue(data.tempMin, degrees)
-        let maxTemp = convertValue(data.tempMax, degrees)
-        
-        self.label?.text = convertValue(data.temp, degrees)
+        self.label?.text = stringWithDegrees(data.temp)
         self.cityLabel?.text = data.name
         self.emoji?.text = data.emoji?.rawValue
+
+        self.rangeTemperature?.text = stringWithUnit(minTemp, .split) + maxTemp
+        self.wind?.text = stringWithUnit(data.windSpeed, .metersPerSecond)
         
-        self.rangeTemperature?.text = minTemp + Unit.split + maxTemp
-        self.wind?.text = convertValue(data.windSpeed, Unit.metersPerSecond)
-        
-        self.humidity?.text = (data.humidity?.description ?? "") + Unit.percent
-        self.pressure?.text = (data.pressure?.description ?? "") + Unit.hectopascal
+        self.humidity?.text = stringWithUnit(data.humidity, .percent)
+        self.pressure?.text = stringWithUnit(data.pressure, .hectopascal)
+    }
+    
+    private func stringWithUnit(value: CustomStringConvertible?, unit: Unit) -> String {
+        return "\(value ?? "") \(unit)"
+    }
+    
+    private func stringWithDegrees(value: CustomStringConvertible?) -> String {
+        return self.stringWithUnit(value: value, unit: .degrees)
     }
 }

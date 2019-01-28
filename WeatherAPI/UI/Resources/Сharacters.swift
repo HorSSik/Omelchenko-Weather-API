@@ -8,10 +8,10 @@
 
 import Foundation
 
-public struct Unit {
-    static let percent = "%"
-    static let metersPerSecond = "m/s"
-    static let hectopascal = "hPa"
-    static let degrees = "°"
-    static let split = "/"
+enum Unit: String, CaseDescribable {
+    case percent = "%"
+    case metersPerSecond = "m/s"
+    case hectopascal = "hPa"
+    case degrees = "°"
+    case split = "/"
 }
