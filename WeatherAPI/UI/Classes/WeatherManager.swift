@@ -13,17 +13,17 @@ fileprivate struct Constant {
     static let apiKey = "&units=metric&APPID=60cf95f166563b524e17c7573b54d7e3"
 }
 
-class WeatherManager {
+class WeatherManager: ObservableObject<Weather> {
     
     public var completion: F.Completion<Weather>?
     
-    private var weatherModel: Weather?
-    
-    private let parserWeather = NetworkManager<WeatherJSON>()
-    
-    init() {
-//        self.subscribe()
+    private var weatherModel: Weather? {
+        didSet {
+            self.notify(self.weatherModel!)
+        }
     }
+    
+    private let parserWeather = RequestService<WeatherJSON>()
     
     public func getWeather(capital: String) {
         let baseUrl = Constant.mainUrl + capital + Constant.apiKey
@@ -43,17 +43,4 @@ class WeatherManager {
                 }
             }
     }
-    
-//    private func subscribe() {
-//        _ = self.parserWeather.observer { state in
-//            switch state {
-//            case .didStartLoading: return
-//            case .didLoad:
-//                self.weatherModel.do { weather in
-//                    self.completion?(weather)
-//                }
-//            case .didFailedWithError: return
-//            }
-//        }
-//    }
 }

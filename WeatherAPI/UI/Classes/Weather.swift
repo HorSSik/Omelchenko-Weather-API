@@ -10,14 +10,14 @@ import Foundation
 
 class Weather {
     
-    var temp: Double?
-    var tempMin: Double?
-    var tempMax: Double?
-    var pressure: Int?
-    var humidity: Int?
-    var windSpeed: Double?
-    var dt: Int?
-    var name: String?
+    public let temp: Double?
+    public let tempMin: Double?
+    public let tempMax: Double?
+    public let pressure: Int?
+    public let humidity: Int?
+    public let windSpeed: Double?
+    public let dt: Int?
+    public let name: String?
     
     public var emoji: Emoji? {
         return self.temp.map { $0 >= 0 ? .sun : .winter }

@@ -62,11 +62,11 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         weatherController.city = self.model[indexPath.row].country.capital
         self.navigationController?.pushViewController(weatherController, animated: true)
         
-//        weatherController.escaping = {
-//            self.model[indexPath.row].weather = $0
-//            dispatchOnMain {
-//               self.rootView?.table?.reloadData()
-//            }
-//        }
+        _ = weatherController.weatherManager.observer { weather in
+            self.model[indexPath.row].weather = weather
+            dispatchOnMain {
+               self.rootView?.table?.reloadData()
+            }
+        }
     }
 }

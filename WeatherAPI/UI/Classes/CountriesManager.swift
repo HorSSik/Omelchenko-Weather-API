@@ -18,7 +18,7 @@ class CountriesManager {
     
     private var countryModel: [Country]?
     
-    private let parserCountries = NetworkManager<[CountryJSON]>()
+    private let parserCountries = RequestService<[CountryJSON]>()
     
     public func getCountries() {
         let urlCountry = URL(string: Constant.mainUrl)
