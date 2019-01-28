@@ -18,16 +18,17 @@ class CountriesViewCell: TableViewCell {
     public func fill(with model: BaseModel) {
         let dateLabel = self.date
         let country = model.country
+        let temperature = self.temperature
         
         self.country?.text = country.name
         self.capital?.text = country.capital
         
         if let weather = model.weather {
-            weather.temp.do { self.temperature?.text = String(Int($0)) }
+            weather.temp.do { temperature?.text = String(Int($0)) }
             let date = Date(timeIntervalSince1970: TimeInterval(model.weather?.dt ?? 0))
             dateLabel?.text = date.shortDescription
         } else {
-            self.temperature?.text = nil
+            temperature?.text = nil
             dateLabel?.text = nil
         }
     }

@@ -27,7 +27,7 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
         
         let weatherManager = self.weatherManager
         
-        weatherManager.completion = { weather in
+        _ = weatherManager.observer { weather in
             dispatchOnMain {
                 self.rootView?.fillInTheData(data: weather)
             }

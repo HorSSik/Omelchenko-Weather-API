@@ -15,15 +15,13 @@ fileprivate struct Constant {
 
 class WeatherManager: ObservableObject<Weather> {
     
-    public var completion: F.Completion<Weather>?
-    
     private var weatherModel: Weather? {
         didSet {
             self.weatherModel.do(self.notify)
         }
     }
     
-    private let parserWeather = RequestService<WeatherJSON>()
+    private let weatherService = RequestService<WeatherJSON>()
     
     public func getWeather(capital: String) {
         let baseUrl = Constant.mainUrl + capital + Constant.apiKey
@@ -32,13 +30,9 @@ class WeatherManager: ObservableObject<Weather> {
         convertUrl
             .flatMap(URL.init)
             .do { url in
-                self.parserWeather.requestData(url: url) { data, error in
-                    data.do {
-                        var weatherModel = self.weatherModel
-                        
-                        weatherModel = Weather(weatherJSON: $0)
-                        
-                        weatherModel.apply(self.completion)
+                self.weatherService.requestData(url: url) { data, error in
+                    data.do { data in
+                        self.weatherModel = Weather(weatherJSON: data)
                     }
                 }
             }

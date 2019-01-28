@@ -32,17 +32,17 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.rootView?.table?.register(CountriesViewCell.self)
         
-        self.countriesManager.completion = {
-            self.model = $0
-                .filter {
-                    !$0.capital.isEmpty
-                }
-                .map { country in
-                    BaseModel(country: country)
-                }
+        self.fillModel()
+    }
+    
+    private func fillModel() {
+        let countriesManager = self.countriesManager
+        
+        _ = countriesManager.observer {
+            self.model = $0.map(BaseModel.init)
         }
-
-        self.countriesManager.getCountries()
+        
+        countriesManager.getCountries()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,13 +59,15 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.deselectRow(at: indexPath, animated: true)
       
         let weatherController = WeatherViewController()
-        weatherController.city = self.model[indexPath.row].country.capital
+        let model = self.model[indexPath.row]
+        
+        weatherController.city = model.country.capital
         self.navigationController?.pushViewController(weatherController, animated: true)
         
-        _ = weatherController.weatherManager.observer { weather in
-            self.model[indexPath.row].weather = weather
+        _ = weatherController.weatherManager.observer { [weak self, weak model] weather in
+            model?.weather = weather
             dispatchOnMain {
-               self.rootView?.table?.reloadData()
+                self?.rootView?.table?.reloadData()
             }
         }
     }

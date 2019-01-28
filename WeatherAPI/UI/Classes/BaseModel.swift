@@ -14,7 +14,11 @@ class BaseModel {
     
     public let country: Country
     
-    init(country: Country, weather: Weather? = nil) {
+    init(country: Country, weather: Weather?) {
         self.country = country
+    }
+    
+    convenience init(country: Country) {
+        self.init(country: country, weather: nil)
     }
 }
