@@ -24,6 +24,10 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
         super.viewDidLoad()
         self.title = Constant.weatherTitle
         
+        self.fillModel()
+    }
+    
+    private func fillModel() {
         let weatherManager = self.weatherManager
         
         _ = weatherManager.observer { weather in
@@ -36,5 +40,4 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
         
         weatherManager.getWeather(capital: self.model?.country.value.capital ?? "")
     }
-    
 }
