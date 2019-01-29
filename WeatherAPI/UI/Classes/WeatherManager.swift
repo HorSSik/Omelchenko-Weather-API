@@ -21,8 +21,6 @@ class WeatherManager: ObservableObject<Weather> {
         }
     }
     
-    private let weatherService = RequestService<WeatherJSON>()
-    
     public func getWeather(capital: String) {
         let baseUrl = Constant.mainUrl + capital + Constant.apiKey
         let convertUrl = baseUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -30,7 +28,7 @@ class WeatherManager: ObservableObject<Weather> {
         convertUrl
             .flatMap(URL.init)
             .do { url in
-                self.weatherService.requestData(url: url) { data, error in
+                RequestService<WeatherJSON>().requestData(url: url) { data, error in
                     data.do { data in
                         self.weatherModel = Weather(weatherJSON: data)
                     }

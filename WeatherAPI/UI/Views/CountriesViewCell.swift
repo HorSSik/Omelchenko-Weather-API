@@ -20,12 +20,12 @@ class CountriesViewCell: TableViewCell {
         let country = model.country
         let temperature = self.temperature
         
-        self.country?.text = country.name
-        self.capital?.text = country.capital
+        self.country?.text = country.value.name
+        self.capital?.text = country.value.capital
         
-        if let weather = model.weather {
+        if let weather = model.weather.value {
             weather.temp.do { temperature?.text = String(Int($0)) }
-            let date = Date(timeIntervalSince1970: TimeInterval(model.weather?.dt ?? 0))
+            let date = Date(timeIntervalSince1970: TimeInterval(model.weather.value?.dt ?? 0))
             dateLabel?.text = date.shortDescription
         } else {
             temperature?.text = nil

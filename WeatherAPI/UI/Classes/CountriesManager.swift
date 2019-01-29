@@ -20,13 +20,11 @@ class CountriesManager: ObservableObject<[Country]> {
         }
     }
     
-    private let countriesService = RequestService<[CountryJSON]>()
-    
     public func getCountries() {
         let urlCountry = URL(string: Constant.mainUrl)
         
         urlCountry.do { url in
-            self.countriesService.requestData(url: url) { data, error in
+            RequestService<[CountryJSON]>().requestData(url: url) { data, error in
                 data.do { data in
                     self.countryModel = data
                         .filter {

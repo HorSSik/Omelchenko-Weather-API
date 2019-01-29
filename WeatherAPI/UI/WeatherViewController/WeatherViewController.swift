@@ -9,21 +9,20 @@
 import UIKit
 
 fileprivate struct Constant {
-    static let cityName = "Default"
-    static let titleWeather = "Weather"
+    static let weatherTitle = "Weather"
 }
 
 class WeatherViewController: UIViewController, RootViewRepresentable {
     
     typealias RootView = WeatherView
     
-    public var city = Constant.cityName
-    
     public let weatherManager = WeatherManager()
+    
+    public var model: BaseModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Constant.titleWeather
+        self.title = Constant.weatherTitle
         
         let weatherManager = self.weatherManager
         
@@ -31,8 +30,11 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
             dispatchOnMain {
                 self.rootView?.fillInTheData(data: weather)
             }
+            
+            self.model?.weather.value = weather
         }
         
-        weatherManager.getWeather(capital: self.city)
+        weatherManager.getWeather(capital: self.model?.country.value.capital ?? "")
     }
+    
 }

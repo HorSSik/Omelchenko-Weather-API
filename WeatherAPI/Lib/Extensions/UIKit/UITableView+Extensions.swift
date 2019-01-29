@@ -16,12 +16,12 @@ extension UITableView {
     
     func dequeueReusableCell<Cell: UITableViewCell>(
         withCellClass cellClass: Cell.Type,
-        configuretor: ((Cell) -> ())? = nil
+        configurator: ((Cell) -> ())? = nil
     )
         -> Cell
     {
         let cell = cast(self.dequeueReusableCell(withIdentifier: toString(cellClass))) ?? Cell()
-        configuretor?(cell)
+        configurator?(cell)
         
         return cell
     }

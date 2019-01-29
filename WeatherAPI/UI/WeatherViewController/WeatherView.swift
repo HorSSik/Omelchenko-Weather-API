@@ -39,7 +39,7 @@ class WeatherView: UIView {
     }
     
     private func stringWithUnit(value: CustomStringConvertible?, unit: Unit) -> String {
-        return "\(value ?? "") \(unit)"
+        return "\(value ?? "")\(unit)"
     }
     
     private func stringWithDegrees(value: CustomStringConvertible?) -> String {

@@ -9,7 +9,7 @@
 import UIKit
 
 fileprivate struct Constant {
-    static let titleCountries = "Country and capital"
+    static let countriesTitle = "Country and capital"
 }
 
 class CountriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RootViewRepresentable {
@@ -18,17 +18,22 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private var countriesManager = CountriesManager()
     
-    private var model = [BaseModel]() {
+    private var model: BaseModels? {
         didSet {
-            dispatchOnMain {
-                self.rootView?.table?.reloadData()
+            _ = self.model?.observer { state in
+                switch state {
+                case .weatherLoad(_):
+                    self.reloadData()
+                case .countryLoad(_): break
+                }
             }
+            self.reloadData()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Constant.titleCountries
+        self.title = Constant.countriesTitle
         
         self.rootView?.table?.register(CountriesViewCell.self)
         
@@ -39,19 +44,21 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         let countriesManager = self.countriesManager
         
         _ = countriesManager.observer {
-            self.model = $0.map(BaseModel.init)
+            self.model = BaseModels(models: $0.map(BaseModel.init))
         }
         
         countriesManager.getCountries()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.model.count
+        return self.model?.values.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withCellClass: CountriesViewCell.self) {
-            $0.fill(with: self.model[indexPath.row])
+        return tableView.dequeueReusableCell(withCellClass: CountriesViewCell.self) { cell in
+            self.model.do { value in
+                cell.fill(with: value.values[indexPath.row])
+            }
         }
     }
     
@@ -59,16 +66,15 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.deselectRow(at: indexPath, animated: true)
       
         let weatherController = WeatherViewController()
-        let model = self.model[indexPath.row]
+        let model = self.model?.values[indexPath.row]
+        weatherController.model = model
         
-        weatherController.city = model.country.capital
         self.navigationController?.pushViewController(weatherController, animated: true)
-        
-        _ = weatherController.weatherManager.observer { [weak self, weak model] weather in
-            model?.weather = weather
-            dispatchOnMain {
-                self?.rootView?.table?.reloadData()
-            }
+    }
+    
+    private func reloadData() {
+        dispatchOnMain {
+            self.rootView?.table?.reloadData()
         }
     }
 }
