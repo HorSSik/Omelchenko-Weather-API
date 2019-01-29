@@ -18,7 +18,7 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     
     public let weatherManager = WeatherManager()
     
-    public var model: BaseModel?
+    public var model: Model?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
         
         _ = weatherManager.observer { weather in
             dispatchOnMain {
-                self.rootView?.fillInTheData(data: weather)
+                self.rootView?.fill(data: weather)
             }
             
             self.model?.weather.value = weather

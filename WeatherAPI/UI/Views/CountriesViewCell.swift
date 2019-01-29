@@ -15,7 +15,7 @@ class CountriesViewCell: TableViewCell {
     @IBOutlet var country: UILabel?
     @IBOutlet var date: UILabel?
     
-    public func fill(with model: BaseModel) {
+    public func fill(with model: Model) {
         let dateLabel = self.date
         let country = model.country
         let temperature = self.temperature

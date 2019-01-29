@@ -18,7 +18,7 @@ class WeatherView: UIView {
     @IBOutlet var cityLabel: UILabel?
     @IBOutlet var label: UILabel?
     
-    public func fillInTheData(data: Weather) {
+    public func fill(data: Weather) {
         self.backgroundColor = Color.flatBlue.opaque
         
         let stringWithUnit = self.stringWithUnit

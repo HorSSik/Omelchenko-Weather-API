@@ -8,9 +8,9 @@
 
 import Foundation
 
-class BaseModel: ObservableObject<BaseModel.PrepareBaseModel> {
+class Model: ObservableObject<Model.PrepareModel> {
     
-    enum PrepareBaseModel {
+    enum PrepareModel {
         
         case weatherLoad(Weather?)
         case countryLoad(Country?)

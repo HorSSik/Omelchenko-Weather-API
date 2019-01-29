@@ -18,9 +18,9 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private var countriesManager = CountriesManager()
     
-    private var model: BaseModels? {
+    private var dataModel: Models? {
         didSet {
-            _ = self.model?.observer { state in
+            _ = self.dataModel?.observer { state in
                 switch state {
                 case .weatherLoad(_):
                     self.reloadData()
@@ -44,19 +44,19 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         let countriesManager = self.countriesManager
         
         _ = countriesManager.observer {
-            self.model = BaseModels(models: $0.map(BaseModel.init))
+            self.dataModel = Models(models: $0.map(Model.init))
         }
         
         countriesManager.getCountries()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.model?.values.count ?? 0
+        return self.dataModel?.values.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(withCellClass: CountriesViewCell.self) { cell in
-            self.model.do { value in
+            self.dataModel.do { value in
                 cell.fill(with: value.values[indexPath.row])
             }
         }
@@ -66,7 +66,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.deselectRow(at: indexPath, animated: true)
       
         let weatherController = WeatherViewController()
-        let model = self.model?.values[indexPath.row]
+        let model = self.dataModel?.values[indexPath.row]
         weatherController.model = model
         
         self.navigationController?.pushViewController(weatherController, animated: true)

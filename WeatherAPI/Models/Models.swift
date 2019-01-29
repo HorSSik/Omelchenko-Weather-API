@@ -8,13 +8,13 @@
 
 import Foundation
 
-class BaseModels: ObservableObject<BaseModel.PrepareBaseModel> {
+class Models: ObservableObject<Model.PrepareModel> {
     
-    typealias Models = [BaseModel]
+    typealias BaseModels = [Model]
     
-    private(set) var values: Models
+    private(set) var values: BaseModels
     
-    init(models: Models) {
+    init(models: BaseModels) {
         self.values = models
         
         super.init()
