@@ -16,8 +16,6 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     typealias RootView = CountriesView
     
-    private var countriesManager = CountriesManager()
-    
     private var dataModel: Models? {
         didSet {
             _ = self.dataModel?.observer { state in
@@ -63,7 +61,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func fillModel() {
-        let countriesManager = self.countriesManager
+        let countriesManager = CountriesManager()
         
         _ = countriesManager.observer {
             self.dataModel = Models(models: $0.map(Model.init))

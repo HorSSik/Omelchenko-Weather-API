@@ -16,8 +16,6 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     
     typealias RootView = WeatherView
     
-    public let weatherManager = WeatherManager()
-    
     public var model: Model?
     
     override func viewDidLoad() {
@@ -28,7 +26,7 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     }
     
     private func fillModel() {
-        let weatherManager = self.weatherManager
+        let weatherManager = WeatherManager()
         
         _ = weatherManager.observer { weather in
             dispatchOnMain {
