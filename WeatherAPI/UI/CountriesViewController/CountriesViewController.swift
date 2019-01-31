@@ -25,7 +25,6 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
                 case .countryLoad(_): break
                 }
             }
-            self.reloadData()
         }
     }
     
@@ -65,6 +64,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         _ = countriesManager.observer {
             self.dataModel = Models(models: $0.map(Model.init))
+            self.reloadData()
         }
         
         countriesManager.getCountries()
