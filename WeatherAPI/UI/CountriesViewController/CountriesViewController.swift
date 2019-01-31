@@ -40,16 +40,6 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.fillModel()
     }
     
-    private func fillModel() {
-        let countriesManager = self.countriesManager
-        
-        _ = countriesManager.observer {
-            self.dataModel = Models(models: $0.map(Model.init))
-        }
-        
-        countriesManager.getCountries()
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataModel?.values.count ?? 0
     }
@@ -70,6 +60,16 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         weatherController.model = model
         
         self.navigationController?.pushViewController(weatherController, animated: true)
+    }
+    
+    private func fillModel() {
+        let countriesManager = self.countriesManager
+        
+        _ = countriesManager.observer {
+            self.dataModel = Models(models: $0.map(Model.init))
+        }
+        
+        countriesManager.getCountries()
     }
     
     private func reloadData() {

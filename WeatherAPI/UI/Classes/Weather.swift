@@ -16,7 +16,7 @@ class Weather {
     public let pressure: Int?
     public let humidity: Int?
     public let windSpeed: Double?
-    public let dt: Int?
+    public let dt: Date?
     public let name: String?
     
     public var emoji: Emoji? {
@@ -32,7 +32,7 @@ class Weather {
         self.pressure = main.pressure
         self.humidity = main.humidity
         self.windSpeed = weatherJSON.wind.speed
-        self.dt = weatherJSON.dt
+        self.dt = Date(timeIntervalSince1970: TimeInterval(weatherJSON.dt))
         self.name = weatherJSON.name
     }
 }

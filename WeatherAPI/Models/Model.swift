@@ -16,7 +16,7 @@ class Model: ObservableObject<Model.PrepareModel> {
         case countryLoad(Country?)
     }
     
-    public var weather: Wrapper<Weather?>
+    public let weather: Wrapper<Weather?>
     
     public let country: Wrapper<Country>
     
