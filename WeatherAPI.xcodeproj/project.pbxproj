@@ -57,7 +57,7 @@
 		3F76241B21F5CACB00CAB4D0 /* CountriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76241921F5CACB00CAB4D0 /* CountriesViewCell.swift */; };
 		3F76241C21F5CACB00CAB4D0 /* CountriesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F76241A21F5CACB00CAB4D0 /* CountriesViewCell.xib */; };
 		3F76241E21F5E6B700CAB4D0 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76241D21F5E6B700CAB4D0 /* Data+Extensions.swift */; };
-		3F76242021F60D0100CAB4D0 /* Сharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76241F21F60D0100CAB4D0 /* Сharacters.swift */; };
+		3F76242021F60D0100CAB4D0 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76241F21F60D0100CAB4D0 /* Unit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,7 +134,7 @@
 		3F76241921F5CACB00CAB4D0 /* CountriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewCell.swift; sourceTree = "<group>"; };
 		3F76241A21F5CACB00CAB4D0 /* CountriesViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountriesViewCell.xib; sourceTree = "<group>"; };
 		3F76241D21F5E6B700CAB4D0 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
-		3F76241F21F60D0100CAB4D0 /* Сharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сharacters.swift"; sourceTree = "<group>"; };
+		3F76241F21F60D0100CAB4D0 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,7 +267,7 @@
 				3F6E6C0C21E7364900DA87F6 /* Assets.xcassets */,
 				3F6E6C3D21E736C000DA87F6 /* Color.swift */,
 				3F68551021E8DA7F0008AD60 /* Emoji.swift */,
-				3F76241F21F60D0100CAB4D0 /* Сharacters.swift */,
+				3F76241F21F60D0100CAB4D0 /* Unit.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -531,7 +531,7 @@
 				3F4A006522006DC900188C7A /* Models.swift in Sources */,
 				3F6E6C7321E74F2000DA87F6 /* CountriesView.swift in Sources */,
 				3F6E6C5721E736C000DA87F6 /* Color.swift in Sources */,
-				3F76242021F60D0100CAB4D0 /* Сharacters.swift in Sources */,
+				3F76242021F60D0100CAB4D0 /* Unit.swift in Sources */,
 				3F6E6C5221E736C000DA87F6 /* ObservableObject.swift in Sources */,
 				3F6E6C7021E74EEC00DA87F6 /* CountriesViewController.swift in Sources */,
 				3F41B1E421F8B22700ADE1F7 /* DataFormater+Extensions.swift in Sources */,
