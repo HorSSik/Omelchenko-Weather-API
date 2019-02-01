@@ -10,11 +10,14 @@ import Foundation
 
 class Country {
     
+    public var weather: Weather?
+    
     public let name: String
     public let capital: String
     
-    init(countryJSON: CountryJSON) {
-        self.name = countryJSON.name
-        self.capital = countryJSON.capital
+    init(name: String, capital: String, weather: Weather? = nil) {
+        self.name = name
+        self.capital = capital
+        self.weather = weather
     }
 }

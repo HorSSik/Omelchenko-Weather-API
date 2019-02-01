@@ -19,7 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     )
         -> Bool
     {
-        let navigationController = UINavigationController(rootViewController: CountriesViewController())
+        let requestService = RequestService<[CountryJSON]>()
+
+        let rootViewController = CountriesViewController(requestService: requestService)
+        
+        let navigationController = UINavigationController(rootViewController: rootViewController)
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = navigationController

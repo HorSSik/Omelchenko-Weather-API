@@ -15,14 +15,13 @@ class CountriesViewCell: TableViewCell {
     @IBOutlet var country: UILabel?
     @IBOutlet var date: UILabel?
     
-    public func fill(with model: Model) {
-        let country = model.country
-        let weather = model.weather.value
+    public func fill(country: Country) {
+        let weather = country.weather
         
-        self.country?.text = country.value.name
-        self.capital?.text = country.value.capital
+        self.country?.text = country.name
+        self.capital?.text = country.capital
         
         self.temperature?.text = weather?.temp.map { String(Int($0)) }
-        self.date?.text = model.weather.value?.dt?.shortDescription
+        self.date?.text = weather?.date?.shortDescription
     }
 }

@@ -16,16 +16,22 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     typealias RootView = CountriesView
     
-    private var dataModel: Models? {
-        didSet {
-            _ = self.dataModel?.observer { state in
-                switch state {
-                case .weatherLoad(_):
-                    self.reloadData()
-                case .countryLoad(_): break
-                }
-            }
-        }
+    private var dataModel = Models()
+    
+    private var cancelladObserver = CancellableProperty()
+    
+    private let countriesManager: CountriesManager
+    
+    init(requestService: RequestService<[CountryJSON]>) {
+        self.countriesManager = CountriesManager(requestService: requestService)
+        
+        super.init(nibName: nil, bundle: nil)
+        
+        self.prepareCountriesManager()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -33,41 +39,38 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.title = Constant.countriesTitle
         
         self.rootView?.table?.register(CountriesViewCell.self)
-        
-        self.fillModel()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataModel?.values.count ?? 0
+        return self.dataModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(withCellClass: CountriesViewCell.self) { cell in
-            self.dataModel.do { value in
-                cell.fill(with: value.values[indexPath.row])
-            }
+            cell.fill(country: self.dataModel[indexPath.row].value)
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-      
-        let weatherController = WeatherViewController()
-        let model = self.dataModel?.values[indexPath.row]
-        weatherController.model = model
+        
+        let requestService = RequestService<WeatherJSON>()
+        let weatherController = WeatherViewController(requestService: requestService)
+        
+        let country = self.dataModel[indexPath.row]
+        weatherController.fillModel(country: country)
         
         self.navigationController?.pushViewController(weatherController, animated: true)
     }
     
-    private func fillModel() {
-        let countriesManager = CountriesManager()
+    private func prepareCountriesManager() {
+        let dataModel = self.dataModel
         
-        _ = countriesManager.observer {
-            self.dataModel = Models(models: $0.map(Model.init))
+        self.cancelladObserver.value = dataModel.observer { _ in
             self.reloadData()
         }
         
-        countriesManager.getCountries()
+        self.countriesManager.getCountries(models: dataModel)
     }
     
     private func reloadData() {

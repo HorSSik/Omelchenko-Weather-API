@@ -19,4 +19,10 @@ class Wrapper<Value>: ObservableObject<Value> {
     init(_ value: Value) {
         self.value = value
     }
+    
+    public func update(completion: (Value) -> ()) {
+        completion(self.value)
+        
+        self.notify(self.value)
+    }
 }

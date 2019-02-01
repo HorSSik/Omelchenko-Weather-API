@@ -30,3 +30,11 @@ public func toString(_ cls: AnyClass) -> String {
 func dispatchOnMain(execute: @escaping F.VoidCompletion) {
     DispatchQueue.main.async(execute: execute)
 }
+
+func stringWithUnit(value: CustomStringConvertible?, unit: Unit) -> String {
+    return "\(value ?? "")\(unit)"
+}
+
+func stringWithDegrees(value: CustomStringConvertible?) -> String {
+    return stringWithUnit(value: value, unit: .degrees)
+}

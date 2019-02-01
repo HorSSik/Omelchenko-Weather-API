@@ -12,26 +12,28 @@ fileprivate struct Constant {
     static let mainUrl = "https://restcountries.eu/rest/v2/all"
 }
 
-class CountriesManager: ObservableObject<[Country]> {
+class CountriesManager {
     
-    private var countryModel: [Country]? {
-        didSet {
-            self.countryModel.do(self.notify)
-        }
+    private let requestService: RequestService<[CountryJSON]>
+    
+    private let parser = Parser()
+    
+    init(requestService: RequestService<[CountryJSON]>) {
+        self.requestService = requestService
     }
     
-    public func getCountries() {
+    public func getCountries(models: Models) {
         let urlCountry = URL(string: Constant.mainUrl)
         
         urlCountry.do { url in
-            RequestService<[CountryJSON]>().requestData(url: url) { data, error in
+            self.requestService.requestData(url: url) { data, error in
                 data.do { data in
-                    self.countryModel = data
+                    data
                         .filter {
                             !$0.capital.isEmpty
                         }
-                        .map {
-                            Country(countryJSON: $0)
+                        .forEach {
+                            models.add(country: self.parser.filledCountries(countryJSON: $0))
                         }
                 }
             }
