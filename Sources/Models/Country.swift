@@ -15,9 +15,8 @@ class Country {
     public let name: String
     public let capital: String
     
-    init(name: String, capital: String, weather: Weather? = nil) {
+    init(name: String, capital: String) {
         self.name = name
         self.capital = capital
-        self.weather = weather
     }
 }
