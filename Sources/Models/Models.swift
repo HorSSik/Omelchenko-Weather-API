@@ -23,6 +23,10 @@ class Models: ObservableObject<Models.PrepareModel> {
         return self.values.count
     }
     
+    public var isEmpty: Bool {
+        return self.values.isEmpty
+    }
+    
     subscript(index: Int) -> Wrapper<Country> {
         get {
             let wrapped = Wrapper(self.values[index])
@@ -45,6 +49,11 @@ class Models: ObservableObject<Models.PrepareModel> {
     
     public func remove(for index: Int) {
         self.values.remove(at: index)
+        self.notify(.modelsDidRemove(self))
+    }
+    
+    public func removeAll() {
+        self.values.removeAll()
         self.notify(.modelsDidRemove(self))
     }
     

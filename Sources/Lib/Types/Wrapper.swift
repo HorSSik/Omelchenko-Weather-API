@@ -10,18 +10,14 @@ import Foundation
 
 class Wrapper<Value>: ObservableObject<Value> {
     
-    public var value: Value {
-        didSet {
-            self.notify(self.value)
-        }
-    }
+    public var value: Value
     
     init(_ value: Value) {
         self.value = value
     }
     
-    public func update(completion: (Value) -> ()) {
-        completion(self.value)
+    public func update(action: (Value) -> ()) {
+        action(self.value)
         
         self.notify(self.value)
     }

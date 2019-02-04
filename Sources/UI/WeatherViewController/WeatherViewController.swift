@@ -16,6 +16,8 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     
     typealias RootView = WeatherView
     
+    private var cancelledObserver = CancellableProperty()
+    
     private let weatherManager: WeatherManager
     
     override func viewDidLoad() {
@@ -35,7 +37,8 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
 
     public func fillModel(country: Wrapper<Country>) {
         self.weatherManager.getWeather(country: country)
-        country.observer { country in
+        
+        self.cancelledObserver.value = country.observer { country in
             dispatchOnMain {
                 self.rootView?.fill(data: country.weather)
             }

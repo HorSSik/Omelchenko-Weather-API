@@ -25,3 +25,4 @@ class CountriesViewCell: TableViewCell {
         self.date?.text = weather?.date?.shortDescription
     }
 }
+

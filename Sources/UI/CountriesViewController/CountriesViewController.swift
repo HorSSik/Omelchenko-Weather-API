@@ -18,7 +18,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private var dataModel = Models()
     
-    private var cancelladObserver = CancellableProperty()
+    private var cancelledObserver = CancellableProperty()
     
     private let countriesManager: CountriesManager
     
@@ -66,7 +66,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     private func prepareCountriesManager() {
         let dataModel = self.dataModel
         
-        self.cancelladObserver.value = dataModel.observer { _ in
+        self.cancelledObserver.value = dataModel.observer { _ in
             self.reloadData()
         }
         
