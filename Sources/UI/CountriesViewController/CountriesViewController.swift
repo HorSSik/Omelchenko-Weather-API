@@ -27,7 +27,9 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         super.init(nibName: nil, bundle: nil)
         
-        self.prepareCountriesManager()
+        self.subscribe(indexPath: nil)
+        
+        self.countriesManager.getCountries(models: dataModel)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -58,19 +60,26 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         let weatherController = WeatherViewController(requestService: requestService)
         
         let country = self.dataModel[indexPath.row]
+        
+        self.subscribe(indexPath: indexPath)
+
         weatherController.fillModel(country: country)
         
         self.navigationController?.pushViewController(weatherController, animated: true)
     }
     
-    private func prepareCountriesManager() {
-        let dataModel = self.dataModel
-        
-        self.cancelledObserver.value = dataModel.observer { _ in
-            self.reloadData()
+    private func subscribe(indexPath: IndexPath?) {
+        self.cancelledObserver.value = self.dataModel.observer { state in
+            switch state {
+            case .modelsRefreshed(_):
+                indexPath.do { indexPath in
+                    dispatchOnMain {
+                        self.rootView?.table?.reloadRows(at: [indexPath], with: .none)
+                    }
+                }
+            default: self.reloadData()
+            }
         }
-        
-        self.countriesManager.getCountries(models: dataModel)
     }
     
     private func reloadData() {

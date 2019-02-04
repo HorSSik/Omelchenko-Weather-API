@@ -12,9 +12,10 @@ class Models: ObservableObject<Models.PrepareModel> {
     
     enum PrepareModel {
         
-        case modelsDidAppend(Models?)
-        case modelsDidRemove(Models?)
-        case modelsRefreshed(Models?)
+        case modelsDidAppend(Country)
+        case modelsDidRemove(Country)
+        case modelsRefreshed(Country)
+        case modelsDeleted
     }
     
     private var values = [Country]()
@@ -30,34 +31,34 @@ class Models: ObservableObject<Models.PrepareModel> {
     subscript(index: Int) -> Wrapper<Country> {
         get {
             let wrapped = Wrapper(self.values[index])
-            wrapped.observer { _ in
-                self.modelsRefreshed()
+            wrapped.observer {
+                self.modelsRefreshed(country: $0)
             }
             
             return wrapped
         }
         set {
             self.values[index] = newValue.value
-            self.modelsRefreshed()
+            self.modelsRefreshed(country: self.values[index])
         }
     }
     
     public func add(country: Country) {
         self.values.append(country)
-        self.notify(.modelsDidAppend(self))
+        self.notify(.modelsDidAppend(country))
     }
     
     public func remove(for index: Int) {
-        self.values.remove(at: index)
-        self.notify(.modelsDidRemove(self))
+        let removed = self.values.remove(at: index)
+        self.notify(.modelsDidRemove(removed))
     }
     
     public func removeAll() {
         self.values.removeAll()
-        self.notify(.modelsDidRemove(self))
+        self.notify(.modelsDeleted)
     }
     
-    private func modelsRefreshed() {
-        self.notify(.modelsRefreshed(self))
+    private func modelsRefreshed(country: Country) {
+        self.notify(.modelsRefreshed(country))
     }
 }
