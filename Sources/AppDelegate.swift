@@ -20,8 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         -> Bool
     {
         let requestService = RequestService<[CountryJSON]>()
+        let countriesManager = CountriesManager(requestService: requestService)
 
-        let rootViewController = CountriesViewController(requestService: requestService)
+        let rootViewController = CountriesViewController(countriesManager: countriesManager)
         
         let navigationController = UINavigationController(rootViewController: rootViewController)
         

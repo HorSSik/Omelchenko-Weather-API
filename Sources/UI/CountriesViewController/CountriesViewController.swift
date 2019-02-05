@@ -18,18 +18,16 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private var dataModel = Models()
     
-    private var cancelledObserver = CancellableProperty()
+    private var modelObserver = CancellableProperty()
     
     private let countriesManager: CountriesManager
     
-    init(requestService: RequestService<[CountryJSON]>) {
-        self.countriesManager = CountriesManager(requestService: requestService)
+    init(countriesManager: CountriesManager) {
+        self.countriesManager = countriesManager
         
         super.init(nibName: nil, bundle: nil)
         
-        self.subscribe(indexPath: nil)
-        
-        self.countriesManager.getCountries(models: dataModel)
+        self.prepareCountriesManager()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,25 +59,31 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let country = self.dataModel[indexPath.row]
         
-        self.subscribe(indexPath: indexPath)
+        country.observer { _ in
+            dispatchOnMain {
+                tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }
 
         weatherController.fillModel(country: country)
         
         self.navigationController?.pushViewController(weatherController, animated: true)
     }
     
-    private func subscribe(indexPath: IndexPath?) {
-        self.cancelledObserver.value = self.dataModel.observer { state in
+    private func prepareCountriesManager() {
+        let reloadData = self.reloadData
+        let dataModel = self.dataModel
+        
+        self.modelObserver.value = dataModel.observer { state in
             switch state {
-            case .modelsRefreshed(_):
-                indexPath.do { indexPath in
-                    dispatchOnMain {
-                        self.rootView?.table?.reloadRows(at: [indexPath], with: .none)
-                    }
-                }
-            default: self.reloadData()
+            case .modelsRefreshed(_): return
+            case .modelsDidAppend(_): reloadData()
+            case .modelsDidRemove(_): reloadData()
+            case .modelsDeleted: reloadData()
             }
         }
+        
+        self.countriesManager.getCountries(models: dataModel)
     }
     
     private func reloadData() {
