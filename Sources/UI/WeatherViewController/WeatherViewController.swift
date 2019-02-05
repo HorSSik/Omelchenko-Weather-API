@@ -25,8 +25,8 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
         self.title = Constant.weatherTitle
     }
     
-    init(requestService: RequestService<WeatherJSON>) {
-        self.weatherManager = WeatherManager(requestService: requestService)
+    init(weatherManager: WeatherManager) {
+        self.weatherManager = weatherManager
         
         super.init(nibName: nil, bundle: nil)
     }

@@ -53,9 +53,9 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         let requestService = RequestService<WeatherJSON>()
-        let weatherController = WeatherViewController(requestService: requestService)
+        let weatherManager = WeatherManager(requestService: requestService)
+        let weatherController = WeatherViewController(weatherManager: weatherManager)
         
         let country = self.dataModel[indexPath.row]
         

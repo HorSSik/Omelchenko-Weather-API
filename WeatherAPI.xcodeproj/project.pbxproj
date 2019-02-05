@@ -168,8 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				3F76241921F5CACB00CAB4D0 /* CountriesViewCell.swift */,
-				3F76241A21F5CACB00CAB4D0 /* CountriesViewCell.xib */,
 				3F5DEDF121ECB48C0069BFF0 /* TableViewCell.swift */,
+				3F76241A21F5CACB00CAB4D0 /* CountriesViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
