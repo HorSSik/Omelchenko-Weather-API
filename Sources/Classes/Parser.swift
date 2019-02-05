@@ -10,7 +10,7 @@ import Foundation
 
 class Parser {
     
-    public func filledCountries(countryJSON: CountryJSON) -> Country {
+    public func filledCountry(countryJSON: CountryJSON) -> Country {
         return Country(name: countryJSON.name, capital: countryJSON.capital)
     }
     

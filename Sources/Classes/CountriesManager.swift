@@ -33,7 +33,7 @@ class CountriesManager {
                             !$0.capital.isEmpty
                         }
                         .forEach {
-                            models.add(country: self.parser.filledCountries(countryJSON: $0))
+                            models.add(country: self.parser.filledCountry(countryJSON: $0))
                         }
                 }
             }

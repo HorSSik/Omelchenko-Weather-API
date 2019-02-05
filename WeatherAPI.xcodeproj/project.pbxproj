@@ -168,10 +168,28 @@
 			isa = PBXGroup;
 			children = (
 				3F76241921F5CACB00CAB4D0 /* CountriesViewCell.swift */,
-				3F5DEDF121ECB48C0069BFF0 /* TableViewCell.swift */,
 				3F76241A21F5CACB00CAB4D0 /* CountriesViewCell.xib */,
+				3F5DEDF121ECB48C0069BFF0 /* TableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3F30F2FD2209EBB80033A184 /* Country */ = {
+			isa = PBXGroup;
+			children = (
+				3F366F3721FB09B200D744AE /* Country.swift */,
+				3F5DEDE821EC92B80069BFF0 /* CountryJSON.swift */,
+			);
+			path = Country;
+			sourceTree = "<group>";
+		};
+		3F30F2FE2209EBBE0033A184 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				3F366F3921FB0A0200D744AE /* Weather.swift */,
+				3F5DEDEA21EC92E80069BFF0 /* WeatherJSON.swift */,
+			);
+			path = Weather;
 			sourceTree = "<group>";
 		};
 		3F5DEDEE21ECAFA00069BFF0 /* Classes */ = {
@@ -341,11 +359,9 @@
 		3F6E6C6421E736CC00DA87F6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3F366F3721FB09B200D744AE /* Country.swift */,
-				3F366F3921FB0A0200D744AE /* Weather.swift */,
+				3F30F2FE2209EBBE0033A184 /* Weather */,
+				3F30F2FD2209EBB80033A184 /* Country */,
 				3F4A006422006DC900188C7A /* Models.swift */,
-				3F5DEDE821EC92B80069BFF0 /* CountryJSON.swift */,
-				3F5DEDEA21EC92E80069BFF0 /* WeatherJSON.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
