@@ -10,13 +10,23 @@ import Foundation
 
 class Parser {
     
-    public func filledCountry(countryJSON: CountryJSON) -> Country {
-        return Country(name: countryJSON.name, capital: countryJSON.capital)
+    public func countries(json: [CountryJSON]) -> [Country] {
+        return json
+            .filter {
+                !$0.capital.isEmpty
+            }
+            .map {
+                self.country(json: $0)
+            }
     }
     
-    public func filledWeather(weatherJSON: WeatherJSON) -> Weather {
-        let main = weatherJSON.main
-        let wind = weatherJSON.wind.speed
+    public func country(json: CountryJSON) -> Country {
+        return Country(name: json.name, capital: json.capital)
+    }
+    
+    public func weather(json: WeatherJSON) -> Weather {
+        let main = json.main
+        let wind = json.wind.speed
         
         return Weather(
             temp: main.temp,
@@ -25,8 +35,8 @@ class Parser {
             pressure: main.pressure,
             humidity: main.humidity,
             windSpeed: wind,
-            date: weatherJSON.dt,
-            name: weatherJSON.name
+            date: json.dt,
+            name: json.name
         )
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Wrapper<Value>: ObservableObject<Value> {
+class ObservableWrapper<Value>: ObservableObject<Value> {
     
     public var value: Value
     

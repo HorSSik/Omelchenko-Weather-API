@@ -16,14 +16,15 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     typealias RootView = CountriesView
     
-    private var dataModel = Models()
+    private var dataModel: CountriesModels
     
     private var modelObserver = CancellableProperty()
     
-    private let countriesManager: CountriesManager
+    private let countriesNetworkManager: CountriesNetworkManager
     
-    init(countriesManager: CountriesManager) {
-        self.countriesManager = countriesManager
+    init(model: CountriesModels, countriesNetworkManager: CountriesNetworkManager) {
+        self.countriesNetworkManager = countriesNetworkManager
+        self.dataModel = model
         
         super.init(nibName: nil, bundle: nil)
         
@@ -54,7 +55,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let requestService = RequestService<WeatherJSON>()
-        let weatherManager = WeatherManager(requestService: requestService)
+        let weatherManager = WeatherNetworkManager(requestService: requestService)
         let weatherController = WeatherViewController(weatherManager: weatherManager)
         
         let country = self.dataModel[indexPath.row]
@@ -76,14 +77,14 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.modelObserver.value = dataModel.observer { state in
             switch state {
-            case .modelsRefreshed(_): return
-            case .modelsDidAppend(_): reloadData()
-            case .modelsDidRemove(_): reloadData()
+            case .modelsRefreshed: return
+            case .modelsDidAppend: reloadData()
+            case .modelsDidRemove: reloadData()
             case .modelsDeleted: reloadData()
             }
         }
         
-        self.countriesManager.getCountries(models: dataModel)
+        self.countriesNetworkManager.getCountries(models: dataModel)
     }
     
     private func reloadData() {

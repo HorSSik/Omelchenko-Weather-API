@@ -12,7 +12,7 @@ fileprivate struct Constant {
     static let mainUrl = "https://restcountries.eu/rest/v2/all"
 }
 
-class CountriesManager {
+class CountriesNetworkManager {
     
     private let requestService: RequestService<[CountryJSON]>
     
@@ -22,20 +22,13 @@ class CountriesManager {
         self.requestService = requestService
     }
     
-    public func getCountries(models: Models) {
+    public func getCountries(models: CountriesModels) {
         let urlCountry = URL(string: Constant.mainUrl)
         
         urlCountry.do { url in
             self.requestService.requestData(url: url) { data, error in
-                data.do { data in
-                    data
-                        .filter {
-                            !$0.capital.isEmpty
-                        }
-                        .forEach {
-                            models.add(country: self.parser.filledCountry(countryJSON: $0))
-                        }
-                }
+                let countries = data.map(self.parser.countries)
+                countries.map(models.add)
             }
         }
     }

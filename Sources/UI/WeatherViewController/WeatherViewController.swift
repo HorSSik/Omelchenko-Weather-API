@@ -18,14 +18,14 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     
     private var weatherObserver = CancellableProperty()
     
-    private let weatherManager: WeatherManager
+    private let weatherManager: WeatherNetworkManager
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = Constant.weatherTitle
     }
     
-    init(weatherManager: WeatherManager) {
+    init(weatherManager: WeatherNetworkManager) {
         self.weatherManager = weatherManager
         
         super.init(nibName: nil, bundle: nil)
@@ -35,13 +35,13 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func fillModel(country: Wrapper<Country>) {
-        self.weatherManager.getWeather(country: country)
-        
+    public func fillModel(country: ObservableWrapper<Country>) {
         self.weatherObserver.value = country.observer { country in
             dispatchOnMain {
                 self.rootView?.fill(data: country.weather)
             }
         }
+        
+        self.weatherManager.getWeather(country: country)
     }
 }

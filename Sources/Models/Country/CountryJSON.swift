@@ -10,6 +10,6 @@ import Foundation
 
 struct CountryJSON: Decodable {
     
-    var name: String
-    var capital: String
+    public let name: String
+    public let capital: String
 }

@@ -8,13 +8,13 @@
 
 import Foundation
 
-class Models: ObservableObject<Models.PrepareModel> {
+class CountriesModels: ObservableObject<CountriesModels.PrepareModel> {
     
     enum PrepareModel {
         
-        case modelsDidAppend(Country)
-        case modelsDidRemove(Country)
-        case modelsRefreshed(Country)
+        case modelsDidAppend
+        case modelsDidRemove
+        case modelsRefreshed
         case modelsDeleted
     }
     
@@ -28,9 +28,9 @@ class Models: ObservableObject<Models.PrepareModel> {
         return self.values.isEmpty
     }
     
-    subscript(index: Int) -> Wrapper<Country> {
+    subscript(index: Int) -> ObservableWrapper<Country> {
         get {
-            let wrapped = Wrapper(self.values[index])
+            let wrapped = ObservableWrapper(self.values[index])
             wrapped.observer {
                 self.modelsRefreshed(country: $0)
             }
@@ -45,12 +45,17 @@ class Models: ObservableObject<Models.PrepareModel> {
     
     public func add(country: Country) {
         self.values.append(country)
-        self.notify(.modelsDidAppend(country))
+        self.notify(.modelsDidAppend)
+    }
+    
+    public func add(countries: [Country]) {
+        self.values = countries
+        self.notify(.modelsDidAppend)
     }
     
     public func remove(for index: Int) {
-        let removed = self.values.remove(at: index)
-        self.notify(.modelsDidRemove(removed))
+        self.values.remove(at: index)
+        self.notify(.modelsDidRemove)
     }
     
     public func removeAll() {
@@ -59,6 +64,6 @@ class Models: ObservableObject<Models.PrepareModel> {
     }
     
     private func modelsRefreshed(country: Country) {
-        self.notify(.modelsRefreshed(country))
+        self.notify(.modelsRefreshed)
     }
 }
