@@ -13,29 +13,27 @@ fileprivate struct Constant {
     static let apiKey = "&units=metric&APPID=60cf95f166563b524e17c7573b54d7e3"
 }
 
-class WeatherNetworkManager {
+class WeatherNetworkService {
     
-    private let requestService: RequestService<WeatherJSON>
+    private let requestService: RequestService
     
     private let parser = Parser()
     
-    init(requestService: RequestService<WeatherJSON>) {
+    init(requestService: RequestService) {
         self.requestService = requestService
     }
     
     public func getWeather(country: ObservableWrapper<Country>) {
         let capital = country.value.capital
-        let baseUrl = Constant.mainUrl + capital + Constant.apiKey
-        let convertUrl = baseUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let convertUrl = capital.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let baseUrl = convertUrl.map { Constant.mainUrl + $0 + Constant.apiKey}
         
-        convertUrl
+        baseUrl
             .flatMap(URL.init)
             .do { url in
                 self.requestService.requestData(url: url) { data, error in
-                    data.do { data in
-                        country.update {
-                            $0.weather = self.parser.weather(json: data)
-                        }
+                    country.update { country in
+                        country.weather = self.parser.weather(data: data)
                     }
                 }
             }

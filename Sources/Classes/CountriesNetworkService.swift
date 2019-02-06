@@ -12,13 +12,13 @@ fileprivate struct Constant {
     static let mainUrl = "https://restcountries.eu/rest/v2/all"
 }
 
-class CountriesNetworkManager {
+class CountriesNetworkService {
     
-    private let requestService: RequestService<[CountryJSON]>
+    private let requestService: RequestService
     
     private let parser = Parser()
     
-    init(requestService: RequestService<[CountryJSON]>) {
+    init(requestService: RequestService) {
         self.requestService = requestService
     }
     
@@ -27,7 +27,7 @@ class CountriesNetworkManager {
         
         urlCountry.do { url in
             self.requestService.requestData(url: url) { data, error in
-                let countries = data.map(self.parser.countries)
+                let countries = self.parser.countries(data: data)
                 countries.map(models.add)
             }
         }

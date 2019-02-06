@@ -16,19 +16,18 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     typealias RootView = CountriesView
     
-    private var dataModel: CountriesModels
+    private let modelObserver = CancellableProperty()
     
-    private var modelObserver = CancellableProperty()
+    private let dataModel: CountriesModels
+    private let countriesNetworkService: CountriesNetworkService
     
-    private let countriesNetworkManager: CountriesNetworkManager
-    
-    init(model: CountriesModels, countriesNetworkManager: CountriesNetworkManager) {
-        self.countriesNetworkManager = countriesNetworkManager
+    init(model: CountriesModels, countriesNetworkService: CountriesNetworkService) {
+        self.countriesNetworkService = countriesNetworkService
         self.dataModel = model
         
         super.init(nibName: nil, bundle: nil)
         
-        self.prepareCountriesManager()
+        self.prepareCountriesNetworkService()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -54,24 +53,22 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let requestService = RequestService<WeatherJSON>()
-        let weatherManager = WeatherNetworkManager(requestService: requestService)
-        let weatherController = WeatherViewController(weatherManager: weatherManager)
-        
         let country = self.dataModel[indexPath.row]
+        
+        let requestService = RequestService()
+        let weatherNetworkService = WeatherNetworkService(requestService: requestService)
+        let weatherController = WeatherViewController(country: country, weatherNetworkService: weatherNetworkService)
         
         country.observer { _ in
             dispatchOnMain {
                 tableView.reloadRows(at: [indexPath], with: .none)
             }
         }
-
-        weatherController.fillModel(country: country)
         
         self.navigationController?.pushViewController(weatherController, animated: true)
     }
     
-    private func prepareCountriesManager() {
+    private func prepareCountriesNetworkService() {
         let reloadData = self.reloadData
         let dataModel = self.dataModel
         
@@ -84,7 +81,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         
-        self.countriesNetworkManager.getCountries(models: dataModel)
+        self.countriesNetworkService.getCountries(models: dataModel)
     }
     
     private func reloadData() {
