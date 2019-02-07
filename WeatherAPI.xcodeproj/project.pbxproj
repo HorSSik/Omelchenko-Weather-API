@@ -199,15 +199,15 @@
 			path = Weather;
 			sourceTree = "<group>";
 		};
-		3F5DEDEE21ECAFA00069BFF0 /* Classes */ = {
+		3F5DEDEE21ECAFA00069BFF0 /* NetworkServices */ = {
 			isa = PBXGroup;
 			children = (
+				3F2AED1A22047F9200635168 /* Parser.swift */,
 				3F5DEDEF21ECAFB40069BFF0 /* RequestService.swift */,
 				3F3F11A621EF1F4F0055B2D6 /* WeatherNetworkService.swift */,
 				3F4D468D21F0C3D000DE5E93 /* CountriesNetworkService.swift */,
-				3F2AED1A22047F9200635168 /* Parser.swift */,
 			);
-			path = Classes;
+			path = NetworkServices;
 			sourceTree = "<group>";
 		};
 		3F6E6BF921E7364800DA87F6 = {
@@ -233,7 +233,7 @@
 		3F6E6C0421E7364800DA87F6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				3F5DEDEE21ECAFA00069BFF0 /* Classes */,
+				3F5DEDEE21ECAFA00069BFF0 /* NetworkServices */,
 				3F6E6C3C21E736C000DA87F6 /* Resources */,
 				3F6E6C6921E7379300DA87F6 /* UI */,
 				3F6E6C0521E7364800DA87F6 /* AppDelegate.swift */,
@@ -280,8 +280,8 @@
 				3F6E6C3A21E736C000DA87F6 /* F.swift */,
 				3F49438122083AC400B96BE7 /* Queue.swift */,
 				3F6E6C3B21E736C000DA87F6 /* Atomic.swift */,
-				3F4A0062220064B600188C7A /* ObservableWrapper.swift */,
 				3F6E6C3621E736C000DA87F6 /* Generator.swift */,
+				3F4A0062220064B600188C7A /* ObservableWrapper.swift */,
 				3F6E6C3721E736C000DA87F6 /* ObservableObject.swift */,
 				3F6E6C3521E736C000DA87F6 /* ObservableObject.Observers.swift */,
 				3F6E6C3921E736C000DA87F6 /* ObservableObject.Observer.swift */,
@@ -293,10 +293,10 @@
 		3F6E6C3C21E736C000DA87F6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3F6E6C0C21E7364900DA87F6 /* Assets.xcassets */,
 				3F6E6C3D21E736C000DA87F6 /* Color.swift */,
 				3F68551021E8DA7F0008AD60 /* Emoji.swift */,
 				3F76241F21F60D0100CAB4D0 /* Unit.swift */,
+				3F6E6C0C21E7364900DA87F6 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";

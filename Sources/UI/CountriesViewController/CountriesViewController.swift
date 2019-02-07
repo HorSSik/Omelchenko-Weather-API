@@ -17,6 +17,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     typealias RootView = CountriesView
     
     private let modelObserver = CancellableProperty()
+    private let countryObserver = CancellableProperty()
     
     private let dataModel: CountriesModels
     private let countriesNetworkService: CountriesNetworkService
@@ -46,8 +47,8 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withCellClass: CountriesViewCell.self) { cell in
-            cell.fill(country: self.dataModel[indexPath.row].value)
+        return tableView.dequeueReusableCell(withCellClass: CountriesViewCell.self) {
+            $0.fill(model: self.dataModel[indexPath.row])
         }
     }
     
@@ -55,29 +56,26 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.deselectRow(at: indexPath, animated: true)
         let country = self.dataModel[indexPath.row]
         
-        let requestService = RequestService()
-        let weatherNetworkService = WeatherNetworkService(requestService: requestService)
-        let weatherController = WeatherViewController(country: country, weatherNetworkService: weatherNetworkService)
-        
-        country.observer { _ in
+        self.countryObserver.value = country.observer { _ in
             dispatchOnMain {
                 tableView.reloadRows(at: [indexPath], with: .none)
             }
         }
         
+        let requestService = RequestService()
+        let weatherNetworkService = WeatherNetworkService(requestService: requestService)
+        let weatherController = WeatherViewController(country: country, weatherNetworkService: weatherNetworkService)
+
         self.navigationController?.pushViewController(weatherController, animated: true)
     }
     
     private func prepareCountriesNetworkService() {
-        let reloadData = self.reloadData
         let dataModel = self.dataModel
         
-        self.modelObserver.value = dataModel.observer { state in
+        self.modelObserver.value = dataModel.observer { [weak self] state in
             switch state {
-            case .modelsRefreshed: return
-            case .modelsDidAppend: reloadData()
-            case .modelsDidRemove: reloadData()
-            case .modelsDeleted: reloadData()
+            case .modelsDidAppend: return
+            case .modelsDidRemove: self?.reloadData()
             }
         }
         

@@ -20,7 +20,7 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     
     private let weatherNetworkService: WeatherNetworkService
     
-    private let model: ObservableWrapper<Country>
+    private let model: Country
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     }
     
     init(
-        country: ObservableWrapper<Country>,
+        country: Country,
         weatherNetworkService: WeatherNetworkService
     ) {
         self.weatherNetworkService = weatherNetworkService
@@ -44,9 +44,12 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     }
     
     private func subscribe() {
-        self.weatherObserver.value = self.model.observer { country in
-            dispatchOnMain {
-                self.rootView?.fill(data: country.weather)
+        self.weatherObserver.value = self.model.observer { state in
+            switch state {
+            case let .weatherDidChange(weather):
+                dispatchOnMain {
+                    self.rootView?.fill(data: weather)
+                }
             }
         }
         

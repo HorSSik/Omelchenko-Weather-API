@@ -14,7 +14,8 @@ class RequestService {
         URLSession
             .shared
             .dataTask(with: url) { (data, response, error) in
-            completion(data, error) }
+                completion(data, error)
+            }
             .resume()
     }
 }

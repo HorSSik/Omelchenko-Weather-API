@@ -8,9 +8,17 @@
 
 import Foundation
 
-class Country {
+class Country: ObservableObject<Country.Event> {
     
-    public var weather: Weather?
+    public enum Event {
+        case weatherDidChange(Weather?)
+    }
+    
+    public var weather: Weather? {
+        didSet {
+            self.notify(.weatherDidChange(self.weather))
+        }
+    }
     
     public let name: String
     public let capital: String

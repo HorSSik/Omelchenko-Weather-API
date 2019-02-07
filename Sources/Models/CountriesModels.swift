@@ -14,8 +14,6 @@ class CountriesModels: ObservableObject<CountriesModels.PrepareModel> {
         
         case modelsDidAppend
         case modelsDidRemove
-        case modelsRefreshed
-        case modelsDeleted
     }
     
     private var values = [Country]()
@@ -28,19 +26,8 @@ class CountriesModels: ObservableObject<CountriesModels.PrepareModel> {
         return self.values.isEmpty
     }
     
-    subscript(index: Int) -> ObservableWrapper<Country> {
-        get {
-            let wrapped = ObservableWrapper(self.values[index])
-            wrapped.observer {
-                self.modelsRefreshed(country: $0)
-            }
-            
-            return wrapped
-        }
-        set {
-            self.values[index] = newValue.value
-            self.modelsRefreshed(country: self.values[index])
-        }
+    subscript(index: Int) -> Country {
+        return self.values[index]
     }
     
     public func add(country: Country) {
@@ -56,14 +43,5 @@ class CountriesModels: ObservableObject<CountriesModels.PrepareModel> {
     public func remove(for index: Int) {
         self.values.remove(at: index)
         self.notify(.modelsDidRemove)
-    }
-    
-    public func removeAll() {
-        self.values.removeAll()
-        self.notify(.modelsDeleted)
-    }
-    
-    private func modelsRefreshed(country: Country) {
-        self.notify(.modelsRefreshed)
     }
 }
