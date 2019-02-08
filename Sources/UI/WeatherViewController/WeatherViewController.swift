@@ -20,7 +20,11 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     
     private let weatherNetworkService: WeatherNetworkService
     
-    private let model: Country
+    private var model: Country {
+        didSet {
+            self.weatherNetworkService.getWeather(country: self.model)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +56,7 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
                 }
             }
         }
-        
+
         self.weatherNetworkService.getWeather(country: model)
     }
 }
