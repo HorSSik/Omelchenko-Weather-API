@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         let requestService = RequestService()
         let countriesNetworkService = CountriesNetworkService(requestService: requestService)
-        let dataModel = CountriesModels()
+        let dataModel = CountriesModel()
 
         let rootViewController = CountriesViewController(
             model: dataModel,

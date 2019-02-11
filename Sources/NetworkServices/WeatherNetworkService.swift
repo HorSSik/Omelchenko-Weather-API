@@ -15,11 +15,11 @@ fileprivate struct Constant {
 
 class WeatherNetworkService {
     
-    private let requestService: RequestService
+    private let requestService: RequestServiceType
     
     private let parser = Parser()
     
-    init(requestService: RequestService) {
+    init(requestService: RequestServiceType) {
         self.requestService = requestService
     }
     
@@ -31,7 +31,7 @@ class WeatherNetworkService {
         baseUrl
             .flatMap(URL.init)
             .do { url in
-                self.requestService.requestData(url: url) { data, error in
+                self.requestService.requestData(url: url) { data, response, error in
                     country.weather = self.parser.weather(data: data)
                 }
             }

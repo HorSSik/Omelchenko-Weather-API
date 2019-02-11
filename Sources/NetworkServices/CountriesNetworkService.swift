@@ -14,21 +14,21 @@ fileprivate struct Constant {
 
 class CountriesNetworkService {
     
-    private let requestService: RequestService
+    private let requestService: RequestServiceType
     
     private let parser = Parser()
     
-    init(requestService: RequestService) {
+    init(requestService: RequestServiceType) {
         self.requestService = requestService
     }
     
-    public func getCountries(models: CountriesModels) {
+    public func getCountries(models: CountriesModel) {
         let urlCountry = URL(string: Constant.mainUrl)
         
         urlCountry.do { url in
-            self.requestService.requestData(url: url) { data, error in
+            self.requestService.requestData(url: url) { data, response, error in
                 let countries = self.parser.countries(data: data)
-                countries.map(models.add)
+                countries.map(models.append)
             }
         }
     }

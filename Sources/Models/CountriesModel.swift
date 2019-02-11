@@ -8,12 +8,12 @@
 
 import Foundation
 
-class CountriesModels: ObservableObject<CountriesModels.PrepareModel> {
+class CountriesModel: ObservableObject<CountriesModel.PrepareModel> {
     
     enum PrepareModel {
-        
-        case modelsDidAppend
-        case modelsDidRemove
+        case didAppendCountry
+        case didRemoveCountry
+        case didRefreshCountries
     }
     
     private var values = [Country]()
@@ -30,18 +30,18 @@ class CountriesModels: ObservableObject<CountriesModels.PrepareModel> {
         return self.values[index]
     }
     
-    public func add(country: Country) {
+    public func append(country: Country) {
         self.values.append(country)
-        self.notify(.modelsDidAppend)
+        self.notify(.didAppendCountry)
     }
     
-    public func add(countries: [Country]) {
-        self.values = countries
-        self.notify(.modelsDidAppend)
+    public func append(countries: [Country]) {
+        self.values.append(contentsOf: countries)
+        self.notify(.didRefreshCountries)
     }
     
     public func remove(for index: Int) {
         self.values.remove(at: index)
-        self.notify(.modelsDidRemove)
+        self.notify(.didRemoveCountry)
     }
 }

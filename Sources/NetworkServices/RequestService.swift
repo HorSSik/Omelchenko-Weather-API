@@ -8,14 +8,41 @@
 
 import Foundation
 
-class RequestService {
+class RequestService: RequestServiceType, Cancellable {
     
-    public func requestData(url: URL, completion: @escaping (Data?, Error?) -> ()) {
-        URLSession
+    enum RequestServicesEvent {
+        case inLoad
+        case didLoad
+        case cancelled
+        case idle
+    }
+    
+    public var isCancelled: Bool {
+        get {
+            return self.status == .cancelled ? true : false
+        }
+    }
+    
+    public var status = RequestServicesEvent.idle
+    
+    private(set) var task: URLSessionTask?
+    
+    public func requestData(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        var task = self.task
+        
+        self.status = .inLoad
+        task = URLSession
             .shared
             .dataTask(with: url) { (data, response, error) in
-                completion(data, error)
+                self.status = .didLoad
+                completion(data, response, error)
             }
-            .resume()
+        
+        task?.resume()
+    }
+    
+    public func cancel() {
+        self.status = .cancelled
+        self.task = nil
     }
 }

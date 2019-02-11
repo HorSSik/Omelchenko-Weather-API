@@ -16,15 +16,15 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     
     typealias RootView = WeatherView
     
-    private var weatherObserver = CancellableProperty()
-    
-    private let weatherNetworkService: WeatherNetworkService
-    
-    private var model: Country {
+    private var country: Country {
         didSet {
-            self.weatherNetworkService.getWeather(country: self.model)
+            self.subscribe()
         }
     }
+    
+    private let weatherObserver = CancellableProperty()
+    
+    private let weatherNetworkService: WeatherNetworkService
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
         weatherNetworkService: WeatherNetworkService
     ) {
         self.weatherNetworkService = weatherNetworkService
-        self.model = country
+        self.country = country
         
         super.init(nibName: nil, bundle: nil)
         
@@ -48,15 +48,15 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     }
     
     private func subscribe() {
-        self.weatherObserver.value = self.model.observer { state in
+        self.weatherObserver.value = self.country.observer { state in
             switch state {
             case let .weatherDidChange(weather):
-                dispatchOnMain {
+                performOnMain {
                     self.rootView?.fill(data: weather)
                 }
             }
         }
 
-        self.weatherNetworkService.getWeather(country: model)
+        self.weatherNetworkService.getWeather(country: country)
     }
 }

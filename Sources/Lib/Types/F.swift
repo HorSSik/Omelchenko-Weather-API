@@ -27,7 +27,7 @@ public func toString(_ cls: AnyClass) -> String {
     return String(describing: cls)
 }
 
-func dispatchOnMain(execute: @escaping F.VoidCompletion) {
+func performOnMain(execute: @escaping F.VoidCompletion) {
     DispatchQueue.main.async(execute: execute)
 }
 

@@ -12,9 +12,10 @@
 		3F366F3A21FB0A0200D744AE /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F366F3921FB0A0200D744AE /* Weather.swift */; };
 		3F3F11A721EF1F4F0055B2D6 /* WeatherNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3F11A621EF1F4F0055B2D6 /* WeatherNetworkService.swift */; };
 		3F41B1E421F8B22700ADE1F7 /* DataFormater+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F41B1E321F8B22700ADE1F7 /* DataFormater+Extensions.swift */; };
+		3F45A3E02211A42500AB4345 /* RequestServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F45A3DF2211A42500AB4345 /* RequestServiceType.swift */; };
 		3F49438222083AC400B96BE7 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49438122083AC400B96BE7 /* Queue.swift */; };
 		3F4A0063220064B600188C7A /* ObservableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A0062220064B600188C7A /* ObservableWrapper.swift */; };
-		3F4A006522006DC900188C7A /* CountriesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A006422006DC900188C7A /* CountriesModels.swift */; };
+		3F4A006522006DC900188C7A /* CountriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A006422006DC900188C7A /* CountriesModel.swift */; };
 		3F4D468E21F0C3D000DE5E93 /* CountriesNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4D468D21F0C3D000DE5E93 /* CountriesNetworkService.swift */; };
 		3F51155821FF027E009EEA23 /* CaseDescribable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51155721FF027E009EEA23 /* CaseDescribable.swift */; };
 		3F5DEDE921EC92B80069BFF0 /* CountryJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDE821EC92B80069BFF0 /* CountryJSON.swift */; };
@@ -84,9 +85,10 @@
 		3F366F3921FB0A0200D744AE /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		3F3F11A621EF1F4F0055B2D6 /* WeatherNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNetworkService.swift; sourceTree = "<group>"; };
 		3F41B1E321F8B22700ADE1F7 /* DataFormater+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataFormater+Extensions.swift"; sourceTree = "<group>"; };
+		3F45A3DF2211A42500AB4345 /* RequestServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestServiceType.swift; sourceTree = "<group>"; };
 		3F49438122083AC400B96BE7 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		3F4A0062220064B600188C7A /* ObservableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableWrapper.swift; sourceTree = "<group>"; };
-		3F4A006422006DC900188C7A /* CountriesModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesModels.swift; sourceTree = "<group>"; };
+		3F4A006422006DC900188C7A /* CountriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesModel.swift; sourceTree = "<group>"; };
 		3F4D468D21F0C3D000DE5E93 /* CountriesNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesNetworkService.swift; sourceTree = "<group>"; };
 		3F51155721FF027E009EEA23 /* CaseDescribable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseDescribable.swift; sourceTree = "<group>"; };
 		3F5DEDE821EC92B80069BFF0 /* CountryJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryJSON.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				3F6E6C4F21E736C000DA87F6 /* Cancellable.swift */,
+				3F45A3DF2211A42500AB4345 /* RequestServiceType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -368,7 +371,7 @@
 			children = (
 				3F30F2FE2209EBBE0033A184 /* Weather */,
 				3F30F2FD2209EBB80033A184 /* Country */,
-				3F4A006422006DC900188C7A /* CountriesModels.swift */,
+				3F4A006422006DC900188C7A /* CountriesModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				3F6E6C5B21E736C000DA87F6 /* UIButton+Extensions.swift in Sources */,
 				3F6E6C6021E736C000DA87F6 /* Optional+Extensions.swift in Sources */,
 				3F6E6C5921E736C000DA87F6 /* RootViewRepresentable.swift in Sources */,
+				3F45A3E02211A42500AB4345 /* RequestServiceType.swift in Sources */,
 				3F5DEDF621ECBE440069BFF0 /* UINid+Extensions.swift in Sources */,
 				3F2AED1B22047F9200635168 /* Parser.swift in Sources */,
 				3F6E6C5F21E736C000DA87F6 /* NSLocking+Extensions.swift in Sources */,
@@ -556,7 +560,7 @@
 				3F6E6C5421E736C000DA87F6 /* ObservableObject.Observer.swift in Sources */,
 				3F6E6C6121E736C000DA87F6 /* Strideable+Extensions.swift in Sources */,
 				3F5DEDF421ECBE1E0069BFF0 /* UITableView+Extensions.swift in Sources */,
-				3F4A006522006DC900188C7A /* CountriesModels.swift in Sources */,
+				3F4A006522006DC900188C7A /* CountriesModel.swift in Sources */,
 				3F6E6C7321E74F2000DA87F6 /* CountriesView.swift in Sources */,
 				3F6E6C5721E736C000DA87F6 /* Color.swift in Sources */,
 				3F76242021F60D0100CAB4D0 /* Unit.swift in Sources */,

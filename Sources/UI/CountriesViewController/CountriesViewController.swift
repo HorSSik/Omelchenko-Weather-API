@@ -16,15 +16,20 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     typealias RootView = CountriesView
     
+    private var countries: CountriesModel {
+        didSet {
+            self.prepareCountriesNetworkService()
+        }
+    }
+    
     private let modelObserver = CancellableProperty()
     private let countryObserver = CancellableProperty()
     
-    private let dataModel: CountriesModels
     private let countriesNetworkService: CountriesNetworkService
     
-    init(model: CountriesModels, countriesNetworkService: CountriesNetworkService) {
+    init(model: CountriesModel, countriesNetworkService: CountriesNetworkService) {
         self.countriesNetworkService = countriesNetworkService
-        self.dataModel = model
+        self.countries = model
         
         super.init(nibName: nil, bundle: nil)
         
@@ -43,24 +48,24 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataModel.count
+        return self.countries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withCellClass: CountriesViewCell.self) {
-            $0.fill(model: self.dataModel[indexPath.row])
+        return tableView.dequeueReusableCell(withCellClass: CountriesViewCell.self) { cell in
+            cell.model = self.countries[indexPath.row]
+            
+            cell.completion = { _ in
+                performOnMain {
+                    tableView.reloadRows(at: [indexPath], with: .none)
+                }
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let country = self.dataModel[indexPath.row]
-        
-        self.countryObserver.value = country.observer { _ in
-            dispatchOnMain {
-                tableView.reloadRows(at: [indexPath], with: .none)
-            }
-        }
+        let country = self.countries[indexPath.row]
         
         let requestService = RequestService()
         let weatherNetworkService = WeatherNetworkService(requestService: requestService)
@@ -70,12 +75,13 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func prepareCountriesNetworkService() {
-        let dataModel = self.dataModel
+        let dataModel = self.countries
         
         self.modelObserver.value = dataModel.observer { [weak self] state in
             switch state {
-            case .modelsDidAppend: return
-            case .modelsDidRemove: self?.reloadData()
+            case .didAppendCountry: return
+            case .didRemoveCountry: return
+            case .didRefreshCountries: self?.reloadData()
             }
         }
         
@@ -83,7 +89,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func reloadData() {
-        dispatchOnMain {
+        performOnMain {
             self.rootView?.table?.reloadData()
         }
     }
