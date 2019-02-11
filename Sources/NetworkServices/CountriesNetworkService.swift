@@ -12,7 +12,13 @@ fileprivate struct Constant {
     static let mainUrl = "https://restcountries.eu/rest/v2/all"
 }
 
-class CountriesNetworkService {
+class CountriesNetworkService: Cancellable {
+    
+    public var isCancelled: Bool {
+        get {
+            return self.requestService.isCancelled
+        }
+    }
     
     private let requestService: RequestServiceType
     
@@ -31,5 +37,9 @@ class CountriesNetworkService {
                 countries.map(models.append)
             }
         }
+    }
+    
+    public func cancel() {
+        self.requestService.cancel()
     }
 }

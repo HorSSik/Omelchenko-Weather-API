@@ -16,12 +16,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     typealias RootView = CountriesView
     
-    private var countries: CountriesModel {
-        didSet {
-            self.prepareCountriesNetworkService()
-        }
-    }
-    
+    private let countries: CountriesModel
     private let modelObserver = CancellableProperty()
     private let countryObserver = CancellableProperty()
     
@@ -45,6 +40,8 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.title = Constant.countriesTitle
         
         self.rootView?.table?.register(CountriesViewCell.self)
+        
+        self.countriesNetworkService.getCountries(models: self.countries)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

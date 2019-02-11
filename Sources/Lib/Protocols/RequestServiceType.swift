@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RequestServiceType {
+protocol RequestServiceType: Cancellable {
     
     var task: URLSessionTask? { get }
     
