@@ -13,6 +13,7 @@
 		3F3F11A721EF1F4F0055B2D6 /* WeatherNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3F11A621EF1F4F0055B2D6 /* WeatherNetworkService.swift */; };
 		3F41B1E421F8B22700ADE1F7 /* DataFormater+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F41B1E321F8B22700ADE1F7 /* DataFormater+Extensions.swift */; };
 		3F45A3E02211A42500AB4345 /* RequestServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F45A3DF2211A42500AB4345 /* RequestServiceType.swift */; };
+		3F45A3E22211B6B800AB4345 /* StateableNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F45A3E12211B6B800AB4345 /* StateableNetwork.swift */; };
 		3F49438222083AC400B96BE7 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49438122083AC400B96BE7 /* Queue.swift */; };
 		3F4A0063220064B600188C7A /* ObservableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A0062220064B600188C7A /* ObservableWrapper.swift */; };
 		3F4A006522006DC900188C7A /* CountriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A006422006DC900188C7A /* CountriesModel.swift */; };
@@ -86,6 +87,7 @@
 		3F3F11A621EF1F4F0055B2D6 /* WeatherNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNetworkService.swift; sourceTree = "<group>"; };
 		3F41B1E321F8B22700ADE1F7 /* DataFormater+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataFormater+Extensions.swift"; sourceTree = "<group>"; };
 		3F45A3DF2211A42500AB4345 /* RequestServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestServiceType.swift; sourceTree = "<group>"; };
+		3F45A3E12211B6B800AB4345 /* StateableNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateableNetwork.swift; sourceTree = "<group>"; };
 		3F49438122083AC400B96BE7 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		3F4A0062220064B600188C7A /* ObservableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableWrapper.swift; sourceTree = "<group>"; };
 		3F4A006422006DC900188C7A /* CountriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesModel.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 			children = (
 				3F6E6C4F21E736C000DA87F6 /* Cancellable.swift */,
 				3F45A3DF2211A42500AB4345 /* RequestServiceType.swift */,
+				3F45A3E12211B6B800AB4345 /* StateableNetwork.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F45A3E22211B6B800AB4345 /* StateableNetwork.swift in Sources */,
 				3F366F3A21FB0A0200D744AE /* Weather.swift in Sources */,
 				3F76241E21F5E6B700CAB4D0 /* Data+Extensions.swift in Sources */,
 				3F51155821FF027E009EEA23 /* CaseDescribable.swift in Sources */,

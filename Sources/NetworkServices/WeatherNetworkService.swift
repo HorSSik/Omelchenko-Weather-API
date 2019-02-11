@@ -13,7 +13,7 @@ fileprivate struct Constant {
     static let apiKey = "&units=metric&APPID=60cf95f166563b524e17c7573b54d7e3"
 }
 
-class WeatherNetworkService: Cancellable {
+class WeatherNetworkService: Cancellable, StateableNetwork {
     
     public var isCancelled: Bool {
         get {
@@ -21,9 +21,10 @@ class WeatherNetworkService: Cancellable {
         }
     }
     
-    private let requestService: RequestServiceType
+    public var status = NetworkState.idle
     
     private let parser = Parser()
+    private let requestService: RequestServiceType
     
     init(requestService: RequestServiceType) {
         self.requestService = requestService
@@ -37,13 +38,16 @@ class WeatherNetworkService: Cancellable {
         baseUrl
             .flatMap(URL.init)
             .do { url in
+                self.status = .inLoad
                 self.requestService.requestData(url: url) { data, response, error in
                     country.weather = self.parser.weather(data: data)
+                    self.status = .didLoad
                 }
             }
     }
     
     public func cancel() {
         self.requestService.cancel()
+        self.status = .cancelled
     }
 }

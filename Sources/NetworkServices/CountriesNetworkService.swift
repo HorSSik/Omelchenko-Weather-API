@@ -20,9 +20,8 @@ class CountriesNetworkService: Cancellable {
         }
     }
     
-    private let requestService: RequestServiceType
-    
     private let parser = Parser()
+    private let requestService: RequestServiceType
     
     init(requestService: RequestServiceType) {
         self.requestService = requestService

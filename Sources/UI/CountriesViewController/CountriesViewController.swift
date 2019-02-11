@@ -18,8 +18,6 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private let countries: CountriesModel
     private let modelObserver = CancellableProperty()
-    private let countryObserver = CancellableProperty()
-    
     private let countriesNetworkService: CountriesNetworkService
     
     init(model: CountriesModel, countriesNetworkService: CountriesNetworkService) {
