@@ -16,6 +16,8 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     
     typealias RootView = WeatherView
     
+    private var task: NetworkTask?
+    
     private let country: Country
     private let weatherObserver = CancellableProperty()
     private let weatherNetworkService: WeatherNetworkService
@@ -49,11 +51,11 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
         self.weatherObserver.value = country.observer { state in
             switch state {
             case let .weatherDidChange(weather):
-                self.fillView(weather: weather)
+                self.fillView § weather
             }
         }
 
-        self.weatherNetworkService.getWeather(country: country)
+        self.task = self.weatherNetworkService.getWeather(country: country)
     }
     
     private func fillView(weather: Weather?) {

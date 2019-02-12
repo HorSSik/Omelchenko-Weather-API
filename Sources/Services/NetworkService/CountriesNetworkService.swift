@@ -12,13 +12,7 @@ fileprivate struct Constant {
     static let mainUrl = "https://restcountries.eu/rest/v2/all"
 }
 
-class CountriesNetworkService: Cancellable, StateableNetwork {
-    
-    public var isCancelled: Bool {
-        return self.requestService.isCancelled
-    }
-    
-    public var status = NetworkState.idle
+class CountriesNetworkService {
     
     private let parser = Parser()
     private let requestService: RequestServiceType
@@ -27,21 +21,21 @@ class CountriesNetworkService: Cancellable, StateableNetwork {
         self.requestService = requestService
     }
     
-    public func getCountries(models: CountriesModel) {
+    public func getCountries(models: CountriesModel) -> NetworkTask{
         let urlCountry = URL(string: Constant.mainUrl)
         
-        urlCountry.do { url in
-            self.status = .inLoad
-            self.requestService.requestData(url: url) { data, error in
-                let countries = self.parser.countries(data: data)
-                countries.map(models.append)
-                self.status = .didLoad
+        return urlCountry.map { url in
+            self.requestService.requestData(url: url) { result in
+                result.analisys(
+                    success: {
+                        let countries = self.parser.countries(data: $0)
+                        countries.map(models.append)
+                    },
+                    failure: {
+                        print($0.localizedDescription)
+                    }
+                )
             }
-        }
-    }
-    
-    public func cancel() {
-        self.requestService.cancel()
-        self.status = .cancelled
+        } ?? .canceled()
     }
 }

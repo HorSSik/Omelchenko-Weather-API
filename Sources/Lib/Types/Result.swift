@@ -15,27 +15,21 @@ public enum Result<Value, Error: Swift.Error> {
     public var value: Value? {
         return self.analisys(
             success: identity,
-            failure: ignoreInput(returnValue(nil))
+            failure: ignoreInput § returnValue § nil
         )
     }
     
     public var error: Error? {
         return self.analisys(
-            success: ignoreInput(returnValue(nil)),
+            success: ignoreInput § returnValue § nil,
             failure: identity
         )
     }
     
     public init(value: Value?, error: Error?, `default`: Error) {
-        if let value = value {
-            self = .success(value)
-        }
-        
-        if let error = error {
-            self = .failure(error)
-        }
-        
-        self = .failure(`default`)
+        self = value.map(lift)
+            ?? error.map(lift)
+            ?? .failure(`default`)
     }
     
     public func analisys<ReturnType>(
@@ -58,7 +52,7 @@ public enum Result<Value, Error: Swift.Error> {
     {
         return withoutActuallyEscaping(success) { success in
             withoutActuallyEscaping(failure) { failure in
-                self.analisys(success: { lift(success($0)) }, failure: { lift(failure($0)) })
+                self.analisys(success: success • lift, failure: failure • lift)
             }
         }
     }
@@ -87,7 +81,6 @@ public enum Result<Value, Error: Swift.Error> {
     public func flatMapError(_ transform: (Error) -> Result) -> Result {
         return self.biflatMap(success: lift, failure: transform)
     }
-    
 }
 
 fileprivate func lift<Value, Error: Swift.Error>(_ value: Value) -> Result<Value, Error> {

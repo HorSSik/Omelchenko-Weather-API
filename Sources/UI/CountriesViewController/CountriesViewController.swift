@@ -16,6 +16,8 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     typealias RootView = CountriesView
     
+    private var task: NetworkTask?
+    
     private let countries: CountriesModel
     private let modelObserver = CancellableProperty()
     private let countriesNetworkService: CountriesNetworkService
@@ -38,8 +40,6 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.title = Constant.countriesTitle
         
         self.rootView?.table?.register(CountriesViewCell.self)
-        
-        self.countriesNetworkService.getCountries(models: self.countries)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,7 +62,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.deselectRow(at: indexPath, animated: true)
         let country = self.countries[indexPath.row]
         
-        let requestService = RequestService()
+        let requestService = RequestService(session: .init(configuration: .default))
         let weatherNetworkService = WeatherNetworkService(requestService: requestService)
         let weatherController = WeatherViewController(country: country, weatherNetworkService: weatherNetworkService)
 
@@ -70,9 +70,9 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func prepareCountriesNetworkService() {
-        let dataModel = self.countries
+        let model = self.countries
         
-        self.modelObserver.value = dataModel.observer { [weak self] state in
+        self.modelObserver.value = model.observer { [weak self] state in
             switch state {
             case .didAppendCountry: return
             case .didRemoveCountry: return
@@ -80,7 +80,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         
-        self.countriesNetworkService.getCountries(models: dataModel)
+        self.task = self.countriesNetworkService.getCountries(models: model)
     }
     
     private func reloadData() {

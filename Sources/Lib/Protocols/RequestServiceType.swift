@@ -8,9 +8,12 @@
 
 import Foundation
 
-protocol RequestServiceType: Cancellable {
+public enum RequestServiceError: Error {
+    case unknown
+    case failure
+}
+
+protocol RequestServiceType {
     
-    var task: URLSessionTask? { get }
-    
-    func requestData(url: URL, completion: @escaping (Data?, Error?) -> ())
+    func requestData(url: URL, completion: @escaping (Result<Data, RequestServiceError>) -> ()) -> NetworkTask
 }

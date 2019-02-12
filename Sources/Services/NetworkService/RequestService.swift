@@ -8,34 +8,32 @@
 
 import Foundation
 
-public enum RequestServiceError {
-    case unknown
-    case failure
-}
+class RequestService: RequestServiceType {
 
-class RequestService: RequestServiceType, Cancellable {
+    public private(set) var session: URLSession
     
-    public var isCancelled: Bool {
-        return self.cancelled
+    init(session: URLSession) {
+        self.session = session
     }
     
-    private var cancelled = false
-    
-    private(set) var task: URLSessionTask?
-    
-    public func requestData(url: URL, completion: @escaping (Data?, Error?) -> ()) {
-        self.task = URLSession
-            .shared
-            .dataTask(with: url) { (data, response, error) in
-                completion(data, error)
-            }
+    public func requestData(
+        url: URL,
+        completion: @escaping (Result<Data, RequestServiceError>) -> ()
+    )
+        -> NetworkTask
+    {
+        let task = self.session.dataTask(with: url) { (data, response, error) in
+            completion(Result(
+                value: data,
+                error: error.map { _ in .failure },
+                default: .unknown)
+            )
+        }
         
-        self.task?.resume()
-    }
-    
-    public func cancel() {
-        self.cancelled = true
-        self.task?.cancel()
-        self.task = nil
+        defer {
+            task.resume()
+        }
+        
+        return NetworkTask(task: task)
     }
 }
