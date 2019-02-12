@@ -12,13 +12,13 @@ fileprivate struct Constant {
     static let mainUrl = "https://restcountries.eu/rest/v2/all"
 }
 
-class CountriesNetworkService: Cancellable {
+class CountriesNetworkService: Cancellable, StateableNetwork {
     
     public var isCancelled: Bool {
-        get {
-            return self.requestService.isCancelled
-        }
+        return self.requestService.isCancelled
     }
+    
+    public var status = NetworkState.idle
     
     private let parser = Parser()
     private let requestService: RequestServiceType
@@ -31,14 +31,17 @@ class CountriesNetworkService: Cancellable {
         let urlCountry = URL(string: Constant.mainUrl)
         
         urlCountry.do { url in
-            self.requestService.requestData(url: url) { data, response, error in
+            self.status = .inLoad
+            self.requestService.requestData(url: url) { data, error in
                 let countries = self.parser.countries(data: data)
                 countries.map(models.append)
+                self.status = .didLoad
             }
         }
     }
     
     public func cancel() {
         self.requestService.cancel()
+        self.status = .cancelled
     }
 }

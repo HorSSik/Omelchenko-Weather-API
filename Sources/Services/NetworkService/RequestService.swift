@@ -8,30 +8,29 @@
 
 import Foundation
 
+public enum RequestServiceError {
+    case unknown
+    case failure
+}
+
 class RequestService: RequestServiceType, Cancellable {
     
     public var isCancelled: Bool {
-        get {
-            return self.cancelled
-        }
+        return self.cancelled
     }
     
     private var cancelled = false
     
     private(set) var task: URLSessionTask?
     
-    public func requestData(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        var task = self.task
-        
-        task = URLSession
+    public func requestData(url: URL, completion: @escaping (Data?, Error?) -> ()) {
+        self.task = URLSession
             .shared
             .dataTask(with: url) { (data, response, error) in
-                completion(data, response, error)
+                completion(data, error)
             }
         
-        task?.resume()
-        
-        self.task = task
+        self.task?.resume()
     }
     
     public func cancel() {

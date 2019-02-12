@@ -12,5 +12,5 @@ protocol RequestServiceType: Cancellable {
     
     var task: URLSessionTask? { get }
     
-    func requestData(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ())
+    func requestData(url: URL, completion: @escaping (Data?, Error?) -> ())
 }

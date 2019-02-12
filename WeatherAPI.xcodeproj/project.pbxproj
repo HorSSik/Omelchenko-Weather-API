@@ -10,6 +10,7 @@
 		3F2AED1B22047F9200635168 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2AED1A22047F9200635168 /* Parser.swift */; };
 		3F366F3821FB09B200D744AE /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F366F3721FB09B200D744AE /* Country.swift */; };
 		3F366F3A21FB0A0200D744AE /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F366F3921FB0A0200D744AE /* Weather.swift */; };
+		3F39307A2212B637000758CE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3930792212B636000758CE /* Result.swift */; };
 		3F3F11A721EF1F4F0055B2D6 /* WeatherNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3F11A621EF1F4F0055B2D6 /* WeatherNetworkService.swift */; };
 		3F41B1E421F8B22700ADE1F7 /* DataFormater+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F41B1E321F8B22700ADE1F7 /* DataFormater+Extensions.swift */; };
 		3F45A3E02211A42500AB4345 /* RequestServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F45A3DF2211A42500AB4345 /* RequestServiceType.swift */; };
@@ -84,6 +85,7 @@
 		3F2AED1A22047F9200635168 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		3F366F3721FB09B200D744AE /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		3F366F3921FB0A0200D744AE /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		3F3930792212B636000758CE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		3F3F11A621EF1F4F0055B2D6 /* WeatherNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNetworkService.swift; sourceTree = "<group>"; };
 		3F41B1E321F8B22700ADE1F7 /* DataFormater+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataFormater+Extensions.swift"; sourceTree = "<group>"; };
 		3F45A3DF2211A42500AB4345 /* RequestServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestServiceType.swift; sourceTree = "<group>"; };
@@ -203,7 +205,15 @@
 			path = Weather;
 			sourceTree = "<group>";
 		};
-		3F5DEDEE21ECAFA00069BFF0 /* NetworkServices */ = {
+		3F3930782212B50E000758CE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3F5DEDEE21ECAFA00069BFF0 /* NetworkService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3F5DEDEE21ECAFA00069BFF0 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
 				3F2AED1A22047F9200635168 /* Parser.swift */,
@@ -211,7 +221,7 @@
 				3F3F11A621EF1F4F0055B2D6 /* WeatherNetworkService.swift */,
 				3F4D468D21F0C3D000DE5E93 /* CountriesNetworkService.swift */,
 			);
-			path = NetworkServices;
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 		3F6E6BF921E7364800DA87F6 = {
@@ -237,7 +247,7 @@
 		3F6E6C0421E7364800DA87F6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				3F5DEDEE21ECAFA00069BFF0 /* NetworkServices */,
+				3F3930782212B50E000758CE /* Services */,
 				3F6E6C3C21E736C000DA87F6 /* Resources */,
 				3F6E6C6921E7379300DA87F6 /* UI */,
 				3F6E6C0521E7364800DA87F6 /* AppDelegate.swift */,
@@ -282,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				3F6E6C3A21E736C000DA87F6 /* F.swift */,
+				3F3930792212B636000758CE /* Result.swift */,
 				3F49438122083AC400B96BE7 /* Queue.swift */,
 				3F6E6C3B21E736C000DA87F6 /* Atomic.swift */,
 				3F6E6C3621E736C000DA87F6 /* Generator.swift */,
@@ -549,6 +560,7 @@
 				3F51155821FF027E009EEA23 /* CaseDescribable.swift in Sources */,
 				3F76241B21F5CACB00CAB4D0 /* CountriesViewCell.swift in Sources */,
 				3F6E6C5521E736C000DA87F6 /* F.swift in Sources */,
+				3F39307A2212B637000758CE /* Result.swift in Sources */,
 				3F6E6C5C21E736C000DA87F6 /* UIColor+Extensions.swift in Sources */,
 				3F4A0063220064B600188C7A /* ObservableWrapper.swift in Sources */,
 				3F4D468E21F0C3D000DE5E93 /* CountriesNetworkService.swift in Sources */,

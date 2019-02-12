@@ -16,9 +16,7 @@ fileprivate struct Constant {
 class WeatherNetworkService: Cancellable, StateableNetwork {
     
     public var isCancelled: Bool {
-        get {
-            return self.requestService.isCancelled
-        }
+        return self.requestService.isCancelled
     }
     
     public var status = NetworkState.idle
@@ -39,7 +37,7 @@ class WeatherNetworkService: Cancellable, StateableNetwork {
             .flatMap(URL.init)
             .do { url in
                 self.status = .inLoad
-                self.requestService.requestData(url: url) { data, response, error in
+                self.requestService.requestData(url: url) { data, error in
                     country.weather = self.parser.weather(data: data)
                     self.status = .didLoad
                 }
