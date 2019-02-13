@@ -66,7 +66,7 @@ public func toString(_ cls: AnyClass) -> String {
     return String(describing: cls)
 }
 
-func performOnMain(execute: @escaping F.VoidCompletion) {
+func performOnMain(_ execute: @escaping F.VoidCompletion) {
     DispatchQueue.main.async(execute: execute)
 }
 

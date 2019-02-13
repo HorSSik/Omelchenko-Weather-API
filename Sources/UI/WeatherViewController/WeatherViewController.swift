@@ -55,7 +55,7 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
             }
         }
 
-        self.task = self.weatherNetworkService.getWeather(country: country)
+        self.task = self.weatherNetworkService.getWeather § country
     }
     
     private func fillView(weather: Weather?) {

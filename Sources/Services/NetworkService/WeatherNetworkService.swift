@@ -23,9 +23,8 @@ class WeatherNetworkService {
     }
     
     public func getWeather(country: Country) -> NetworkTask {
-        let capital = country.capital
-        let convertUrl = capital.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let baseUrl = convertUrl.map { Constant.mainUrl + $0 + Constant.apiKey}
+        let convertUrl = country.capital.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let baseUrl = convertUrl.map { Constant.mainUrl + $0 + Constant.apiKey }
         
         return baseUrl
             .flatMap(URL.init)
@@ -33,7 +32,10 @@ class WeatherNetworkService {
                 self.requestService.requestData(url: url) { result in
                     result.analisys(
                         success: {
-                            country.weather = self.parser.weather(data: $0)
+                            let weather = self.parser.weather(data: $0)
+                            weather.mapValue {
+                                country.weather = $0
+                            }
                         },
                         failure: {
                             print($0.localizedDescription)

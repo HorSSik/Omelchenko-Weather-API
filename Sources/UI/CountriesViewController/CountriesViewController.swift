@@ -17,7 +17,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     typealias RootView = CountriesView
     
     private var task: NetworkTask?
-    
+
     private let countries: CountriesModel
     private let modelObserver = CancellableProperty()
     private let countriesNetworkService: CountriesNetworkService
@@ -62,8 +62,8 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.deselectRow(at: indexPath, animated: true)
         let country = self.countries[indexPath.row]
         
-        let requestService = RequestService(session: .init(configuration: .default))
-        let weatherNetworkService = WeatherNetworkService(requestService: requestService)
+        let requestService = RequestService.init § .init(configuration: .default)
+        let weatherNetworkService = WeatherNetworkService.init § requestService
         let weatherController = WeatherViewController(country: country, weatherNetworkService: weatherNetworkService)
 
         self.navigationController?.pushViewController(weatherController, animated: true)
@@ -80,7 +80,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         
-        self.task = self.countriesNetworkService.getCountries(models: model)
+        self.task = self.countriesNetworkService.getCountries § model
     }
     
     private func reloadData() {

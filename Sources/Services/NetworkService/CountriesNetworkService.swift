@@ -21,7 +21,7 @@ class CountriesNetworkService {
         self.requestService = requestService
     }
     
-    public func getCountries(models: CountriesModel) -> NetworkTask{
+    public func getCountries(models: CountriesModel) -> NetworkTask {
         let urlCountry = URL(string: Constant.mainUrl)
         
         return urlCountry.map { url in
@@ -29,7 +29,7 @@ class CountriesNetworkService {
                 result.analisys(
                     success: {
                         let countries = self.parser.countries(data: $0)
-                        countries.map(models.append)
+                        countries.mapValue(models.append)
                     },
                     failure: {
                         print($0.localizedDescription)

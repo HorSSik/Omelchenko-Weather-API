@@ -32,7 +32,6 @@ public func <| <A, B>(f: (A) -> B, value: A) -> B {
     return f § value
 }
 
-
 precedencegroup LeftFunctionApplicationPrecedence {
     associativity: left
     higherThan: AssignmentPrecedence

@@ -8,21 +8,25 @@
 
 import Foundation
 
+public enum ParserError: Error {
+    case unknown
+    case jsonConvertFailure
+}
+
 class Parser {
     
-    public func countries(data: Data?) -> [Country]? {
-        return self.json(data: data)
-            .map(self.countries)
+    typealias ParserResult<Value> = Result<Value, ParserError>
+    
+    public func countries(data: Data) -> ParserResult<[Country]> {
+        return self.json(from: data).mapValue(self.countries)
     }
     
-    public func country(data: Data?) -> Country? {
-        return self.json(data: data)
-            .map(self.country)
+    public func country(data: Data) -> ParserResult<Country> {
+        return self.json(from: data).mapValue(self.country)
     }
     
-    public func weather(data: Data?) -> Weather? {
-        return self.json(data: data)
-            .map(self.weather)
+    public func weather(data: Data) -> ParserResult<Weather> {
+        return self.json(from: data).mapValue(self.weather)
     }
     
     private func countries(json: [CountryJSON]) -> [Country] {
@@ -51,7 +55,9 @@ class Parser {
         )
     }
     
-    private func json<Value: Decodable>(data: Data?) -> Value? {
-        return data.flatMap { try? JSONDecoder().decode(Value.self, from: $0) }
+    private func json<Value: Decodable>(from data: Data?) -> ParserResult<Value> {
+        let value = data.flatMap { try? JSONDecoder().decode(Value.self, from: $0) }
+        
+        return Result(value: value, error: .jsonConvertFailure, default: .unknown)
     }
 }

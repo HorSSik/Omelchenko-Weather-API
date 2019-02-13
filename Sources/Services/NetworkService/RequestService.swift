@@ -23,10 +23,10 @@ class RequestService: RequestServiceType {
         -> NetworkTask
     {
         let task = self.session.dataTask(with: url) { (data, response, error) in
-            completion(Result(
+            completion § Result(
                 value: data,
-                error: error.map { _ in .failure },
-                default: .unknown)
+                error: error.map(ignoreInput § returnValue § .failure),
+                default: .unknown
             )
         }
         
