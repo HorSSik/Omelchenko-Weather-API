@@ -26,7 +26,7 @@ class RequestService: RequestServiceType {
         }
         
         defer {
-            request.resume()
+            request.task?.resume()
         }
         
         return request.task.map(NetworkTask.init) ?? .canceled()
