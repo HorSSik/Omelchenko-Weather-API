@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 fileprivate struct Constant {
     static let countriesTitle = "Country and capital"
@@ -62,7 +63,7 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.deselectRow(at: indexPath, animated: true)
         let country = self.countries[indexPath.row]
         
-        let requestService = RequestService.init § .init(configuration: .default)
+        let requestService = RequestService()
         let weatherNetworkService = WeatherNetworkService.init § requestService
         let weatherController = WeatherViewController(country: country, weatherNetworkService: weatherNetworkService)
 

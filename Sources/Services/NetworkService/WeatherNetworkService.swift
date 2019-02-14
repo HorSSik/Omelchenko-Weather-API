@@ -33,9 +33,7 @@ class WeatherNetworkService {
                     result.analisys(
                         success: {
                             let weather = self.parser.weather(data: $0)
-                            weather.mapValue {
-                                country.weather = $0
-                            }
+                            weather.value.do { country.weather = $0 }
                         },
                         failure: {
                             print($0.localizedDescription)

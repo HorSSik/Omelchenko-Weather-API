@@ -29,7 +29,7 @@ class CountriesNetworkService {
                 result.analisys(
                     success: {
                         let countries = self.parser.countries(data: $0)
-                        countries.mapValue(models.append)
+                        countries.value.do(models.append)
                     },
                     failure: {
                         print($0.localizedDescription)

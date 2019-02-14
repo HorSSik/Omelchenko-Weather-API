@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 public enum RequestServiceError: Error {
     case unknown

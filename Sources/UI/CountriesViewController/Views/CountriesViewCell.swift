@@ -46,9 +46,7 @@ class CountriesViewCell: TableViewCell {
         self.countryObserver.value = self.model?.observer { event in
             switch event {
             case .weatherDidChange(_):
-                performOnMain {
-                    self.fill()
-                }
+                performOnMain(self.fill)
                 
                 self.completion?(.cellNeedUpdate)
             }

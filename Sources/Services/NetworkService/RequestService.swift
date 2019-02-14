@@ -7,33 +7,28 @@
 //
 
 import Foundation
+import Alamofire
 
 class RequestService: RequestServiceType {
 
-    public private(set) var session: URLSession
-    
-    init(session: URLSession) {
-        self.session = session
-    }
-    
     public func requestData(
         url: URL,
         completion: @escaping (Result<Data, RequestServiceError>) -> ()
     )
         -> NetworkTask
     {
-        let task = self.session.dataTask(with: url) { (data, response, error) in
+        let request = Alamofire.request(url).response { response in
             completion § Result(
-                value: data,
-                error: error.map(ignoreInput § returnValue § .failure),
+                value: response.data,
+                error: response.error.map(ignoreInput § returnValue § .failure),
                 default: .unknown
             )
         }
         
         defer {
-            task.resume()
+            request.resume()
         }
         
-        return NetworkTask(task: task)
+        return request.task.map(NetworkTask.init) ?? .canceled()
     }
 }

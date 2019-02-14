@@ -19,8 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     )
         -> Bool
     {
-        let requestService = RequestService.init § .init(configuration: .default)
-        let countriesNetworkService = CountriesNetworkService.init § requestService
+        let countriesNetworkService = CountriesNetworkService.init § RequestService()
         let dataModel = CountriesModel()
 
         let rootViewController = CountriesViewController(
