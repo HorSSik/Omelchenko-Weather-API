@@ -23,11 +23,16 @@ public func cast<Value, Result>(_ castType: Value) -> Result? {
     return castType as? Result
 }
 
-func side<Value>(value: Value, f: (Value) -> ()) -> Value {
-    let muttableValue = value
-    f(muttableValue)
-    
-    return muttableValue
+public func sideEffect<Value>(_ action: @escaping (Value) -> ()) -> (Value) -> Value {
+    return {
+        action($0)
+        
+        return $0
+    }
+}
+
+public func call<Value>(_ action: () -> Value) -> Value {
+    return action()
 }
 
 public func identity<Value>(_ value: Value) -> Value {
@@ -76,4 +81,11 @@ func stringWithUnit(value: CustomStringConvertible?, unit: Unit) -> String {
 
 func stringWithDegrees(value: CustomStringConvertible?) -> String {
     return stringWithUnit(value: value, unit: .degrees)
+}
+
+public func modify<Value>(_ value: Value, action: (inout Value) -> ()) -> Value {
+    var result = value
+    action(&result)
+    
+    return result
 }

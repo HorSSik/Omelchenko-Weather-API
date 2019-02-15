@@ -17,6 +17,9 @@
 		3F39307E22131FC3000758CE /* NetworkTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F39307D22131FC3000758CE /* NetworkTask.swift */; };
 		3F393080221322D3000758CE /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F39307F221322D3000758CE /* Operators.swift */; };
 		3F3F11A721EF1F4F0055B2D6 /* WeatherNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3F11A621EF1F4F0055B2D6 /* WeatherNetworkService.swift */; };
+		3F4112D122170119006662C7 /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4112D022170119006662C7 /* ID.swift */; };
+		3F4112D5221702FB006662C7 /* IDProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4112D4221702FB006662C7 /* IDProvider.swift */; };
+		3F4112D722170399006662C7 /* IDAutoincrementedInMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4112D622170399006662C7 /* IDAutoincrementedInMemory.swift */; };
 		3F41B1E421F8B22700ADE1F7 /* DataFormater+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F41B1E321F8B22700ADE1F7 /* DataFormater+Extensions.swift */; };
 		3F45A3E02211A42500AB4345 /* RequestServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F45A3DF2211A42500AB4345 /* RequestServiceType.swift */; };
 		3F45A3E22211B6B800AB4345 /* StateableNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F45A3E12211B6B800AB4345 /* StateableNetwork.swift */; };
@@ -63,6 +66,10 @@
 		3F6E6C7021E74EEC00DA87F6 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E6C6E21E74EEC00DA87F6 /* CountriesViewController.swift */; };
 		3F6E6C7121E74EEC00DA87F6 /* CountriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6E6C6F21E74EEC00DA87F6 /* CountriesViewController.xib */; };
 		3F6E6C7321E74F2000DA87F6 /* CountriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E6C7221E74F2000DA87F6 /* CountriesView.swift */; };
+		3F6F8D3B221593AA00A27BEF /* Realm+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6F8D3A221593AA00A27BEF /* Realm+Extensions.swift */; };
+		3F6F8D3D22159E1600A27BEF /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6F8D3C22159E1600A27BEF /* WeakBox.swift */; };
+		3F6F8D402215BE5A00A27BEF /* RLMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6F8D3F2215BE5A00A27BEF /* RLMModel.swift */; };
+		3F6F8D422215BE6500A27BEF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6F8D412215BE6500A27BEF /* Model.swift */; };
 		3F76241B21F5CACB00CAB4D0 /* CountriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76241921F5CACB00CAB4D0 /* CountriesViewCell.swift */; };
 		3F76241C21F5CACB00CAB4D0 /* CountriesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F76241A21F5CACB00CAB4D0 /* CountriesViewCell.xib */; };
 		3F76241E21F5E6B700CAB4D0 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76241D21F5E6B700CAB4D0 /* Data+Extensions.swift */; };
@@ -97,6 +104,9 @@
 		3F39307D22131FC3000758CE /* NetworkTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTask.swift; sourceTree = "<group>"; };
 		3F39307F221322D3000758CE /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		3F3F11A621EF1F4F0055B2D6 /* WeatherNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNetworkService.swift; sourceTree = "<group>"; };
+		3F4112D022170119006662C7 /* ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID.swift; sourceTree = "<group>"; };
+		3F4112D4221702FB006662C7 /* IDProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDProvider.swift; sourceTree = "<group>"; };
+		3F4112D622170399006662C7 /* IDAutoincrementedInMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDAutoincrementedInMemory.swift; sourceTree = "<group>"; };
 		3F41B1E321F8B22700ADE1F7 /* DataFormater+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataFormater+Extensions.swift"; sourceTree = "<group>"; };
 		3F45A3DF2211A42500AB4345 /* RequestServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestServiceType.swift; sourceTree = "<group>"; };
 		3F45A3E12211B6B800AB4345 /* StateableNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateableNetwork.swift; sourceTree = "<group>"; };
@@ -149,6 +159,10 @@
 		3F6E6C6E21E74EEC00DA87F6 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
 		3F6E6C6F21E74EEC00DA87F6 /* CountriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountriesViewController.xib; sourceTree = "<group>"; };
 		3F6E6C7221E74F2000DA87F6 /* CountriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesView.swift; sourceTree = "<group>"; };
+		3F6F8D3A221593AA00A27BEF /* Realm+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extensions.swift"; sourceTree = "<group>"; };
+		3F6F8D3C22159E1600A27BEF /* WeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
+		3F6F8D3F2215BE5A00A27BEF /* RLMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLMModel.swift; sourceTree = "<group>"; };
+		3F6F8D412215BE6500A27BEF /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3F76241921F5CACB00CAB4D0 /* CountriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewCell.swift; sourceTree = "<group>"; };
 		3F76241A21F5CACB00CAB4D0 /* CountriesViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountriesViewCell.xib; sourceTree = "<group>"; };
 		3F76241D21F5E6B700CAB4D0 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
@@ -234,6 +248,27 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		3F4112D2221702A1006662C7 /* ID */ = {
+			isa = PBXGroup;
+			children = (
+				3F4112D022170119006662C7 /* ID.swift */,
+				3F4112D4221702FB006662C7 /* IDProvider.swift */,
+				3F4112D622170399006662C7 /* IDAutoincrementedInMemory.swift */,
+			);
+			path = ID;
+			sourceTree = "<group>";
+		};
+		3F4112D3221702AF006662C7 /* Observer */ = {
+			isa = PBXGroup;
+			children = (
+				3F4A0062220064B600188C7A /* ObservableWrapper.swift */,
+				3F6E6C3721E736C000DA87F6 /* ObservableObject.swift */,
+				3F6E6C3521E736C000DA87F6 /* ObservableObject.Observers.swift */,
+				3F6E6C3921E736C000DA87F6 /* ObservableObject.Observer.swift */,
+			);
+			path = Observer;
+			sourceTree = "<group>";
+		};
 		3F5DEDEE21ECAFA00069BFF0 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,17 +350,16 @@
 		3F6E6C3421E736C000DA87F6 /* Types */ = {
 			isa = PBXGroup;
 			children = (
-				3F4A0062220064B600188C7A /* ObservableWrapper.swift */,
-				3F6E6C3721E736C000DA87F6 /* ObservableObject.swift */,
-				3F6E6C3521E736C000DA87F6 /* ObservableObject.Observers.swift */,
-				3F6E6C3921E736C000DA87F6 /* ObservableObject.Observer.swift */,
-				3F6E6C3A21E736C000DA87F6 /* F.swift */,
+				3F6E6C3821E736C000DA87F6 /* AbstractCancellableProperty.swift */,
 				3F39307F221322D3000758CE /* Operators.swift */,
 				3F3930792212B636000758CE /* Result.swift */,
 				3F49438122083AC400B96BE7 /* Queue.swift */,
 				3F6E6C3B21E736C000DA87F6 /* Atomic.swift */,
 				3F6E6C3621E736C000DA87F6 /* Generator.swift */,
-				3F6E6C3821E736C000DA87F6 /* AbstractCancellableProperty.swift */,
+				3F6F8D3C22159E1600A27BEF /* WeakBox.swift */,
+				3F6E6C3A21E736C000DA87F6 /* F.swift */,
+				3F4112D3221702AF006662C7 /* Observer */,
+				3F4112D2221702A1006662C7 /* ID */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -354,6 +388,7 @@
 		3F6E6C4121E736C000DA87F6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3F6F8D392215939600A27BEF /* RealmSwift */,
 				3F6E6C4221E736C000DA87F6 /* CoreGraphics */,
 				3F6E6C4421E736C000DA87F6 /* UIKit */,
 				3F6E6C4721E736C000DA87F6 /* Foundation */,
@@ -409,6 +444,7 @@
 		3F6E6C6421E736CC00DA87F6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3F6F8D3E2215BE4000A27BEF /* Abstract */,
 				3F30F2FE2209EBBE0033A184 /* Weather */,
 				3F30F2FD2209EBB80033A184 /* Country */,
 				3F4A006422006DC900188C7A /* CountriesModel.swift */,
@@ -445,6 +481,23 @@
 				3F6E6C6F21E74EEC00DA87F6 /* CountriesViewController.xib */,
 			);
 			path = CountriesViewController;
+			sourceTree = "<group>";
+		};
+		3F6F8D392215939600A27BEF /* RealmSwift */ = {
+			isa = PBXGroup;
+			children = (
+				3F6F8D3A221593AA00A27BEF /* Realm+Extensions.swift */,
+			);
+			path = RealmSwift;
+			sourceTree = "<group>";
+		};
+		3F6F8D3E2215BE4000A27BEF /* Abstract */ = {
+			isa = PBXGroup;
+			children = (
+				3F6F8D3F2215BE5A00A27BEF /* RLMModel.swift */,
+				3F6F8D412215BE6500A27BEF /* Model.swift */,
+			);
+			path = Abstract;
 			sourceTree = "<group>";
 		};
 		4167CFBCA487F767482044D1 /* Frameworks */ = {
@@ -707,15 +760,18 @@
 				3F76241E21F5E6B700CAB4D0 /* Data+Extensions.swift in Sources */,
 				3F51155821FF027E009EEA23 /* CaseDescribable.swift in Sources */,
 				3F76241B21F5CACB00CAB4D0 /* CountriesViewCell.swift in Sources */,
+				3F6F8D3B221593AA00A27BEF /* Realm+Extensions.swift in Sources */,
 				3F6E6C5521E736C000DA87F6 /* F.swift in Sources */,
 				3F39307A2212B637000758CE /* Result.swift in Sources */,
 				3F6E6C5C21E736C000DA87F6 /* UIColor+Extensions.swift in Sources */,
 				3F4A0063220064B600188C7A /* ObservableWrapper.swift in Sources */,
+				3F6F8D3D22159E1600A27BEF /* WeakBox.swift in Sources */,
 				3F4D468E21F0C3D000DE5E93 /* CountriesNetworkService.swift in Sources */,
 				3F6E6C5B21E736C000DA87F6 /* UIButton+Extensions.swift in Sources */,
 				3F39307E22131FC3000758CE /* NetworkTask.swift in Sources */,
 				3F6E6C6021E736C000DA87F6 /* Optional+Extensions.swift in Sources */,
 				3F6E6C5921E736C000DA87F6 /* RootViewRepresentable.swift in Sources */,
+				3F4112D722170399006662C7 /* IDAutoincrementedInMemory.swift in Sources */,
 				3F45A3E02211A42500AB4345 /* RequestServiceType.swift in Sources */,
 				3F5DEDF621ECBE440069BFF0 /* UINid+Extensions.swift in Sources */,
 				3F2AED1B22047F9200635168 /* Parser.swift in Sources */,
@@ -725,11 +781,15 @@
 				3F6E6C5421E736C000DA87F6 /* ObservableObject.Observer.swift in Sources */,
 				3F6E6C6121E736C000DA87F6 /* Strideable+Extensions.swift in Sources */,
 				3F5DEDF421ECBE1E0069BFF0 /* UITableView+Extensions.swift in Sources */,
+				3F4112D5221702FB006662C7 /* IDProvider.swift in Sources */,
 				3F4A006522006DC900188C7A /* CountriesModel.swift in Sources */,
 				3F39307C22131D88000758CE /* NetworkTask+Extensions.swift in Sources */,
 				3F6E6C7321E74F2000DA87F6 /* CountriesView.swift in Sources */,
 				3F6E6C5721E736C000DA87F6 /* Color.swift in Sources */,
+				3F6F8D402215BE5A00A27BEF /* RLMModel.swift in Sources */,
+				3F6F8D422215BE6500A27BEF /* Model.swift in Sources */,
 				3F76242021F60D0100CAB4D0 /* Unit.swift in Sources */,
+				3F4112D122170119006662C7 /* ID.swift in Sources */,
 				3F6E6C5221E736C000DA87F6 /* ObservableObject.swift in Sources */,
 				3F393080221322D3000758CE /* Operators.swift in Sources */,
 				3F6E6C7021E74EEC00DA87F6 /* CountriesViewController.swift in Sources */,

@@ -8,6 +8,9 @@
 
 import UIKit
 
+import RealmSwift
+import Realm
+
 fileprivate struct Constant {
     static let mainUrl = "https://restcountries.eu/rest/v2/all"
 }
@@ -36,6 +39,7 @@ class CountriesNetworkService {
                     }
                 )
             }
-        } ?? .canceled()
+        }
+        ?? .canceled()
     }
 }

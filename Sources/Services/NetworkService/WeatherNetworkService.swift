@@ -40,6 +40,7 @@ class WeatherNetworkService {
                         }
                     )
                 }
-            } ?? .canceled()
+            }
+            ?? .canceled()
     }
 }
