@@ -14,12 +14,28 @@ public class Model<Storage: RLMModel> {
     
     public typealias StorageType = Storage
     
-    public static func instantiate(storage: StorageType) -> Self {
-        return self.init(id: storage.id)
+    public static func instantiate(storage: StorageType?) -> Self? {
+        let id = storage?.id
+        
+        return id
+            .flatMap { $0.split(separator: "_").first }
+            .flatMap { ID(string: String($0)) }
+            .map { self.init($0) }
+    }
+    
+    private var isInWriteTransaction = false
+    private var isInReadTransaction = false
+    
+    public let id: ID
+    
+    private let lock: NSLocking = NSRecursiveLock()
+    
+    public var storageId: String {
+        return "\(self.id)_\(typeString(self).lowercased())"
     }
     
     public var storage: StorageType {
-        let id = self.id
+        let id = self.storage.id
         
         return Realm.current?.object(ofType: StorageType.self, forPrimaryKey: self.id)
             ?? modify(StorageType()) { storage in
@@ -28,17 +44,14 @@ public class Model<Storage: RLMModel> {
             }
     }
     
-    private var isInWriteTransaction = false
-    private var isInReadTransaction = false
-    
-    public let id: String
-    
-    private let lock: NSLocking = NSRecursiveLock()
-    
-    public required init(id: String) {
+    public required init(_ id: ID) {
         self.id = id
         
         self.configure()
+    }
+    
+    public convenience init(_ id: Int) {
+        self.init(ID(id))
     }
     
     public func read() {

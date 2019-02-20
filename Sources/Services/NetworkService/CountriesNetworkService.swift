@@ -9,19 +9,22 @@
 import UIKit
 
 import RealmSwift
-import Realm
 
 fileprivate struct Constant {
     static let mainUrl = "https://restcountries.eu/rest/v2/all"
 }
 
-class CountriesNetworkService {
+class CountriesNetworkService<DataBaseServise: DataBaseServiseType>
+    where DataBaseServise.Model == RLMCountry
+{
     
     private let parser = Parser()
     private let requestService: RequestServiceType
+    private let dataBaseService: DataBaseServise
     
-    init(requestService: RequestServiceType) {
+    init(requestService: RequestServiceType, dataBaseService: DataBaseServise) {
         self.requestService = requestService
+        self.dataBaseService = dataBaseService
     }
     
     public func getCountries(models: CountriesModel) -> NetworkTask {
@@ -32,14 +35,34 @@ class CountriesNetworkService {
                 result.analisys(
                     success: {
                         let countries = self.parser.countries(data: $0)
-                        countries.value.do(models.append)
+                        countries.analisys(
+                            success: { value in
+                                models.append(countries: value)
+                                countries.value?.forEach {
+                                    self.dataBaseService.add § RLMCountry.init § $0
+                                }
+                            },
+                            failure: {
+                                self.fill(models: models)
+                                print($0.localizedDescription)
+                            }
+                        )
                     },
                     failure: {
+                        self.fill(models: models)
                         print($0.localizedDescription)
                     }
                 )
             }
         }
         ?? .canceled()
+    }
+    
+    private func fill(models: CountriesModel) {
+        let countries = self.dataBaseService.read()?.map {
+            Country(name: $0.name, capital: $0.capital)
+        }
+        
+        countries.do(models.append)
     }
 }

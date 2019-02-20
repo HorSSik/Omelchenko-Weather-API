@@ -16,10 +16,11 @@
 		3F39307C22131D88000758CE /* NetworkTask+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F39307B22131D88000758CE /* NetworkTask+Extensions.swift */; };
 		3F39307E22131FC3000758CE /* NetworkTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F39307D22131FC3000758CE /* NetworkTask.swift */; };
 		3F393080221322D3000758CE /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F39307F221322D3000758CE /* Operators.swift */; };
+		3F3998A8221D47D400C2D952 /* RLMWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3998A7221D47D400C2D952 /* RLMWeather.swift */; };
+		3F3998AA221D664900C2D952 /* WeatherRealmDataBaseServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3998A9221D664900C2D952 /* WeatherRealmDataBaseServise.swift */; };
 		3F3F11A721EF1F4F0055B2D6 /* WeatherNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3F11A621EF1F4F0055B2D6 /* WeatherNetworkService.swift */; };
 		3F4112D122170119006662C7 /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4112D022170119006662C7 /* ID.swift */; };
 		3F4112D5221702FB006662C7 /* IDProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4112D4221702FB006662C7 /* IDProvider.swift */; };
-		3F4112D722170399006662C7 /* IDAutoincrementedInMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4112D622170399006662C7 /* IDAutoincrementedInMemory.swift */; };
 		3F41B1E421F8B22700ADE1F7 /* DataFormater+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F41B1E321F8B22700ADE1F7 /* DataFormater+Extensions.swift */; };
 		3F45A3E02211A42500AB4345 /* RequestServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F45A3DF2211A42500AB4345 /* RequestServiceType.swift */; };
 		3F45A3E22211B6B800AB4345 /* StateableNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F45A3E12211B6B800AB4345 /* StateableNetwork.swift */; };
@@ -28,6 +29,9 @@
 		3F4A006522006DC900188C7A /* CountriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A006422006DC900188C7A /* CountriesModel.swift */; };
 		3F4D468E21F0C3D000DE5E93 /* CountriesNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4D468D21F0C3D000DE5E93 /* CountriesNetworkService.swift */; };
 		3F51155821FF027E009EEA23 /* CaseDescribable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51155721FF027E009EEA23 /* CaseDescribable.swift */; };
+		3F5A5890221AC6E1009848D7 /* RLMCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5A588F221AC6E1009848D7 /* RLMCountry.swift */; };
+		3F5A5896221ACCD0009848D7 /* CountryRealmDataBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5A5895221ACCD0009848D7 /* CountryRealmDataBaseService.swift */; };
+		3F5A5898221ADB09009848D7 /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5A5897221ADB09009848D7 /* RealmProvider.swift */; };
 		3F5DEDE921EC92B80069BFF0 /* CountryJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDE821EC92B80069BFF0 /* CountryJSON.swift */; };
 		3F5DEDEB21EC92E80069BFF0 /* WeatherJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDEA21EC92E80069BFF0 /* WeatherJSON.swift */; };
 		3F5DEDF021ECAFB40069BFF0 /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDEF21ECAFB40069BFF0 /* RequestService.swift */; };
@@ -35,6 +39,10 @@
 		3F5DEDF421ECBE1E0069BFF0 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDF321ECBE1E0069BFF0 /* UITableView+Extensions.swift */; };
 		3F5DEDF621ECBE440069BFF0 /* UINid+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DEDF521ECBE440069BFF0 /* UINid+Extensions.swift */; };
 		3F68551121E8DA7F0008AD60 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68551021E8DA7F0008AD60 /* Emoji.swift */; };
+		3F697E4C221C4A740044CB25 /* CountriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F697E4B221C4A740044CB25 /* CountriesViewController.xib */; };
+		3F697E4E221C4BB80044CB25 /* CountriesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F697E4D221C4BB80044CB25 /* CountriesViewCell.xib */; };
+		3F697E50221C4E9C0044CB25 /* DataBaseProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F697E4F221C4E9C0044CB25 /* DataBaseProviderType.swift */; };
+		3F697E52221C4EBB0044CB25 /* DataBaseServiseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F697E51221C4EBB0044CB25 /* DataBaseServiseType.swift */; };
 		3F6E6C0621E7364800DA87F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E6C0521E7364800DA87F6 /* AppDelegate.swift */; };
 		3F6E6C0D21E7364900DA87F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F6E6C0C21E7364900DA87F6 /* Assets.xcassets */; };
 		3F6E6C1021E7364900DA87F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6E6C0E21E7364900DA87F6 /* LaunchScreen.storyboard */; };
@@ -64,14 +72,12 @@
 		3F6E6C6821E7378000DA87F6 /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6E6C6621E7378000DA87F6 /* WeatherViewController.xib */; };
 		3F6E6C6C21E737F400DA87F6 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E6C6B21E737F400DA87F6 /* WeatherView.swift */; };
 		3F6E6C7021E74EEC00DA87F6 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E6C6E21E74EEC00DA87F6 /* CountriesViewController.swift */; };
-		3F6E6C7121E74EEC00DA87F6 /* CountriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6E6C6F21E74EEC00DA87F6 /* CountriesViewController.xib */; };
 		3F6E6C7321E74F2000DA87F6 /* CountriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E6C7221E74F2000DA87F6 /* CountriesView.swift */; };
 		3F6F8D3B221593AA00A27BEF /* Realm+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6F8D3A221593AA00A27BEF /* Realm+Extensions.swift */; };
 		3F6F8D3D22159E1600A27BEF /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6F8D3C22159E1600A27BEF /* WeakBox.swift */; };
 		3F6F8D402215BE5A00A27BEF /* RLMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6F8D3F2215BE5A00A27BEF /* RLMModel.swift */; };
 		3F6F8D422215BE6500A27BEF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6F8D412215BE6500A27BEF /* Model.swift */; };
 		3F76241B21F5CACB00CAB4D0 /* CountriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76241921F5CACB00CAB4D0 /* CountriesViewCell.swift */; };
-		3F76241C21F5CACB00CAB4D0 /* CountriesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F76241A21F5CACB00CAB4D0 /* CountriesViewCell.xib */; };
 		3F76241E21F5E6B700CAB4D0 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76241D21F5E6B700CAB4D0 /* Data+Extensions.swift */; };
 		3F76242021F60D0100CAB4D0 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76241F21F60D0100CAB4D0 /* Unit.swift */; };
 		57E4E7D07130410BE48466F0 /* Pods_WeatherAPIUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B38E864A7631F18590F2E4B /* Pods_WeatherAPIUITests.framework */; };
@@ -103,10 +109,11 @@
 		3F39307B22131D88000758CE /* NetworkTask+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkTask+Extensions.swift"; sourceTree = "<group>"; };
 		3F39307D22131FC3000758CE /* NetworkTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTask.swift; sourceTree = "<group>"; };
 		3F39307F221322D3000758CE /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		3F3998A7221D47D400C2D952 /* RLMWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLMWeather.swift; sourceTree = "<group>"; };
+		3F3998A9221D664900C2D952 /* WeatherRealmDataBaseServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRealmDataBaseServise.swift; sourceTree = "<group>"; };
 		3F3F11A621EF1F4F0055B2D6 /* WeatherNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNetworkService.swift; sourceTree = "<group>"; };
 		3F4112D022170119006662C7 /* ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID.swift; sourceTree = "<group>"; };
 		3F4112D4221702FB006662C7 /* IDProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDProvider.swift; sourceTree = "<group>"; };
-		3F4112D622170399006662C7 /* IDAutoincrementedInMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDAutoincrementedInMemory.swift; sourceTree = "<group>"; };
 		3F41B1E321F8B22700ADE1F7 /* DataFormater+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataFormater+Extensions.swift"; sourceTree = "<group>"; };
 		3F45A3DF2211A42500AB4345 /* RequestServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestServiceType.swift; sourceTree = "<group>"; };
 		3F45A3E12211B6B800AB4345 /* StateableNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateableNetwork.swift; sourceTree = "<group>"; };
@@ -115,6 +122,9 @@
 		3F4A006422006DC900188C7A /* CountriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesModel.swift; sourceTree = "<group>"; };
 		3F4D468D21F0C3D000DE5E93 /* CountriesNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesNetworkService.swift; sourceTree = "<group>"; };
 		3F51155721FF027E009EEA23 /* CaseDescribable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseDescribable.swift; sourceTree = "<group>"; };
+		3F5A588F221AC6E1009848D7 /* RLMCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLMCountry.swift; sourceTree = "<group>"; };
+		3F5A5895221ACCD0009848D7 /* CountryRealmDataBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryRealmDataBaseService.swift; sourceTree = "<group>"; };
+		3F5A5897221ADB09009848D7 /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
 		3F5DEDE821EC92B80069BFF0 /* CountryJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryJSON.swift; sourceTree = "<group>"; };
 		3F5DEDEA21EC92E80069BFF0 /* WeatherJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherJSON.swift; sourceTree = "<group>"; };
 		3F5DEDEF21ECAFB40069BFF0 /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
@@ -122,6 +132,10 @@
 		3F5DEDF321ECBE1E0069BFF0 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		3F5DEDF521ECBE440069BFF0 /* UINid+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINid+Extensions.swift"; sourceTree = "<group>"; };
 		3F68551021E8DA7F0008AD60 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		3F697E4B221C4A740044CB25 /* CountriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountriesViewController.xib; sourceTree = "<group>"; };
+		3F697E4D221C4BB80044CB25 /* CountriesViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountriesViewCell.xib; sourceTree = "<group>"; };
+		3F697E4F221C4E9C0044CB25 /* DataBaseProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseProviderType.swift; sourceTree = "<group>"; };
+		3F697E51221C4EBB0044CB25 /* DataBaseServiseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseServiseType.swift; sourceTree = "<group>"; };
 		3F6E6C0221E7364800DA87F6 /* WeatherAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6E6C0521E7364800DA87F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F6E6C0C21E7364900DA87F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -157,14 +171,12 @@
 		3F6E6C6621E7378000DA87F6 /* WeatherViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherViewController.xib; sourceTree = "<group>"; };
 		3F6E6C6B21E737F400DA87F6 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		3F6E6C6E21E74EEC00DA87F6 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
-		3F6E6C6F21E74EEC00DA87F6 /* CountriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountriesViewController.xib; sourceTree = "<group>"; };
 		3F6E6C7221E74F2000DA87F6 /* CountriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesView.swift; sourceTree = "<group>"; };
 		3F6F8D3A221593AA00A27BEF /* Realm+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extensions.swift"; sourceTree = "<group>"; };
 		3F6F8D3C22159E1600A27BEF /* WeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
 		3F6F8D3F2215BE5A00A27BEF /* RLMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLMModel.swift; sourceTree = "<group>"; };
 		3F6F8D412215BE6500A27BEF /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3F76241921F5CACB00CAB4D0 /* CountriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewCell.swift; sourceTree = "<group>"; };
-		3F76241A21F5CACB00CAB4D0 /* CountriesViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountriesViewCell.xib; sourceTree = "<group>"; };
 		3F76241D21F5E6B700CAB4D0 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		3F76241F21F60D0100CAB4D0 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		8B38E864A7631F18590F2E4B /* Pods_WeatherAPIUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherAPIUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,7 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				3F76241921F5CACB00CAB4D0 /* CountriesViewCell.swift */,
-				3F76241A21F5CACB00CAB4D0 /* CountriesViewCell.xib */,
+				3F697E4D221C4BB80044CB25 /* CountriesViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,6 +255,7 @@
 		3F3930782212B50E000758CE /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3F5A5894221ACCC1009848D7 /* RealmService */,
 				3F5DEDEE21ECAFA00069BFF0 /* NetworkService */,
 			);
 			path = Services;
@@ -253,7 +266,6 @@
 			children = (
 				3F4112D022170119006662C7 /* ID.swift */,
 				3F4112D4221702FB006662C7 /* IDProvider.swift */,
-				3F4112D622170399006662C7 /* IDAutoincrementedInMemory.swift */,
 			);
 			path = ID;
 			sourceTree = "<group>";
@@ -267,6 +279,25 @@
 				3F6E6C3921E736C000DA87F6 /* ObservableObject.Observer.swift */,
 			);
 			path = Observer;
+			sourceTree = "<group>";
+		};
+		3F5A5893221ACAF6009848D7 /* RLMModels */ = {
+			isa = PBXGroup;
+			children = (
+				3F5A588F221AC6E1009848D7 /* RLMCountry.swift */,
+				3F3998A7221D47D400C2D952 /* RLMWeather.swift */,
+			);
+			path = RLMModels;
+			sourceTree = "<group>";
+		};
+		3F5A5894221ACCC1009848D7 /* RealmService */ = {
+			isa = PBXGroup;
+			children = (
+				3F5A5895221ACCD0009848D7 /* CountryRealmDataBaseService.swift */,
+				3F3998A9221D664900C2D952 /* WeatherRealmDataBaseServise.swift */,
+				3F5A5897221ADB09009848D7 /* RealmProvider.swift */,
+			);
+			path = RealmService;
 			sourceTree = "<group>";
 		};
 		3F5DEDEE21ECAFA00069BFF0 /* NetworkService */ = {
@@ -306,12 +337,12 @@
 		3F6E6C0421E7364800DA87F6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				3F3930782212B50E000758CE /* Services */,
-				3F6E6C3C21E736C000DA87F6 /* Resources */,
-				3F6E6C6921E7379300DA87F6 /* UI */,
 				3F6E6C0521E7364800DA87F6 /* AppDelegate.swift */,
 				3F6E6C0E21E7364900DA87F6 /* LaunchScreen.storyboard */,
 				3F6E6C1121E7364900DA87F6 /* Info.plist */,
+				3F3930782212B50E000758CE /* Services */,
+				3F6E6C3C21E736C000DA87F6 /* Resources */,
+				3F6E6C6921E7379300DA87F6 /* UI */,
 				3F6E6C6421E736CC00DA87F6 /* Models */,
 				3F6E6C3321E736C000DA87F6 /* Lib */,
 			);
@@ -367,8 +398,8 @@
 		3F6E6C3C21E736C000DA87F6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3F6E6C3D21E736C000DA87F6 /* Color.swift */,
 				3F68551021E8DA7F0008AD60 /* Emoji.swift */,
+				3F6E6C3D21E736C000DA87F6 /* Color.swift */,
 				3F76241F21F60D0100CAB4D0 /* Unit.swift */,
 				3F6E6C0C21E7364900DA87F6 /* Assets.xcassets */,
 			);
@@ -437,6 +468,8 @@
 				3F6E6C4F21E736C000DA87F6 /* Cancellable.swift */,
 				3F45A3DF2211A42500AB4345 /* RequestServiceType.swift */,
 				3F45A3E12211B6B800AB4345 /* StateableNetwork.swift */,
+				3F697E4F221C4E9C0044CB25 /* DataBaseProviderType.swift */,
+				3F697E51221C4EBB0044CB25 /* DataBaseServiseType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -444,6 +477,7 @@
 		3F6E6C6421E736CC00DA87F6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3F5A5893221ACAF6009848D7 /* RLMModels */,
 				3F6F8D3E2215BE4000A27BEF /* Abstract */,
 				3F30F2FE2209EBBE0033A184 /* Weather */,
 				3F30F2FD2209EBB80033A184 /* Country */,
@@ -478,7 +512,7 @@
 				3F2DFA84220AF45D0013E024 /* Views */,
 				3F6E6C6E21E74EEC00DA87F6 /* CountriesViewController.swift */,
 				3F6E6C7221E74F2000DA87F6 /* CountriesView.swift */,
-				3F6E6C6F21E74EEC00DA87F6 /* CountriesViewController.xib */,
+				3F697E4B221C4A740044CB25 /* CountriesViewController.xib */,
 			);
 			path = CountriesViewController;
 			sourceTree = "<group>";
@@ -632,10 +666,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F6E6C1021E7364900DA87F6 /* LaunchScreen.storyboard in Resources */,
-				3F76241C21F5CACB00CAB4D0 /* CountriesViewCell.xib in Resources */,
+				3F697E4E221C4BB80044CB25 /* CountriesViewCell.xib in Resources */,
 				3F6E6C6821E7378000DA87F6 /* WeatherViewController.xib in Resources */,
 				3F6E6C0D21E7364900DA87F6 /* Assets.xcassets in Resources */,
-				3F6E6C7121E74EEC00DA87F6 /* CountriesViewController.xib in Resources */,
+				3F697E4C221C4A740044CB25 /* CountriesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,10 +793,12 @@
 				3F366F3A21FB0A0200D744AE /* Weather.swift in Sources */,
 				3F76241E21F5E6B700CAB4D0 /* Data+Extensions.swift in Sources */,
 				3F51155821FF027E009EEA23 /* CaseDescribable.swift in Sources */,
+				3F5A5898221ADB09009848D7 /* RealmProvider.swift in Sources */,
 				3F76241B21F5CACB00CAB4D0 /* CountriesViewCell.swift in Sources */,
 				3F6F8D3B221593AA00A27BEF /* Realm+Extensions.swift in Sources */,
 				3F6E6C5521E736C000DA87F6 /* F.swift in Sources */,
 				3F39307A2212B637000758CE /* Result.swift in Sources */,
+				3F3998AA221D664900C2D952 /* WeatherRealmDataBaseServise.swift in Sources */,
 				3F6E6C5C21E736C000DA87F6 /* UIColor+Extensions.swift in Sources */,
 				3F4A0063220064B600188C7A /* ObservableWrapper.swift in Sources */,
 				3F6F8D3D22159E1600A27BEF /* WeakBox.swift in Sources */,
@@ -771,7 +807,6 @@
 				3F39307E22131FC3000758CE /* NetworkTask.swift in Sources */,
 				3F6E6C6021E736C000DA87F6 /* Optional+Extensions.swift in Sources */,
 				3F6E6C5921E736C000DA87F6 /* RootViewRepresentable.swift in Sources */,
-				3F4112D722170399006662C7 /* IDAutoincrementedInMemory.swift in Sources */,
 				3F45A3E02211A42500AB4345 /* RequestServiceType.swift in Sources */,
 				3F5DEDF621ECBE440069BFF0 /* UINid+Extensions.swift in Sources */,
 				3F2AED1B22047F9200635168 /* Parser.swift in Sources */,
@@ -797,17 +832,22 @@
 				3F41B1E421F8B22700ADE1F7 /* DataFormater+Extensions.swift in Sources */,
 				3F6E6C6221E736C000DA87F6 /* RangeReplacebleCollection+Extensions.swift in Sources */,
 				3F6E6C6C21E737F400DA87F6 /* WeatherView.swift in Sources */,
+				3F5A5896221ACCD0009848D7 /* CountryRealmDataBaseService.swift in Sources */,
 				3F6E6C5D21E736C000DA87F6 /* DispatchQueue+Extensions.swift in Sources */,
+				3F697E50221C4E9C0044CB25 /* DataBaseProviderType.swift in Sources */,
 				3F5DEDF021ECAFB40069BFF0 /* RequestService.swift in Sources */,
 				3F6E6C5A21E736C000DA87F6 /* CGRect+Extensions.swift in Sources */,
 				3F6E6C5121E736C000DA87F6 /* Generator.swift in Sources */,
 				3F366F3821FB09B200D744AE /* Country.swift in Sources */,
+				3F5A5890221AC6E1009848D7 /* RLMCountry.swift in Sources */,
 				3F6E6C5E21E736C000DA87F6 /* DispatchTime+Extensions.swift in Sources */,
 				3F6E6C5321E736C000DA87F6 /* AbstractCancellableProperty.swift in Sources */,
 				3F5DEDEB21EC92E80069BFF0 /* WeatherJSON.swift in Sources */,
 				3F6E6C6321E736C000DA87F6 /* Cancellable.swift in Sources */,
 				3F6E6C5021E736C000DA87F6 /* ObservableObject.Observers.swift in Sources */,
 				3F5DEDE921EC92B80069BFF0 /* CountryJSON.swift in Sources */,
+				3F697E52221C4EBB0044CB25 /* DataBaseServiseType.swift in Sources */,
+				3F3998A8221D47D400C2D952 /* RLMWeather.swift in Sources */,
 				3F6E6C0621E7364800DA87F6 /* AppDelegate.swift in Sources */,
 				3F3F11A721EF1F4F0055B2D6 /* WeatherNetworkService.swift in Sources */,
 				3F6E6C5821E736C000DA87F6 /* ColorRepresentable.swift in Sources */,

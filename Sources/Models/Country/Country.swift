@@ -20,10 +20,10 @@ class Country: ObservableObject<Country.Event> {
         }
     }
     
-    public let name: String
-    public let capital: String
+    public var name: String?
+    public var capital: String?
     
-    init(name: String, capital: String) {
+    init(name: String?, capital: String?) {
         self.name = name
         self.capital = capital
     }

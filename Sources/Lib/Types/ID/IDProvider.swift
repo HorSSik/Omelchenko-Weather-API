@@ -8,7 +8,42 @@
 
 import Foundation
 
-public protocol IDProvider {
+public typealias IDProvider = () -> ID
+
+fileprivate let persistantProviders = Atomic([String : IDProvider]())
+
+public func autoincrementedIDStart(_ start: Int) -> IDProvider {
+    return autoincrementedID(start: start)
+}
+
+public func autoincrementedID(key: String) -> IDProvider {
+    return persistantProviders.modify { storage in
+        storage[key] ?? call {
+            let defaults = UserDefaults.standard
+            
+            let result = autoincrementedID(start: defaults.integer(forKey: key)) {
+                defaults.set($0, forKey: key)
+            }
+        
+            storage[key] = result
+        
+            return result
+        }
+    }
+}
+
+typealias actionType = ((Int) -> ())?
+
+private func autoincrementedID(start: Int, action: actionType = nil) -> IDProvider {
+    let value = Atomic(start)
     
-    var id: ID { get }
+    return {
+        value.modify { value in
+            let result = value
+            value += 1
+            action?(value)
+            
+            return ID(result)
+        }
+    }
 }

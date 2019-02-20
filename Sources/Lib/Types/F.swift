@@ -13,6 +13,7 @@ public enum F {
     typealias VoidCompletion = () -> ()
     typealias Execute = () -> ()
     typealias Completion<T> = (T) -> ()
+    typealias Action<T> = () -> (T)
 }
 
 public func when<Result>(_ condition: Bool, execute: () -> Result?) -> Result? {
@@ -88,4 +89,12 @@ public func modify<Value>(_ value: Value, action: (inout Value) -> ()) -> Value 
     action(&result)
     
     return result
+}
+
+public func typeString<T>(_ type: T.Type) -> String {
+    return String(describing: type)
+}
+
+public func typeString<T>(_ value: T) -> String {
+    return typeString § type(of: value)
 }

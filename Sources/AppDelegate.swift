@@ -8,6 +8,8 @@
 
 import UIKit
 
+import RealmSwift
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,9 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     )
         -> Bool
     {
-        let countriesNetworkService = CountriesNetworkService.init § RequestService()
+        
+        let dataBaseService = CountryRealmDataBaseServise.init § RealmProvider()
+        
+        let countriesNetworkService = CountriesNetworkService(
+            requestService: RequestService(),
+            dataBaseService: dataBaseService
+        )
+        
         let dataModel = CountriesModel()
-
+        
         let rootViewController = CountriesViewController(
             model: dataModel,
             countriesNetworkService: countriesNetworkService

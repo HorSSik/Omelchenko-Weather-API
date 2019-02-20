@@ -34,12 +34,13 @@ class CountriesViewCell: TableViewCell {
     private func fill() {
         let country = self.model
         let weather = country?.weather
+        let date = weather?.date.map { Date.init(timeIntervalSince1970: TimeInterval($0)) }
         
         self.country?.text = country?.name
         self.capital?.text = country?.capital
         
         self.temperature?.text = weather?.temp.map { String(Int($0)) }
-        self.date?.text = weather?.date?.shortDescription
+        self.date?.text = date?.shortDescription
     }
     
     private func prepareObserver() {

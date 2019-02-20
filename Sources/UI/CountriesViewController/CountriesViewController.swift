@@ -21,9 +21,9 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
 
     private let countries: CountriesModel
     private let modelObserver = CancellableProperty()
-    private let countriesNetworkService: CountriesNetworkService
+    private let countriesNetworkService: CountriesNetworkService<CountryRealmDataBaseServise>
     
-    init(model: CountriesModel, countriesNetworkService: CountriesNetworkService) {
+    init(model: CountriesModel, countriesNetworkService: CountriesNetworkService<CountryRealmDataBaseServise>) {
         self.countriesNetworkService = countriesNetworkService
         self.countries = model
         
@@ -64,9 +64,14 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         let country = self.countries[indexPath.row]
         
         let requestService = RequestService()
-        let weatherNetworkService = WeatherNetworkService.init § requestService
+        let dataBaseService = WeatherRealmDataBaseServise.init § RealmProvider()
+        
+        let weatherNetworkService = WeatherNetworkService(
+            requestService: requestService,
+            dataBaseService: dataBaseService
+        )
+        
         let weatherController = WeatherViewController(country: country, weatherNetworkService: weatherNetworkService)
-
         self.navigationController?.pushViewController(weatherController, animated: true)
     }
     

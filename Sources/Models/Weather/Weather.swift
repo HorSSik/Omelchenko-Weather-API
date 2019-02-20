@@ -20,7 +20,7 @@ class Weather {
     public let pressure: Int?
     public let humidity: Int?
     public let windSpeed: Double?
-    public let date: Date?
+    public let date: Int?
     public let name: String?
     
     init(temp: Double?,
@@ -38,7 +38,7 @@ class Weather {
         self.pressure = pressure
         self.humidity = humidity
         self.windSpeed = windSpeed
-        self.date = date.map { Date.init(timeIntervalSince1970: TimeInterval($0)) }
+        self.date = date
         self.name = name
     }
 }

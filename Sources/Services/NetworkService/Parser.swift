@@ -29,6 +29,21 @@ class Parser {
         return self.json(from: data).mapValue(self.weather)
     }
     
+    public func weather(RLMWeather: RLMWeather?) -> Weather {
+        let weatherRLM = RLMWeather
+        
+        return Weather(
+            temp: weatherRLM?.temp.value,
+            tempMin: weatherRLM?.tempMin.value,
+            tempMax: weatherRLM?.tempMax.value,
+            pressure: weatherRLM?.pressure.value,
+            humidity: weatherRLM?.humidity.value,
+            windSpeed: weatherRLM?.windSpeed.value,
+            date: weatherRLM?.date.value,
+            name: weatherRLM?.name
+        )
+    }
+    
     private func countries(json: [CountryJSON]) -> [Country] {
         return json
             .filter { !$0.capital.isEmpty }

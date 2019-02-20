@@ -20,11 +20,11 @@ class WeatherViewController: UIViewController, RootViewRepresentable {
     
     private let country: Country
     private let weatherObserver = CancellableProperty()
-    private let weatherNetworkService: WeatherNetworkService
+    private let weatherNetworkService: WeatherNetworkService<WeatherRealmDataBaseServise>
     
     init(
         country: Country,
-        weatherNetworkService: WeatherNetworkService
+        weatherNetworkService: WeatherNetworkService<WeatherRealmDataBaseServise>
     ) {
         self.weatherNetworkService = weatherNetworkService
         self.country = country
