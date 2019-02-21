@@ -14,6 +14,8 @@ class Weather {
         return self.temp.map { $0 >= 0 ? .sun : .winter }
     }
     
+    public var id: ID
+    
     public let temp: Double?
     public let tempMin: Double?
     public let tempMax: Double?
@@ -23,6 +25,10 @@ class Weather {
     public let date: Int?
     public let name: String?
     
+    public var storageId: String {
+        return "\(self.id)_\(typeString(self).lowercased())"
+    }
+    
     init(temp: Double?,
         tempMin: Double?,
         tempMax: Double?,
@@ -30,7 +36,8 @@ class Weather {
         humidity: Int?,
         windSpeed: Double?,
         date: Int?,
-        name: String?
+        name: String?,
+        id: ID
     ) {
         self.temp = temp
         self.tempMin = tempMin
@@ -40,6 +47,7 @@ class Weather {
         self.windSpeed = windSpeed
         self.date = date
         self.name = name
+        self.id = id
     }
 }
 

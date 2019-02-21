@@ -98,3 +98,7 @@ public func typeString<T>(_ type: T.Type) -> String {
 public func typeString<T>(_ value: T) -> String {
     return typeString § type(of: value)
 }
+
+public func createKey<T>(id: ID, _ type: T.Type) -> String {
+    return "\(id)_\(typeString(type.self).lowercased())"
+}

@@ -17,4 +17,10 @@ public class RLMModel: Object {
     }
     
     @objc dynamic var id = ""
+    
+    public func convertedID(_ id: String?) -> ID? {
+        return id?.split(separator: "_")
+            .first
+            .flatMap { ID(string: String($0)) }
+    }
 }

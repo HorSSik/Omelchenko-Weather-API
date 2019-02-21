@@ -14,7 +14,7 @@ protocol DataBaseServiseType {
     
     func add(object: Model)
     
-    func read(key: String) -> Model?
+    func read(id: ID) -> Model?
     
     func read() -> [Model]?
 }

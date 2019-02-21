@@ -19,13 +19,19 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private var task: NetworkTask?
 
+    private let parser: Parser
     private let countries: CountriesModel
     private let modelObserver = CancellableProperty()
     private let countriesNetworkService: CountriesNetworkService<CountryRealmDataBaseServise>
     
-    init(model: CountriesModel, countriesNetworkService: CountriesNetworkService<CountryRealmDataBaseServise>) {
+    init(
+        model: CountriesModel,
+        countriesNetworkService: CountriesNetworkService<CountryRealmDataBaseServise>,
+        parser: Parser
+    ) {
         self.countriesNetworkService = countriesNetworkService
         self.countries = model
+        self.parser = parser
         
         super.init(nibName: nil, bundle: nil)
         
@@ -68,7 +74,8 @@ class CountriesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let weatherNetworkService = WeatherNetworkService(
             requestService: requestService,
-            dataBaseService: dataBaseService
+            dataBaseService: dataBaseService,
+            parser: self.parser
         )
         
         let weatherController = WeatherViewController(country: country, weatherNetworkService: weatherNetworkService)

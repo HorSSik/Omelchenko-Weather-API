@@ -10,19 +10,21 @@ import Foundation
 
 import RealmSwift
 
-class RLMWeather: RLMModel {
+class RLMWeather: RLMModel, RealmModel {
     
-    let temp = RealmOptional<Double>()
-    let tempMin = RealmOptional<Double>()
-    let tempMax = RealmOptional<Double>()
-    let pressure = RealmOptional<Int>()
-    let humidity = RealmOptional<Int>()
-    let windSpeed = RealmOptional<Double>()
-    let date = RealmOptional<Int>()
+    typealias ConvertableType = Weather
+    
+    var temp = RealmOptional<Double>()
+    var tempMin = RealmOptional<Double>()
+    var tempMax = RealmOptional<Double>()
+    var pressure = RealmOptional<Int>()
+    var humidity = RealmOptional<Int>()
+    var windSpeed = RealmOptional<Double>()
+    var date = RealmOptional<Int>()
     
     @objc dynamic var name: String?
     
-    convenience init(weather: Weather) {
+    required convenience init(object weather: ConvertableType) {
         self.init()
 
         self.temp.value = weather.temp
@@ -33,7 +35,22 @@ class RLMWeather: RLMModel {
         self.windSpeed.value = weather.windSpeed
         self.date.value = weather.date
         self.name = weather.name
-        
-        weather.name.do { self.id = $0 }
+        self.id = weather.storageId 
+    }
+    
+    public func object() -> Weather? {
+        return self.convertedID(self.id).map {
+            Weather(
+                temp: self.temp.value,
+                tempMin: self.tempMin.value,
+                tempMax: self.tempMax.value,
+                pressure: self.pressure.value,
+                humidity: self.humidity.value,
+                windSpeed: self.windSpeed.value,
+                date: self.date.value,
+                name: self.name,
+                id: $0
+            )
+        }
     }
 }

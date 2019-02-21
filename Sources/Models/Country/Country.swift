@@ -20,11 +20,17 @@ class Country: ObservableObject<Country.Event> {
         }
     }
     
+    public var storageId: String {
+        return "\(self.id)_\(typeString(self).lowercased())" 
+    }
+    
+    public var id: ID
     public var name: String?
     public var capital: String?
     
-    init(name: String?, capital: String?) {
+    init(name: String?, capital: String?, id: ID) {
         self.name = name
         self.capital = capital
+        self.id = id
     }
 }

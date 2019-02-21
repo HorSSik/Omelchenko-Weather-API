@@ -15,10 +15,8 @@ fileprivate struct Constant {
 }
 
 class CountriesNetworkService<DataBaseServise: DataBaseServiseType>
-    where DataBaseServise.Model == RLMCountry
+    where DataBaseServise.Model == Country
 {
-    
-    private let parser = Parser()
     private let requestService: RequestServiceType
     private let dataBaseService: DataBaseServise
     
@@ -34,22 +32,26 @@ class CountriesNetworkService<DataBaseServise: DataBaseServiseType>
             self.requestService.requestData(url: url) { result in
                 result.analisys(
                     success: {
-                        let countries = self.parser.countries(data: $0)
+                        let countries = Parser().countries(data: $0)
                         countries.analisys(
                             success: { value in
                                 models.append(countries: value)
-                                countries.value?.forEach {
-                                    self.dataBaseService.add § RLMCountry.init § $0
+                                countries.value?.forEach { country in
+                                    self.dataBaseService.add § country
+                                    
+                                    country.observer { _ in
+                                        self.dataBaseService.add § country
+                                    }
                                 }
                             },
                             failure: {
-                                self.fill(models: models)
+                                self.fill § models
                                 print($0.localizedDescription)
                             }
                         )
                     },
                     failure: {
-                        self.fill(models: models)
+                        self.fill § models
                         print($0.localizedDescription)
                     }
                 )
@@ -59,9 +61,7 @@ class CountriesNetworkService<DataBaseServise: DataBaseServiseType>
     }
     
     private func fill(models: CountriesModel) {
-        let countries = self.dataBaseService.read()?.map {
-            Country(name: $0.name, capital: $0.capital)
-        }
+        let countries = self.dataBaseService.read()
         
         countries.do(models.append)
     }

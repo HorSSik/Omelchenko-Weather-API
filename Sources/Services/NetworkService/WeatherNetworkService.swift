@@ -14,16 +14,16 @@ fileprivate struct Constant {
 }
 
 class WeatherNetworkService<DataBaseServise: DataBaseServiseType>
-    where DataBaseServise.Model == RLMWeather
+    where DataBaseServise.Model == Weather
 {
-    
-    private let parser = Parser()
     private let requestService: RequestServiceType
     private let dataBaseService: DataBaseServise
+    private let parser: Parser
     
-    init(requestService: RequestServiceType, dataBaseService: DataBaseServise) {
+    init(requestService: RequestServiceType, dataBaseService: DataBaseServise, parser: Parser) {
         self.requestService = requestService
         self.dataBaseService = dataBaseService
+        self.parser = parser
     }
     
     public func getWeather(country: Country) -> NetworkTask {
@@ -35,18 +35,15 @@ class WeatherNetworkService<DataBaseServise: DataBaseServiseType>
             .map { url in
                 self.requestService.requestData(url: url) { result in
                     result.analisys(
-                        success: {
-                            let weather = self.parser.weather(data: $0)
+                        success: { data in
+                            let weather = self.parser.weather(data: data, id: country.id)
                             weather.analisys(
-                                success: {
-                                    country.weather = $0
-                                    self.dataBaseService.add § RLMWeather.init § $0
+                                success: { weather in
+                                    country.weather = weather
+                                    self.dataBaseService.add § weather
                                 },
                                 failure: {
-                                    let weatherRLM = country.capital.flatMap {
-                                        self.dataBaseService.read(key: $0)
-                                    }
-                                    country.weather = self.parser.weather(RLMWeather: weatherRLM)
+//                                    country.weather = country.id.flatMap { self.dataBaseService.read(id: $0) }
                                     print($0.localizedDescription)
                                 }
                             )

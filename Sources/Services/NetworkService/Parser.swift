@@ -17,6 +17,9 @@ class Parser {
     
     typealias ParserResult<Value> = Result<Value, ParserError>
     
+    let weatherProvider = autoincrementedIDStart(1)
+    let countryProvider = autoincrementedIDStart(1)
+    
     public func countries(data: Data) -> ParserResult<[Country]> {
         return self.json(from: data).mapValue(self.countries)
     }
@@ -25,23 +28,10 @@ class Parser {
         return self.json(from: data).mapValue(self.country)
     }
     
-    public func weather(data: Data) -> ParserResult<Weather> {
-        return self.json(from: data).mapValue(self.weather)
-    }
-    
-    public func weather(RLMWeather: RLMWeather?) -> Weather {
-        let weatherRLM = RLMWeather
-        
-        return Weather(
-            temp: weatherRLM?.temp.value,
-            tempMin: weatherRLM?.tempMin.value,
-            tempMax: weatherRLM?.tempMax.value,
-            pressure: weatherRLM?.pressure.value,
-            humidity: weatherRLM?.humidity.value,
-            windSpeed: weatherRLM?.windSpeed.value,
-            date: weatherRLM?.date.value,
-            name: weatherRLM?.name
-        )
+    public func weather(data: Data, id: ID) -> ParserResult<Weather> {
+        return self.json(from: data).mapValue {
+            self.weather(json: $0, id: id)
+        }
     }
     
     private func countries(json: [CountryJSON]) -> [Country] {
@@ -51,10 +41,10 @@ class Parser {
     }
     
     private func country(json: CountryJSON) -> Country {
-        return Country(name: json.name, capital: json.capital)
+        return Country(name: json.name, capital: json.capital, id: self.countryProvider())
     }
     
-    private func weather(json: WeatherJSON) -> Weather {
+    private func weather(json: WeatherJSON, id: ID) -> Weather {
         let main = json.main
         let wind = json.wind.speed
         
@@ -66,7 +56,8 @@ class Parser {
             humidity: main.humidity,
             windSpeed: wind,
             date: json.dt,
-            name: json.name
+            name: json.name,
+            id: id
         )
     }
     

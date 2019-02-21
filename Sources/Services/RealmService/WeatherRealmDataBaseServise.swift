@@ -10,23 +10,4 @@ import Foundation
 
 import RealmSwift
 
-class WeatherRealmDataBaseServise: DataBaseServiseType {
-    
-    private let provider: RealmProvider<RLMWeather>
-    
-    init(provider: RealmProvider<RLMWeather>) {
-        self.provider = provider
-    }
-    
-    func add(object: RLMWeather) {
-        self.provider.add § object
-    }
-    
-    func read(key: String) -> RLMWeather? {
-        return self.provider.read(key: key)
-    }
-    
-    func read() -> [RLMWeather]? {
-        return self.provider.read()
-    }
-}
+class WeatherRealmDataBaseServise: RealmDataBaseServise<RLMWeather> { }

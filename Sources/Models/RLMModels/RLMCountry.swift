@@ -10,19 +10,32 @@ import Foundation
 
 import RealmSwift
 
-class RLMCountry: RLMModel {
+class RLMCountry: RLMModel, RealmModel {
+    
+    typealias ConvertableType = Country
     
     @objc dynamic var name: String?
     @objc dynamic var capital: String?
     
-    convenience init(country: Country) {
+    @objc dynamic var weather: RLMWeather?
+    
+    required convenience init(object country: ConvertableType) {
         self.init()
-        
-        let capital = country.capital
-        
+    
         self.name = country.name
-        self.capital = capital
-        capital.do { self.id = $0 }
+        self.capital = country.capital
+        self.weather = country.weather.map(RLMWeather.init)
+        self.id = country.storageId 
+    }
+    
+    func object() -> Country? {
+        return self.convertedID(self.id).map {
+            Country(
+                name: self.name,
+                capital: self.capital,
+                id: $0
+            )
+        }
     }
 }
 

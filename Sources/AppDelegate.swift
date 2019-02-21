@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     )
         -> Bool
     {
-        
+        let parser = Parser()
         let dataBaseService = CountryRealmDataBaseServise.init § RealmProvider()
         
         let countriesNetworkService = CountriesNetworkService(
@@ -33,10 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let rootViewController = CountriesViewController(
             model: dataModel,
-            countriesNetworkService: countriesNetworkService
+            countriesNetworkService: countriesNetworkService,
+            parser: parser
         )
         
-        let navigationController = UINavigationController(rootViewController: rootViewController)
+        let navigationController = UINavigationController.init § rootViewController
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = navigationController

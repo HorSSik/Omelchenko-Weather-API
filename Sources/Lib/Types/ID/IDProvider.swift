@@ -13,7 +13,7 @@ public typealias IDProvider = () -> ID
 fileprivate let persistantProviders = Atomic([String : IDProvider]())
 
 public func autoincrementedIDStart(_ start: Int) -> IDProvider {
-    return autoincrementedID(start: start)
+    return autoincrementedID(start: start, action: nil)
 }
 
 public func autoincrementedID(key: String) -> IDProvider {
@@ -34,7 +34,7 @@ public func autoincrementedID(key: String) -> IDProvider {
 
 typealias actionType = ((Int) -> ())?
 
-private func autoincrementedID(start: Int, action: actionType = nil) -> IDProvider {
+private func autoincrementedID(start: Int, action: actionType) -> IDProvider {
     let value = Atomic(start)
     
     return {
